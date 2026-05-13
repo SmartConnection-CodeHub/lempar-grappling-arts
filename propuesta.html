@@ -876,14 +876,51 @@ h2.title:hover em{letter-spacing:-.025em}
    MOTION JJ PREMIUM · 15 efectos nivel 3
    ════════════════════════════════════════════════════ */
 
-/* 1 · TATAMI PATTERN ANIMADO · drift en cream sections */
+/* 1 · TATAMI PATTERN ANIMADO · drift en cream + bone sections */
 section.cream::before{
   animation:tatamiDrift 60s linear infinite;
+  background-image:
+    repeating-linear-gradient(45deg,transparent 0,transparent 22px,rgba(176,141,76,.06) 22px,rgba(176,141,76,.06) 23px),
+    repeating-linear-gradient(-45deg,transparent 0,transparent 22px,rgba(176,141,76,.06) 22px,rgba(176,141,76,.06) 23px) !important;
 }
+section.bone{position:relative}
+section.bone::before{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    repeating-linear-gradient(45deg,transparent 0,transparent 26px,rgba(176,141,76,.07) 26px,rgba(176,141,76,.07) 27px),
+    repeating-linear-gradient(-45deg,transparent 0,transparent 26px,rgba(176,141,76,.07) 26px,rgba(176,141,76,.07) 27px);
+  animation:tatamiDrift 75s linear infinite;
+}
+section.bone > .container{position:relative;z-index:1}
 @keyframes tatamiDrift{
   0%{background-position:0 0,0 0}
   100%{background-position:88px 88px,-88px 88px}
 }
+
+/* BORDES LATERALES decorativos · stripes brass · solo wide viewports */
+@media (min-width:1280px){
+  section.bone::after,section.cream::after{
+    content:'';position:absolute;top:0;bottom:0;
+    left:max(20px,calc((100% - 1180px)/2 - 60px));
+    width:1px;background:linear-gradient(180deg,transparent 0%,rgba(176,141,76,.40) 20%,rgba(176,141,76,.40) 80%,transparent 100%);
+    pointer-events:none;z-index:1;
+  }
+  section.bone > .container::before,section.cream > .container::before{
+    content:'';position:absolute;top:0;bottom:0;
+    right:max(20px,calc(0px - 60px));
+    width:1px;background:linear-gradient(180deg,transparent 0%,rgba(176,141,76,.40) 20%,rgba(176,141,76,.40) 80%,transparent 100%);
+    pointer-events:none;
+  }
+  /* Decoración esquinas tatami · estilo dojo */
+  section.bone .container::after{
+    content:'';position:absolute;top:60px;right:-40px;width:24px;height:24px;
+    border-top:2px solid var(--brass);border-right:2px solid var(--brass);
+    opacity:.5;
+  }
+}
+
+/* Container relativo para decoraciones */
+.container{position:relative}
 
 /* 2 · ROUND TIMER · flotante top-right */
 .round-timer{
