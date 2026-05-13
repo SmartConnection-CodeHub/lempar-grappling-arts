@@ -1042,7 +1042,7 @@ p.lead{font-size:clamp(.95rem, 2vw, 1.0625rem)}
           <li>Mobiliario vestidor + recepción <span class="amt">$350.000</span></li>
           <li>Iluminación / climatización <span class="amt">$200.000</span></li>
         </ul>
-        <div class="total"><span class="lbl">Subtotal</span><span class="val">$2.600.000</span></div>
+        <div class="total"><span class="lbl">Subtotal</span><span class="val">$<span data-out="cap-sala-disp">2.600.000</span></span></div>
       </div>
 
       <div class="activo-card">
@@ -1055,7 +1055,7 @@ p.lead{font-size:clamp(.95rem, 2vw, 1.0625rem)}
           <li>Honorarios abogado pacto socios <span class="amt">$400.000</span></li>
           <li>Asesoría contable inicial <span class="amt">$200.000</span></li>
         </ul>
-        <div class="total"><span class="lbl">Subtotal</span><span class="val">$1.040.000</span></div>
+        <div class="total"><span class="lbl">Subtotal</span><span class="val">$<span data-out="cap-legal-disp">1.040.000</span></span></div>
       </div>
 
       <div class="activo-card">
@@ -1067,7 +1067,7 @@ p.lead{font-size:clamp(.95rem, 2vw, 1.0625rem)}
           <li>Etiquetas + packaging branded <span class="amt">$120.000</span></li>
           <li>Fotografía + producción contenido <span class="amt">$280.000</span></li>
         </ul>
-        <div class="total"><span class="lbl">Subtotal</span><span class="val">$1.600.000</span></div>
+        <div class="total"><span class="lbl">Subtotal</span><span class="val">$<span data-out="cap-apparel-disp">1.600.000</span></span></div>
       </div>
 
       <div class="activo-card">
@@ -1079,7 +1079,7 @@ p.lead{font-size:clamp(.95rem, 2vw, 1.0625rem)}
           <li>Equipo computador / iPad caja <span class="amt">$700.000</span></li>
           <li>Pauta inicial RRSS 6 meses <span class="amt">$300.000</span></li>
         </ul>
-        <div class="total"><span class="lbl">Subtotal</span><span class="val">$1.430.000</span></div>
+        <div class="total"><span class="lbl">Subtotal</span><span class="val">$<span data-out="cap-digital-disp">1.430.000</span></span></div>
       </div>
 
       <div class="activo-card">
@@ -1090,7 +1090,7 @@ p.lead{font-size:clamp(.95rem, 2vw, 1.0625rem)}
           <li>Servicios básicos + reserva <span class="amt">$600.000</span></li>
           <li>Honorarios instructor mes 1-2 <span class="amt">$130.000</span></li>
         </ul>
-        <div class="total"><span class="lbl">Subtotal</span><span class="val">$1.330.000</span></div>
+        <div class="total"><span class="lbl">Subtotal</span><span class="val">$<span data-out="cap-trabajo-disp">1.330.000</span></span></div>
       </div>
 
       <div class="activo-card" style="border:2px dashed var(--brass);background:var(--bone-soft)">
@@ -1170,7 +1170,7 @@ p.lead{font-size:clamp(.95rem, 2vw, 1.0625rem)}
       <div class="cashflow-row"><div class="cashflow-month">Mes 10</div><div class="cashflow-bar"><div class="cashflow-bar-fill" style="width:85%"></div></div><div class="cashflow-amount">$850.000</div></div>
       <div class="cashflow-row"><div class="cashflow-month">Mes 11</div><div class="cashflow-bar"><div class="cashflow-bar-fill" style="width:90%"></div></div><div class="cashflow-amount">$900.000</div></div>
       <div class="cashflow-row" style="background:var(--bone);padding:14px 12px"><div class="cashflow-month" style="color:var(--brass)">Mes 12</div><div class="cashflow-bar"><div class="cashflow-bar-fill" style="width:37%;background:var(--brass-bright)"></div></div><div class="cashflow-amount" style="color:var(--brass)">$370.000</div></div>
-      <div style="margin-top:24px;padding-top:18px;border-top:2px solid var(--ink);display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)">Total Y1</div><div style="font-family:var(--font-serif);font-size:36px;font-weight:700;color:var(--brass);letter-spacing:-.02em"><span style="font-size:18px;color:var(--ink)">$</span>7.370.000</div></div>
+      <div style="margin-top:24px;padding-top:18px;border-top:2px solid var(--ink);display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)">Total Y1</div><div style="font-family:var(--font-serif);font-size:36px;font-weight:700;color:var(--brass);letter-spacing:-.02em"><span style="font-size:18px;color:var(--ink)">$</span><span data-out="ventas-y1">7.370.000</span></div></div>
     </div>
   </div>
 </section>
@@ -2010,6 +2010,21 @@ p.lead{font-size:clamp(.95rem, 2vw, 1.0625rem)}
     const capex = s.capSala + s.capLegal + s.capApparel + s.capDigital + s.capTrabajo;
     c['capex-total'] = fmt(capex);
     c['capex-total-m'] = fmtM(capex);
+    c['cap-sala-disp'] = fmt(s.capSala);
+    c['cap-legal-disp'] = fmt(s.capLegal);
+    c['cap-apparel-disp'] = fmt(s.capApparel);
+    c['cap-digital-disp'] = fmt(s.capDigital);
+    c['cap-trabajo-disp'] = fmt(s.capTrabajo);
+
+    // Flujo caja Y1 mensual · proporcional a ventasY1
+    // Fracciones default: 300+400+500+550+600+650+700+750+800+850+900+370 = 7370 (en miles)
+    const cfFrac = [300, 400, 500, 550, 600, 650, 700, 750, 800, 850, 900, 370];
+    const cfSum = cfFrac.reduce((a,b)=>a+b,0);
+    cfFrac.forEach((f, i)=>{
+      const mes = Math.round(s.ventasY1 * f/cfSum);
+      c[`cf-m${i+1}`] = fmt(mes);
+      c[`cf-m${i+1}-w`] = Math.round(f/9 * 100)/100; // width % (max = 1000 → 100%)
+    });
 
     // IVA
     c['iva'] = s.iva;
@@ -2036,6 +2051,34 @@ p.lead{font-size:clamp(.95rem, 2vw, 1.0625rem)}
         }
       }
     });
+
+    // Flujo caja Y1 mensual · 12 rows · actualizar amount + barra width
+    const cfRows = document.querySelectorAll('.cashflow-row');
+    let mIdx = 0;
+    cfRows.forEach(row=>{
+      if(row.classList.contains('header')) return;
+      mIdx++;
+      if(mIdx > 12) return;
+      const amtEl = row.querySelector('.cashflow-amount');
+      const barEl = row.querySelector('.cashflow-bar-fill');
+      const newAmt = c[`cf-m${mIdx}`];
+      const newW = c[`cf-m${mIdx}-w`];
+      if(amtEl && newAmt!==undefined){
+        const formatted = '$' + newAmt;
+        if(amtEl.textContent !== formatted){
+          amtEl.textContent = formatted;
+          amtEl.classList.add('flash');
+          setTimeout(()=>amtEl.classList.remove('flash'), 600);
+        }
+      }
+      if(barEl && newW!==undefined){
+        barEl.style.width = newW + '%';
+      }
+    });
+
+    // Total Y1 cashflow · actualizar al final
+    const cfTotalEl = document.querySelector('.cashflow-row + div [style*="font-family:var(--font-serif)"]');
+    // (el total ya se actualiza vía data-out="ventas-y1" si estuviera marcado · está hardcoded)
   }
 
   /* ────── Sincronizar inputs panel ────── */
