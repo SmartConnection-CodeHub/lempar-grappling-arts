@@ -867,37 +867,271 @@ section.block.swoosh-in .section-swoosh{
   100%{left:100%;opacity:0}
 }
 
-/* TITLE GLITCH · H2 hover */
+/* TITLE H2 hover · solo underline brass (sin glitch) */
 h2.title{position:relative;cursor:default}
-h2.title::before,h2.title::after{
-  content:attr(data-text);position:absolute;left:0;top:0;
-  width:100%;color:var(--ink);
-  opacity:0;pointer-events:none;
+h2.title em{position:relative;transition:letter-spacing .35s}
+h2.title:hover em{letter-spacing:-.025em}
+
+/* ════════════════════════════════════════════════════
+   MOTION JJ PREMIUM · 15 efectos nivel 3
+   ════════════════════════════════════════════════════ */
+
+/* 1 · TATAMI PATTERN ANIMADO · drift en cream sections */
+section.cream::before{
+  animation:tatamiDrift 60s linear infinite;
 }
-section.dark h2.title::before,section.dark h2.title::after{color:var(--bone)}
-h2.title:hover::before{
-  color:var(--blood);
-  animation:glitchA .35s steps(2) 1;
-  opacity:.7;
+@keyframes tatamiDrift{
+  0%{background-position:0 0,0 0}
+  100%{background-position:88px 88px,-88px 88px}
 }
-h2.title:hover::after{
-  color:var(--brass);
-  animation:glitchB .35s steps(2) 1;
-  opacity:.7;
+
+/* 2 · ROUND TIMER · flotante top-right */
+.round-timer{
+  position:fixed;top:108px;right:24px;z-index:150;
+  display:flex;align-items:center;gap:10px;
+  padding:8px 16px;background:rgba(13,13,13,.92);
+  border:1px solid var(--brass);border-radius:99px;
+  font-family:var(--font);color:var(--bone);
+  backdrop-filter:blur(8px);
+  opacity:0;transform:translateX(20px);
+  transition:opacity .4s,transform .4s;
+  font-variant-numeric:tabular-nums;
 }
-@keyframes glitchA{
+.round-timer.show{opacity:1;transform:translateX(0)}
+.round-timer .rt-label{font-size:9px;font-weight:800;letter-spacing:.20em;text-transform:uppercase;color:var(--brass)}
+.round-timer .rt-time{font-size:14px;font-weight:700;color:var(--bone)}
+.round-timer .rt-pulse{width:6px;height:6px;border-radius:50%;background:#e54545;animation:rtPulse 1s infinite}
+@keyframes rtPulse{0%,60%,100%{opacity:1}30%{opacity:.3}}
+@media (max-width:768px){.round-timer{display:none}}
+
+/* 3 · CHAMPION PODIUM en number cell */
+.number-cell{position:relative}
+.number-cell.champion::after{
+  content:'#1';position:absolute;top:8px;right:14px;
+  font-family:var(--font-serif);font-size:11px;font-weight:700;
+  color:var(--brass);letter-spacing:.04em;
+  padding:2px 7px;border:1px solid var(--brass);
+  background:rgba(176,141,76,.10);
+  animation:champFloat 3s ease-in-out infinite;
+}
+@keyframes champFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-3px)}
+}
+
+/* 4 · STRIPES ACCUMULATE · cinturón visual bottom-right */
+.stripes-belt{
+  position:fixed;bottom:24px;left:24px;z-index:150;
+  width:120px;height:18px;background:#0a0a0a;border:2px solid var(--brass);
+  display:flex;align-items:center;padding:0 8px;gap:4px;
+  box-shadow:0 4px 16px rgba(0,0,0,.30);
+  opacity:0;transform:translateY(20px);
+  transition:opacity .4s,transform .4s;
+}
+.stripes-belt.show{opacity:1;transform:translateY(0)}
+.stripes-belt .sb-stripe{
+  width:3px;height:10px;background:rgba(255,255,255,.10);
+  transition:background .4s,box-shadow .4s;
+}
+.stripes-belt .sb-stripe.lit{
+  background:var(--brass);
+  box-shadow:0 0 8px var(--brass);
+}
+.stripes-belt::after{
+  content:'';margin-left:auto;width:14px;height:14px;
+  background:var(--brass);border:1px solid #000;
+}
+@media (max-width:768px){.stripes-belt{bottom:84px;width:90px;height:14px}.stripes-belt .sb-stripe{height:8px}.stripes-belt::after{width:10px;height:10px}}
+
+/* 5 · OCTAGON WATERMARK · sutil hexágono en hero */
+.hero-octagon{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:min(85vh,800px);height:min(85vh,800px);z-index:1;
+  opacity:.06;pointer-events:none;
+  animation:octRotate 90s linear infinite;
+}
+@keyframes octRotate{
+  0%{transform:translate(-50%,-50%) rotate(0deg)}
+  100%{transform:translate(-50%,-50%) rotate(360deg)}
+}
+
+/* 6 · CONFETI DORADO · al Black Belt */
+.confetti{
+  position:fixed;inset:0;z-index:282;pointer-events:none;overflow:hidden;
+}
+.confetti-piece{
+  position:absolute;width:8px;height:14px;
+  background:var(--brass);top:-20px;
+  animation:confettiFall 2.4s cubic-bezier(.4,0,.6,1) forwards;
+}
+@keyframes confettiFall{
+  0%{transform:translate(0,0) rotate(0deg);opacity:1}
+  100%{transform:translate(var(--cx,0),110vh) rotate(720deg);opacity:0}
+}
+
+/* 7 · CAMERA SHAKE · al TAP-OUT */
+@keyframes camShake{
   0%,100%{transform:translate(0,0)}
-  20%{transform:translate(-2px,1px)}
-  40%{transform:translate(-1px,-1px)}
-  60%{transform:translate(1px,2px)}
-  80%{transform:translate(2px,-1px)}
+  10%{transform:translate(-6px,-3px)}
+  20%{transform:translate(6px,3px)}
+  30%{transform:translate(-5px,4px)}
+  40%{transform:translate(5px,-2px)}
+  50%{transform:translate(-3px,3px)}
+  60%{transform:translate(3px,-4px)}
+  70%{transform:translate(-2px,2px)}
+  80%{transform:translate(2px,-2px)}
 }
-@keyframes glitchB{
-  0%,100%{transform:translate(0,0)}
-  20%{transform:translate(2px,-1px)}
-  40%{transform:translate(1px,1px)}
-  60%{transform:translate(-2px,-2px)}
-  80%{transform:translate(-1px,1px)}
+body.shake-active main,body.shake-active section{
+  animation:camShake .55s cubic-bezier(.36,.07,.19,.97);
+}
+
+/* 8 · SUBMISSION COUNTER · banner sutil */
+.sub-counter{
+  position:fixed;top:108px;left:24px;z-index:150;
+  display:flex;align-items:center;gap:14px;
+  padding:8px 16px;background:rgba(13,13,13,.92);
+  border:1px solid var(--brass);border-radius:99px;
+  backdrop-filter:blur(8px);
+  opacity:0;transform:translateX(-20px);
+  transition:opacity .4s,transform .4s;
+  font-family:var(--font);
+}
+.sub-counter.show{opacity:1;transform:translateX(0)}
+.sub-counter .sc-stat{display:flex;flex-direction:column;line-height:1.1}
+.sub-counter .sc-num{font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--brass)}
+.sub-counter .sc-lbl{font-size:8px;font-weight:800;letter-spacing:.20em;text-transform:uppercase;color:rgba(244,241,234,.55)}
+.sub-counter .sc-sep{width:1px;height:24px;background:rgba(176,141,76,.30)}
+@media (max-width:768px){.sub-counter{display:none}}
+
+/* 9 · MAT IMPACT · doble click genera onda */
+.mat-impact{
+  position:fixed;width:40px;height:40px;border-radius:50%;
+  border:3px solid var(--brass);pointer-events:none;z-index:200;
+  transform:translate(-50%,-50%) scale(0);
+}
+.mat-impact.active{animation:matImpact 1.1s cubic-bezier(.22,1,.36,1)}
+@keyframes matImpact{
+  0%{transform:translate(-50%,-50%) scale(0);opacity:1;border-width:6px}
+  100%{transform:translate(-50%,-50%) scale(12);opacity:0;border-width:1px}
+}
+
+/* 10 · TOURNAMENT BRACKET visual · entre compare-cols (desktop) */
+.compare-wrap{position:relative}
+.bracket-line{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:60px;height:140px;z-index:5;pointer-events:none;
+  opacity:0;transition:opacity .8s ease 1s;
+}
+.compare-wrap.revealed .bracket-line{opacity:1}
+.bracket-line::before,.bracket-line::after{
+  content:'';position:absolute;background:var(--brass);
+}
+.bracket-line::before{left:0;top:0;bottom:0;width:2px}
+.bracket-line::after{right:0;top:0;bottom:0;width:2px}
+.bracket-line .br-vs{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  background:var(--ink);color:var(--brass);
+  padding:6px 12px;font-family:var(--font-serif);font-size:14px;font-weight:700;
+  border:1px solid var(--brass);letter-spacing:.04em;
+}
+@media (max-width:1024px){.bracket-line{display:none}}
+
+/* 11 · NUMBER EXPLOSION · micro explosión brass */
+@keyframes numberExplode{
+  0%{transform:scale(.7);opacity:0;filter:blur(8px)}
+  50%{transform:scale(1.15);opacity:1;filter:blur(0)}
+  70%{transform:scale(.95)}
+  100%{transform:scale(1);opacity:1;filter:blur(0)}
+}
+.nb-val.exploded{
+  animation:numberExplode 1.1s cubic-bezier(.34,1.56,.64,1);
+}
+.nb-val.exploded::before{
+  content:'';position:absolute;inset:-20px;border-radius:50%;
+  background:radial-gradient(circle,rgba(176,141,76,.35) 0%,transparent 60%);
+  animation:explodeGlow 1.1s ease-out;
+  pointer-events:none;
+}
+@keyframes explodeGlow{
+  0%{transform:scale(0);opacity:1}
+  100%{transform:scale(2);opacity:0}
+}
+
+/* 12 · COACH CALLOUT · tooltips brass al hover en cifras críticas */
+.coach-tip{
+  position:absolute;bottom:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(8px);
+  padding:10px 16px;background:var(--ink);color:var(--brass);
+  border:1px solid var(--brass);font-size:11px;font-weight:700;letter-spacing:.10em;
+  text-transform:uppercase;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;
+  z-index:100;
+}
+.coach-tip::after{
+  content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:6px solid transparent;border-top-color:var(--brass);
+}
+[data-coach]{position:relative;cursor:help}
+[data-coach]:hover .coach-tip{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* 13 · CONSTELLATION DOTS · navegación lateral */
+.constellation{
+  position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:140;
+  display:flex;flex-direction:column;gap:10px;
+  opacity:0;transition:opacity .5s;
+}
+.constellation.show{opacity:1}
+.constellation .star{
+  width:8px;height:8px;border-radius:50%;
+  background:rgba(176,141,76,.30);border:1px solid rgba(176,141,76,.40);
+  transition:all .3s;cursor:pointer;position:relative;
+}
+.constellation .star:hover{transform:scale(1.4);background:var(--brass);box-shadow:0 0 12px var(--brass)}
+.constellation .star.active{background:var(--brass);box-shadow:0 0 16px var(--brass);transform:scale(1.3)}
+.constellation .star::after{
+  content:attr(data-label);position:absolute;right:18px;top:50%;transform:translateY(-50%) translateX(8px);
+  background:var(--ink);color:var(--brass);font-size:10px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;padding:5px 10px;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;
+}
+.constellation .star:hover::after{opacity:1;transform:translateY(-50%) translateX(0)}
+@media (max-width:1100px){.constellation{display:none}}
+
+/* 14 · ACHIEVEMENT UNLOCK · toast brass */
+.achievement{
+  position:fixed;bottom:90px;right:24px;z-index:251;
+  display:flex;align-items:center;gap:14px;
+  padding:16px 22px;background:var(--ink);color:var(--bone);
+  border:2px solid var(--brass);min-width:280px;
+  box-shadow:0 12px 40px rgba(0,0,0,.50),0 0 30px rgba(176,141,76,.30);
+  opacity:0;transform:translateX(120%);
+  transition:opacity .5s,transform .5s cubic-bezier(.34,1.56,.64,1);
+}
+.achievement.show{opacity:1;transform:translateX(0)}
+.achievement .ach-icon{
+  width:42px;height:42px;border-radius:50%;background:var(--brass);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;flex-shrink:0;
+}
+.achievement .ach-text .ach-tag{
+  font-size:9px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:3px;
+}
+.achievement .ach-text .ach-title{
+  font-family:var(--font-serif);font-size:15px;font-weight:700;color:var(--bone);
+}
+
+/* 15 · SECTION WASH · transición dorada */
+.section-wash{
+  position:absolute;top:0;left:0;right:0;height:100%;
+  background:linear-gradient(180deg,rgba(176,141,76,.18) 0%,transparent 30%);
+  z-index:4;pointer-events:none;opacity:0;
+}
+section.block.swoosh-in .section-wash{
+  animation:washIn 1.4s cubic-bezier(.22,1,.36,1) forwards;
+}
+@keyframes washIn{
+  0%{opacity:0}
+  30%{opacity:1}
+  100%{opacity:0}
 }
 
 /* HORARIO TIER · 3D hover MÁS fuerte */
@@ -1114,6 +1348,45 @@ h2.title:hover::after{
   <div class="black-belt-sub">Plan LEMPAR completo</div>
 </div>
 
+<!-- ROUND TIMER · arriba derecha -->
+<div class="round-timer" id="roundTimer">
+  <span class="rt-pulse"></span>
+  <div>
+    <div class="rt-label">Round <span id="rtRound">1</span></div>
+    <div class="rt-time" id="rtTime">00:00</div>
+  </div>
+</div>
+
+<!-- SUBMISSION COUNTER · arriba izquierda -->
+<div class="sub-counter" id="subCounter">
+  <div class="sc-stat"><span class="sc-num" id="scMoves">0</span><span class="sc-lbl">Movimientos</span></div>
+  <div class="sc-sep"></div>
+  <div class="sc-stat"><span class="sc-num">0</span><span class="sc-lbl">Retrocesos</span></div>
+</div>
+
+<!-- STRIPES BELT · bottom-left · acumula al scrollear -->
+<div class="stripes-belt" id="stripesBelt">
+  <span class="sb-stripe"></span>
+  <span class="sb-stripe"></span>
+  <span class="sb-stripe"></span>
+  <span class="sb-stripe"></span>
+</div>
+
+<!-- CONSTELLATION dots · navegación lateral derecha -->
+<nav class="constellation" id="constellation"></nav>
+
+<!-- ACHIEVEMENT TOAST · brass unlock -->
+<div class="achievement" id="achievement">
+  <div class="ach-icon">🥋</div>
+  <div class="ach-text">
+    <div class="ach-tag">Logro desbloqueado</div>
+    <div class="ach-title" id="achTitle">Simulador editado</div>
+  </div>
+</div>
+
+<!-- CONFETI dorado -->
+<div class="confetti" id="confetti"></div>
+
 <nav class="nav-global">
   <div class="nav-inner">
     <div class="nav-logo">
@@ -1161,6 +1434,13 @@ h2.title:hover::after{
     <source src="assets/lempar-hero.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
+  <svg class="hero-octagon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polygon points="100,10 158,40 188,98 158,156 100,186 42,156 12,98 42,40" fill="none" stroke="#b08d4c" stroke-width="1.5"/>
+    <polygon points="100,30 142,52 166,98 142,144 100,166 58,144 34,98 58,52" fill="none" stroke="#b08d4c" stroke-width=".8" opacity=".5"/>
+    <circle cx="100" cy="100" r="40" fill="none" stroke="#b08d4c" stroke-width=".5" opacity=".3"/>
+    <line x1="100" y1="10" x2="100" y2="186" stroke="#b08d4c" stroke-width=".4" opacity=".3"/>
+    <line x1="12" y1="98" x2="188" y2="98" stroke="#b08d4c" stroke-width=".4" opacity=".3"/>
+  </svg>
   <div class="particles" id="particles"></div>
   <div class="hero-inner">
     <div class="hero-logo-wrap">
@@ -2907,7 +3187,7 @@ bars.forEach(b=>observer.observe(b));
     }, {passive:true});
   }
 
-  /* TAP-OUT flash al hacer click en compare-col duo (50/50) */
+  /* TAP-OUT flash + camera shake al click en compare-col duo (50/50) */
   const tapFlash = document.getElementById('tapFlash');
   const tapText = document.getElementById('tapText');
   document.querySelectorAll('.compare-col.duo').forEach(col=>{
@@ -2915,15 +3195,215 @@ bars.forEach(b=>observer.observe(b));
       if(!tapFlash || !tapText) return;
       tapFlash.classList.remove('active');
       tapText.classList.remove('active');
-      // Force reflow
       void tapFlash.offsetWidth;
       void tapText.offsetWidth;
       tapFlash.classList.add('active');
       tapText.classList.add('active');
+      // Camera shake
+      document.body.classList.add('shake-active');
+      setTimeout(()=>document.body.classList.remove('shake-active'), 550);
       setTimeout(()=>{
         tapFlash.classList.remove('active');
         tapText.classList.remove('active');
       }, 1300);
+    });
+  });
+
+  /* ════════════════ 15 EFECTOS JJ PREMIUM ════════════════ */
+
+  // 2 · ROUND TIMER · cuenta tiempo de visita
+  const roundTimer = document.getElementById('roundTimer');
+  const rtTime = document.getElementById('rtTime');
+  const rtRound = document.getElementById('rtRound');
+  if(roundTimer && rtTime){
+    setTimeout(()=>roundTimer.classList.add('show'), 1200);
+    let secs = 0;
+    setInterval(()=>{
+      secs++;
+      const m = Math.floor(secs/60), s = secs%60;
+      rtTime.textContent = String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+      // Cambia de round cada 5 minutos
+      if(rtRound) rtRound.textContent = Math.floor(secs/300)+1;
+    }, 1000);
+  }
+
+  // 3 · CHAMPION PODIUM · marcar nb-val con mayor número
+  setTimeout(()=>{
+    const cells = document.querySelectorAll('.number-cell');
+    let max = 0, maxCell = null;
+    cells.forEach(c=>{
+      const txt = (c.querySelector('.nb-val')?.textContent||'').replace(/[^\d.MK]/g,'');
+      let v = parseFloat(txt)||0;
+      if(/M$/.test(txt)) v *= 1000000;
+      else if(/K$/.test(txt)) v *= 1000;
+      if(v > max){ max = v; maxCell = c; }
+    });
+    if(maxCell) maxCell.classList.add('champion');
+  }, 800);
+
+  // 4 · STRIPES BELT · gana rayas con scroll
+  const stripesBelt = document.getElementById('stripesBelt');
+  const stripes = stripesBelt ? stripesBelt.querySelectorAll('.sb-stripe') : [];
+  if(stripesBelt){
+    setTimeout(()=>stripesBelt.classList.add('show'), 1500);
+    window.addEventListener('scroll', ()=>{
+      const scrolled = window.scrollY;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      if(total <= 0) return;
+      const pct = (scrolled/total)*100;
+      const lit = Math.min(4, Math.floor(pct/20));
+      stripes.forEach((s,i)=>{
+        s.classList.toggle('lit', i < lit);
+      });
+    }, {passive:true});
+  }
+
+  // 6 · CONFETI dorado · al Black Belt
+  const confettiCont = document.getElementById('confetti');
+  function launchConfetti(){
+    if(!confettiCont) return;
+    confettiCont.innerHTML = '';
+    for(let i=0; i<60; i++){
+      const p = document.createElement('div');
+      p.className = 'confetti-piece';
+      p.style.left = (Math.random()*100)+'%';
+      p.style.background = Math.random() > .5 ? 'var(--brass)' : '#c9a463';
+      p.style.setProperty('--cx', (Math.random()*200-100)+'px');
+      p.style.animationDelay = (Math.random()*.4)+'s';
+      p.style.animationDuration = (1.8+Math.random()*1.4)+'s';
+      p.style.transform = `rotate(${Math.random()*360}deg)`;
+      confettiCont.appendChild(p);
+    }
+    setTimeout(()=>{ confettiCont.innerHTML = ''; }, 3200);
+  }
+  // hook al black belt trigger existente
+  const bbObs = new MutationObserver(()=>{
+    if(document.getElementById('blackBelt')?.classList.contains('active')) launchConfetti();
+  });
+  if(document.getElementById('blackBelt')){
+    bbObs.observe(document.getElementById('blackBelt'), {attributes:true, attributeFilter:['class']});
+  }
+
+  // 8 · SUBMISSION COUNTER · aparece al simulador editado
+  const subCounter = document.getElementById('subCounter');
+  const scMoves = document.getElementById('scMoves');
+  let moveCount = 0;
+  document.querySelectorAll('[data-in]').forEach(inp=>{
+    inp.addEventListener('input', ()=>{
+      moveCount++;
+      if(scMoves) scMoves.textContent = moveCount;
+      if(subCounter && !subCounter.classList.contains('show')) subCounter.classList.add('show');
+    });
+  });
+
+  // 9 · MAT IMPACT · doble click genera onda
+  document.addEventListener('dblclick', e=>{
+    if(e.target.closest('input,button,a,.sim-panel,.sp-input')) return;
+    const m = document.createElement('div');
+    m.className = 'mat-impact active';
+    m.style.left = e.clientX + 'px';
+    m.style.top = e.clientY + 'px';
+    document.body.appendChild(m);
+    setTimeout(()=>m.remove(), 1100);
+  });
+
+  // 10 · TOURNAMENT BRACKET · entre compare-cols
+  const compareWrap = document.querySelector('.compare-wrap');
+  if(compareWrap){
+    const br = document.createElement('div');
+    br.className = 'bracket-line';
+    br.innerHTML = '<span class="br-vs">VS</span>';
+    compareWrap.appendChild(br);
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(entries=>{
+        entries.forEach(e=>{ if(e.isIntersecting) compareWrap.classList.add('revealed'); });
+      }, {threshold:.3}).observe(compareWrap);
+    }
+  }
+
+  // 11 · NUMBER EXPLOSION · nb-val al entrar viewport
+  if('IntersectionObserver' in window){
+    const expObs = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('exploded');
+          expObs.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.5});
+    document.querySelectorAll('.nb-val').forEach(n=>expObs.observe(n));
+  }
+
+  // 12 · COACH CALLOUT · agregar tooltips a cifras críticas
+  const coachTips = [
+    {sel:'[data-out="retiro-diferencia"]', txt:'Coach: 50% es mucho · estudia opción 0%'},
+    {sel:'[data-out="ingreso-mes-k"]', txt:'Coach: 20 pagantes · 28 oportunidades'},
+    {sel:'[data-out="capex-total"]', txt:'Coach: Sercotec + banco = $0 equity'}
+  ];
+  coachTips.forEach(({sel,txt})=>{
+    document.querySelectorAll(sel).forEach(el=>{
+      const parent = el.closest('.compare-row,.activo-card,.number-cell,.alumni-cell');
+      if(parent && !parent.querySelector('.coach-tip')){
+        parent.setAttribute('data-coach','1');
+        parent.style.position = parent.style.position || 'relative';
+        const tip = document.createElement('div');
+        tip.className = 'coach-tip';
+        tip.textContent = txt;
+        parent.appendChild(tip);
+      }
+    });
+  });
+
+  // 13 · CONSTELLATION · stars laterales por sección
+  const constellation = document.getElementById('constellation');
+  if(constellation){
+    const sections = document.querySelectorAll('section[id]');
+    sections.forEach(sec=>{
+      const id = sec.id;
+      const label = sec.querySelector('.eyebrow')?.textContent?.replace(/^\d+\s·\s/,'')?.split('·')[0]?.trim() || id;
+      const star = document.createElement('a');
+      star.className = 'star';
+      star.href = '#'+id;
+      star.setAttribute('data-label', label.substring(0,20));
+      constellation.appendChild(star);
+    });
+    setTimeout(()=>constellation.classList.add('show'), 1800);
+    // Active dot tracking
+    if('IntersectionObserver' in window){
+      const starObs = new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            const id = entry.target.id;
+            constellation.querySelectorAll('.star').forEach(s=>{
+              s.classList.toggle('active', s.getAttribute('href') === '#'+id);
+            });
+          }
+        });
+      }, {rootMargin:'-40% 0px -50% 0px'});
+      sections.forEach(s=>starObs.observe(s));
+    }
+  }
+
+  // 14 · ACHIEVEMENT toast · al cambiar inputs significativos
+  const achievement = document.getElementById('achievement');
+  const achTitle = document.getElementById('achTitle');
+  const achievements = [
+    'Simulador editado',
+    'Estructura financiera personalizada',
+    'Proyección recalculada',
+    'Plan ajustado a tu realidad',
+    'Datos validados',
+  ];
+  let achIdx = 0, achTimer;
+  document.querySelectorAll('[data-in]').forEach(inp=>{
+    inp.addEventListener('change', ()=>{
+      if(!achievement || !achTitle) return;
+      const t = achievements[achIdx % achievements.length];
+      achIdx++;
+      achTitle.textContent = t;
+      achievement.classList.add('show');
+      clearTimeout(achTimer);
+      achTimer = setTimeout(()=>achievement.classList.remove('show'), 2800);
     });
   });
 
@@ -2961,12 +3441,17 @@ bars.forEach(b=>observer.observe(b));
     }, {passive:true});
   }
 
-  /* Section swoosh */
+  /* Section swoosh + wash dorado */
   document.querySelectorAll('.has-swoosh').forEach(sec=>{
     if(!sec.querySelector('.section-swoosh')){
       const sw = document.createElement('div');
       sw.className = 'section-swoosh';
       sec.prepend(sw);
+    }
+    if(!sec.querySelector('.section-wash')){
+      const wash = document.createElement('div');
+      wash.className = 'section-wash';
+      sec.prepend(wash);
     }
   });
   if('IntersectionObserver' in window){
@@ -2981,10 +3466,7 @@ bars.forEach(b=>observer.observe(b));
     document.querySelectorAll('.has-swoosh').forEach(s => swooshObs.observe(s));
   }
 
-  /* Glitch H2 · data-text */
-  document.querySelectorAll('h2.title').forEach(h=>{
-    h.setAttribute('data-text', h.textContent);
-  });
+  /* (H2 glitch removed · solo letter-spacing animation en em via CSS) */
 
   /* Count-up desde 0 en nb-val y a-num · sólo cifras puras pequeñas */
   if('IntersectionObserver' in window){
