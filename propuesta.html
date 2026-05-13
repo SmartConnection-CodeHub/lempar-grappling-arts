@@ -3187,26 +3187,36 @@ bars.forEach(b=>observer.observe(b));
     }, {passive:true});
   }
 
-  /* TAP-OUT flash + camera shake al click en compare-col duo (50/50) */
+  /* TAP-OUT · triple click GLOBAL en cualquier parte de la página */
   const tapFlash = document.getElementById('tapFlash');
   const tapText = document.getElementById('tapText');
-  document.querySelectorAll('.compare-col.duo').forEach(col=>{
-    col.addEventListener('click', ()=>{
-      if(!tapFlash || !tapText) return;
+  function triggerTapOut(){
+    if(!tapFlash || !tapText) return;
+    tapFlash.classList.remove('active');
+    tapText.classList.remove('active');
+    void tapFlash.offsetWidth;
+    void tapText.offsetWidth;
+    tapFlash.classList.add('active');
+    tapText.classList.add('active');
+    document.body.classList.add('shake-active');
+    setTimeout(()=>document.body.classList.remove('shake-active'), 550);
+    setTimeout(()=>{
       tapFlash.classList.remove('active');
       tapText.classList.remove('active');
-      void tapFlash.offsetWidth;
-      void tapText.offsetWidth;
-      tapFlash.classList.add('active');
-      tapText.classList.add('active');
-      // Camera shake
-      document.body.classList.add('shake-active');
-      setTimeout(()=>document.body.classList.remove('shake-active'), 550);
-      setTimeout(()=>{
-        tapFlash.classList.remove('active');
-        tapText.classList.remove('active');
-      }, 1300);
-    });
+    }, 1300);
+  }
+  let tapClicks = 0, tapTimer;
+  document.addEventListener('click', e=>{
+    // Ignorar clicks en inputs · botones del simulador · enlaces
+    if(e.target.closest('input,textarea,select,button,a,.sim-panel,.sp-input')) return;
+    tapClicks++;
+    clearTimeout(tapTimer);
+    if(tapClicks >= 3){
+      tapClicks = 0;
+      triggerTapOut();
+    } else {
+      tapTimer = setTimeout(()=>{ tapClicks = 0; }, 700);
+    }
   });
 
   /* ════════════════ 15 EFECTOS JJ PREMIUM ════════════════ */
