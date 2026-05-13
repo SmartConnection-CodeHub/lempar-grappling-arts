@@ -35,14 +35,20 @@
   --radius-sm:8px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
-html,body{overflow-x:hidden;max-width:100vw}
+html{
+  scroll-behavior:smooth;
+  -webkit-text-size-adjust:100%;text-size-adjust:100%;
+  overflow-y:auto;overflow-x:hidden;
+}
 body{
   font-family:var(--font);background:var(--bg);color:var(--text);
   line-height:1.55;-webkit-font-smoothing:antialiased;
   font-feature-settings:'kern','liga','clig','calt';
   -webkit-tap-highlight-color:rgba(176,141,76,.20);
-  overscroll-behavior-y:none;
+  overflow-x:hidden;
+  /* scroll vertical libre · sin bloqueo */
+  touch-action:pan-y pinch-zoom;
+  -webkit-overflow-scrolling:touch;
 }
 img,video,svg{max-width:100%;height:auto;display:block}
 
@@ -70,7 +76,7 @@ main{padding-top:100px}
 
 /* HERO */
 .hero{padding:80px 24px 70px;text-align:center;background:var(--ink);color:var(--bone);position:relative;overflow:hidden;min-height:min(640px,85vh)}
-.hero-vid{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.45;filter:saturate(.7) contrast(1.05)}
+.hero-vid{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.45;filter:saturate(.7) contrast(1.05);pointer-events:none}
 .hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;z-index:1;background:linear-gradient(180deg,rgba(13,13,13,.35) 0%,rgba(13,13,13,.55) 50%,rgba(13,13,13,.92) 100%),radial-gradient(ellipse at center,transparent 0%,rgba(13,13,13,.4) 100%);pointer-events:none}
 .hero-inner{position:relative;z-index:2;padding:24px 0}
 
@@ -1396,6 +1402,23 @@ section.block.swoosh-in .section-wash{
    Claudio puede editar variables y todo se recalcula
    ════════════════════════════════════════════════════ */
 
+/* SCROLL TO TOP · botón flotante */
+.scroll-top{
+  position:fixed;bottom:108px;right:24px;z-index:298;
+  width:46px;height:46px;border-radius:50%;
+  background:rgba(13,13,13,.85);color:var(--brass);
+  border:1px solid var(--brass);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(8px);
+  box-shadow:0 4px 16px rgba(13,13,13,.30);
+  opacity:0;transform:translateY(20px);pointer-events:none;
+  transition:opacity .3s,transform .3s,background .2s;
+  font-size:20px;
+}
+.scroll-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.scroll-top:hover{background:var(--brass);color:var(--ink)}
+@media (max-width:480px){.scroll-top{bottom:88px;right:14px;width:42px;height:42px}}
+
 /* TRIGGER botón flotante */
 .sim-fab{
   position:fixed;bottom:24px;right:24px;z-index:300;
@@ -1593,6 +1616,11 @@ section.block.swoosh-in .section-wash{
 
 <!-- CONFETI dorado -->
 <div class="confetti" id="confetti"></div>
+
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" aria-label="Volver arriba">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
 
 <nav class="nav-global">
   <div class="nav-inner">
@@ -3268,6 +3296,18 @@ bars.forEach(b=>observer.observe(b));
     }, {threshold:0.5});
     numberCells.forEach(el => countObs.observe(el));
   }
+})();
+
+/* SCROLL TO TOP · siempre activo · independiente de reduced motion */
+(function(){
+  const st = document.getElementById('scrollTop');
+  if(!st) return;
+  window.addEventListener('scroll', ()=>{
+    st.classList.toggle('show', window.scrollY > 600);
+  }, {passive:true});
+  st.addEventListener('click', ()=>{
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
 })();
 
 /* ════════════════════════════════════════════════════
