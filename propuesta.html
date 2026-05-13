@@ -637,6 +637,181 @@ section.cream > .container{position:relative;z-index:1}
   animation:wordIn 1s cubic-bezier(.22,1,.36,1) .95s forwards;
 }
 
+/* ════════════════════════════════════════════════════
+   MOTION · NIVEL 2 (más visible · más interactivo)
+   ════════════════════════════════════════════════════ */
+
+/* CURSOR MAGNÉTICO · punto brass que sigue mouse en hero */
+.magnetic-cursor{
+  position:fixed;width:24px;height:24px;border-radius:50%;
+  background:radial-gradient(circle,var(--brass-bright) 0%,transparent 70%);
+  pointer-events:none;z-index:99;
+  transform:translate(-50%,-50%);
+  transition:opacity .3s,width .25s,height .25s;
+  opacity:0;mix-blend-mode:screen;
+  filter:blur(2px);
+}
+.magnetic-cursor.active{opacity:.85}
+.magnetic-cursor.hovering{width:64px;height:64px;opacity:.55}
+.magnetic-cursor::before{
+  content:'';position:absolute;inset:8px;border-radius:50%;
+  background:var(--brass);
+  filter:blur(.5px);
+}
+@media (hover:none){.magnetic-cursor{display:none}}
+
+/* PARTÍCULAS FLOTANTES · brass en hero */
+.particles{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.particle{
+  position:absolute;width:4px;height:4px;border-radius:50%;
+  background:var(--brass);opacity:0;
+  filter:blur(1px);
+  box-shadow:0 0 8px rgba(176,141,76,.4);
+}
+@keyframes floatP{
+  0%{transform:translate(0,0) scale(0);opacity:0}
+  10%{opacity:.7;transform:translate(0,-10vh) scale(1)}
+  90%{opacity:.5}
+  100%{transform:translate(40px,-90vh) scale(.3);opacity:0}
+}
+
+/* 3D TILT FUERTE en cards · mouse driven */
+.tilt-card{
+  transform-style:preserve-3d;
+  transition:transform .15s cubic-bezier(.22,1,.36,1),box-shadow .3s;
+  will-change:transform;
+}
+.tilt-card .tilt-shine{
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle 200px at var(--mx,50%) var(--my,50%),rgba(176,141,76,.18) 0%,transparent 60%);
+  opacity:0;transition:opacity .3s;
+  border-radius:inherit;
+}
+.tilt-card:hover .tilt-shine{opacity:1}
+
+/* CLICK RIPPLE · ondas brass */
+.ripple{
+  position:absolute;border-radius:50%;
+  background:radial-gradient(circle,rgba(176,141,76,.6) 0%,transparent 70%);
+  pointer-events:none;transform:translate(-50%,-50%) scale(0);
+  animation:rippleOut .8s cubic-bezier(.22,1,.36,1);
+  mix-blend-mode:screen;
+}
+@keyframes rippleOut{
+  0%{transform:translate(-50%,-50%) scale(0);opacity:.9}
+  100%{transform:translate(-50%,-50%) scale(8);opacity:0}
+}
+
+/* CINTURONES TOAST · notificación al cruzar % scroll */
+.belt-toast{
+  position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(40px);
+  z-index:250;display:flex;align-items:center;gap:14px;
+  padding:14px 24px;background:var(--ink);color:var(--bone);
+  border:1px solid var(--brass);border-radius:99px;
+  font-size:11px;font-weight:800;letter-spacing:.20em;text-transform:uppercase;
+  box-shadow:0 8px 30px rgba(13,13,13,.40),0 0 24px rgba(176,141,76,.20);
+  opacity:0;pointer-events:none;
+  transition:opacity .35s,transform .35s cubic-bezier(.34,1.56,.64,1);
+}
+.belt-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.belt-toast .belt-chip{width:18px;height:18px;border-radius:50%;border:2px solid var(--brass);background:var(--bone)}
+.belt-toast.azul .belt-chip{background:#1e4a8a;border-color:#1e4a8a}
+.belt-toast.purpura .belt-chip{background:#6e2a8e;border-color:#6e2a8e}
+.belt-toast.marron .belt-chip{background:#6b3e22;border-color:#6b3e22}
+.belt-toast.negro .belt-chip{background:#0a0a0a;border-color:var(--brass)}
+
+/* MAGNETIC FAB · botón simulador atrae mouse */
+.sim-fab{transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s,background .25s}
+.sim-fab.near{transform:scale(1.15);box-shadow:0 14px 36px rgba(176,141,76,.65),0 0 50px rgba(176,141,76,.40)}
+
+/* PARALLAX HERO ZOOM · video escala con scroll */
+.hero-vid{will-change:transform,opacity;transition:transform .15s linear}
+
+/* SECTION SWOOSH · línea brass cruza al entrar */
+section.block{position:relative}
+.section-swoosh{
+  position:absolute;top:0;left:-100%;width:120%;height:2px;
+  background:linear-gradient(90deg,transparent 0,var(--brass) 50%,transparent 100%);
+  z-index:5;pointer-events:none;
+}
+section.block.swoosh-in .section-swoosh{
+  animation:swoosh 1.2s cubic-bezier(.22,1,.36,1) forwards;
+}
+@keyframes swoosh{
+  0%{left:-100%;opacity:0}
+  20%{opacity:1}
+  100%{left:100%;opacity:0}
+}
+
+/* TITLE GLITCH · H2 hover */
+h2.title{position:relative;cursor:default}
+h2.title::before,h2.title::after{
+  content:attr(data-text);position:absolute;left:0;top:0;
+  width:100%;color:var(--ink);
+  opacity:0;pointer-events:none;
+}
+section.dark h2.title::before,section.dark h2.title::after{color:var(--bone)}
+h2.title:hover::before{
+  color:var(--blood);
+  animation:glitchA .35s steps(2) 1;
+  opacity:.7;
+}
+h2.title:hover::after{
+  color:var(--brass);
+  animation:glitchB .35s steps(2) 1;
+  opacity:.7;
+}
+@keyframes glitchA{
+  0%,100%{transform:translate(0,0)}
+  20%{transform:translate(-2px,1px)}
+  40%{transform:translate(-1px,-1px)}
+  60%{transform:translate(1px,2px)}
+  80%{transform:translate(2px,-1px)}
+}
+@keyframes glitchB{
+  0%,100%{transform:translate(0,0)}
+  20%{transform:translate(2px,-1px)}
+  40%{transform:translate(1px,1px)}
+  60%{transform:translate(-2px,-2px)}
+  80%{transform:translate(-1px,1px)}
+}
+
+/* HORARIO TIER · 3D hover MÁS fuerte */
+@media (hover:hover){
+  .horario-tier{transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s,border-color .25s;cursor:pointer}
+  .horario-tier:hover{
+    transform:translateY(-8px) scale(1.03) rotateX(-2deg);
+    box-shadow:0 22px 50px rgba(13,13,13,.16),0 0 30px rgba(176,141,76,.25);
+    border-color:var(--brass);
+  }
+}
+
+/* COMPARE COL · click visual feedback (knock-out) */
+.compare-col{cursor:pointer;transition:transform .25s,box-shadow .25s}
+.compare-col:active{transform:scale(.98)}
+.compare-col.solo:hover{box-shadow:0 18px 40px rgba(58,90,64,.20)}
+.compare-col.duo:hover{box-shadow:0 18px 40px rgba(122,31,31,.20)}
+
+/* NUMBERS BAND · sticky shrink when scrolled */
+.numbers-band{position:relative;z-index:50;transition:padding .25s}
+.numbers-band.sticky-shrink{position:sticky;top:100px;padding:18px 0;backdrop-filter:blur(12px);background:rgba(13,13,13,.92)}
+.numbers-band.sticky-shrink .nb-val{font-size:28px}
+.numbers-band.sticky-shrink .nb-lbl{font-size:9px}
+
+/* HORIZONTAL MARQUEE · LEMPAR phrases entre secciones (opcional · sutil) */
+.marquee{
+  overflow:hidden;background:var(--ink);color:rgba(244,241,234,.30);
+  border-top:1px solid rgba(176,141,76,.20);border-bottom:1px solid rgba(176,141,76,.20);
+  padding:14px 0;font-family:var(--font);
+}
+.marquee-track{display:flex;gap:60px;animation:marqueeScroll 32s linear infinite;white-space:nowrap;width:max-content}
+.marquee-item{font-size:12px;font-weight:800;letter-spacing:.32em;text-transform:uppercase;display:flex;align-items:center;gap:18px}
+.marquee-item::after{content:'×';color:var(--brass);font-size:14px;margin-left:18px}
+@keyframes marqueeScroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+
 /* REDUCED MOTION · respeto de accesibilidad */
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{
@@ -793,6 +968,15 @@ section.cream > .container{position:relative;z-index:1}
 <!-- TRAINING MODE · badge cuando scroll rápido -->
 <div class="training-mode" id="trainingMode">Modo training</div>
 
+<!-- CURSOR MAGNÉTICO · brass dot -->
+<div class="magnetic-cursor" id="magCursor"></div>
+
+<!-- CINTURONES TOAST · progresión scroll -->
+<div class="belt-toast" id="beltToast">
+  <div class="belt-chip"></div>
+  <span id="beltToastText">Faja blanca</span>
+</div>
+
 <nav class="nav-global">
   <div class="nav-inner">
     <div class="nav-logo">
@@ -840,6 +1024,7 @@ section.cream > .container{position:relative;z-index:1}
     <source src="assets/lempar-hero.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
+  <div class="particles" id="particles"></div>
   <div class="hero-inner">
     <div class="hero-logo-wrap">
       <svg class="hero-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -890,8 +1075,24 @@ section.cream > .container{position:relative;z-index:1}
   </div>
 </section>
 
+<!-- MARQUEE LEMPAR · phrases infinitas -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">Lempar Grappling Arts</span>
+    <span class="marquee-item">Escuela · Marca · Comunidad</span>
+    <span class="marquee-item">De alumno a embajador</span>
+    <span class="marquee-item">Cinturón blanco a negro</span>
+    <span class="marquee-item">Grappling es disciplina</span>
+    <span class="marquee-item">Lempar Grappling Arts</span>
+    <span class="marquee-item">Escuela · Marca · Comunidad</span>
+    <span class="marquee-item">De alumno a embajador</span>
+    <span class="marquee-item">Cinturón blanco a negro</span>
+    <span class="marquee-item">Grappling es disciplina</span>
+  </div>
+</div>
+
 <!-- 🗺️ MAPA -->
-<section class="block bone" id="mapa">
+<section class="block has-swoosh bone" id="mapa">
   <div class="container">
     <span class="eyebrow">🗺️ Mapa LEMPAR</span>
     <h2 class="title" data-reveal>Hoy · 12 meses · <em>3 años</em>.</h2>
@@ -953,7 +1154,7 @@ section.cream > .container{position:relative;z-index:1}
 </section>
 
 <!-- 01 CONTEXTO -->
-<section class="block" id="contexto">
+<section class="block has-swoosh" id="contexto">
   <div class="container">
     <span class="eyebrow">01 · Contexto</span>
     <h2 class="title" data-reveal>Una escuela real · <em>en operación informal</em>.</h2>
@@ -988,7 +1189,7 @@ section.cream > .container{position:relative;z-index:1}
 </section>
 
 <!-- 02 ACADEMIA -->
-<section class="block cream" id="academia">
+<section class="block has-swoosh cream" id="academia">
   <div class="container">
     <span class="eyebrow">02 · La Academia · el motor</span>
     <h2 class="title" data-reveal>20 pagan · 28 no · <em>el techo está arriba</em>.</h2>
@@ -1064,7 +1265,7 @@ section.cream > .container{position:relative;z-index:1}
 </section>
 
 <!-- 03 LÍNEAS DE INGRESO -->
-<section class="block" id="lineas">
+<section class="block has-swoosh" id="lineas">
   <div class="container">
     <span class="eyebrow">03 · Líneas de ingreso</span>
     <h2 class="title" data-reveal>No es solo <em>la mensualidad</em>.</h2>
@@ -1186,7 +1387,7 @@ section.cream > .container{position:relative;z-index:1}
 </section>
 
 <!-- 04 CAPITAL -->
-<section class="block bone" id="capital">
+<section class="block has-swoosh bone" id="capital">
   <div class="container">
     <div class="propuesta-badge"><span class="dot"></span><span>Propuesta · borrador estimativo · NO se ha tomado decisión</span></div>
     <span class="eyebrow">04 · Capital · ejercicio teórico</span>
@@ -1275,7 +1476,7 @@ section.cream > .container{position:relative;z-index:1}
 </section>
 
 <!-- 05 PROYECCIÓN -->
-<section class="block" id="proyeccion">
+<section class="block has-swoosh" id="proyeccion">
   <div class="container">
     <span class="eyebrow">05 · Proyección 3 años</span>
     <h2 class="title" data-reveal>Año 1, 2 y 3 · <em>números base</em>.</h2>
@@ -1343,7 +1544,7 @@ section.cream > .container{position:relative;z-index:1}
 </section>
 
 <!-- 06 IVA & FLUJO FISCAL -->
-<section class="block cream" id="iva">
+<section class="block has-swoosh cream" id="iva">
   <div class="container">
     <span class="eyebrow">06 · IVA & flujo fiscal</span>
     <h2 class="title" data-reveal>Cómo gira <em>la plata con SII</em>.</h2>
@@ -1398,7 +1599,7 @@ section.cream > .container{position:relative;z-index:1}
 </section>
 
 <!-- 07 PREGUNTA CENTRAL -->
-<section class="block dark" id="pregunta">
+<section class="block has-swoosh dark" id="pregunta">
   <div class="container">
     <span class="eyebrow">07 · La pregunta central</span>
     <h2 class="title" data-reveal>¿Capitalizar $8M con socio <em>o sin socio</em>?</h2>
@@ -1429,7 +1630,7 @@ section.cream > .container{position:relative;z-index:1}
 </section>
 
 <!-- 08 RETIROS · COMPARATIVO LADO A LADO -->
-<section class="block bone" id="retiros">
+<section class="block has-swoosh bone" id="retiros">
   <div class="container">
     <span class="eyebrow">08 · Retiros · comparativo</span>
     <h2 class="title" data-reveal>Solo o con socio · <em>cuánto retira Claudio</em>.</h2>
@@ -1503,7 +1704,7 @@ section.cream > .container{position:relative;z-index:1}
 </section>
 
 <!-- 09 GASTOS DEDUCIBLES -->
-<section class="block" id="gastos">
+<section class="block has-swoosh" id="gastos">
   <div class="container">
     <div class="propuesta-badge" style="background:rgba(176,141,76,.10);border-color:var(--brass);color:var(--brass)"><span class="dot" style="background:var(--brass)"></span><span>Universo · techo deducible a 3 años · NO Y1 real</span></div>
     <span class="eyebrow">09 · Universo de gastos deducibles</span>
@@ -1674,7 +1875,7 @@ section.cream > .container{position:relative;z-index:1}
 </section>
 
 <!-- 10 FONDOS PÚBLICOS -->
-<section class="block bone" id="fondos">
+<section class="block has-swoosh bone" id="fondos">
   <div class="container">
     <span class="eyebrow">10 · Fondos públicos · capital sin diluir</span>
     <h2 class="title" data-reveal>$8M <em>sin entregar el 50%</em>.</h2>
@@ -1754,7 +1955,7 @@ section.cream > .container{position:relative;z-index:1}
 </section>
 
 <!-- 11 RADAR -->
-<section class="block dark" id="radar">
+<section class="block has-swoosh dark" id="radar">
   <div class="container">
     <span class="eyebrow">11 · RADAR · mercado y competencia</span>
     <h2 class="title" data-reveal>Qué está pasando <em>afuera</em>.</h2>
@@ -1810,7 +2011,7 @@ section.cream > .container{position:relative;z-index:1}
 </section>
 
 <!-- 12 PASOS LEGALES -->
-<section class="block" id="pasos">
+<section class="block has-swoosh" id="pasos">
   <div class="container">
     <span class="eyebrow">12 · Pasos legales · formalización</span>
     <h2 class="title" data-reveal>De informal <em>a SpA en regla</em>.</h2>
@@ -1874,7 +2075,7 @@ section.cream > .container{position:relative;z-index:1}
 </section>
 
 <!-- 13 DECISIONES -->
-<section class="block dark" id="decisiones">
+<section class="block has-swoosh dark" id="decisiones">
   <div class="container">
     <span class="eyebrow">13 · Decisiones · qué debe quedar definido</span>
     <h2 class="title" data-reveal>Lo que <em>tiene que quedar</em> resuelto.</h2>
@@ -2443,6 +2644,206 @@ bars.forEach(b=>observer.observe(b));
     }, {threshold:0.5});
     numberCells.forEach(el => countObs.observe(el));
   }
+})();
+
+/* ════════════════════════════════════════════════════
+   MOTION ENGINE · NIVEL 2 · interactividad fuerte
+   ════════════════════════════════════════════════════ */
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  /* Cursor magnético brass */
+  const mc = document.getElementById('magCursor');
+  if(mc && !('ontouchstart' in window)){
+    let mx=0,my=0,cx=0,cy=0;
+    document.addEventListener('mousemove', e=>{
+      mx=e.clientX; my=e.clientY;
+      mc.classList.add('active');
+    });
+    function loop(){
+      cx += (mx-cx)*.18;
+      cy += (my-cy)*.18;
+      mc.style.left = cx+'px';
+      mc.style.top = cy+'px';
+      requestAnimationFrame(loop);
+    }
+    loop();
+    document.addEventListener('mouseleave', ()=>mc.classList.remove('active'));
+    document.querySelectorAll('a,button,.card,.linea,.activo-card,.fondo,.radar-card,.horario-tier,.compare-col').forEach(el=>{
+      el.addEventListener('mouseenter', ()=>mc.classList.add('hovering'));
+      el.addEventListener('mouseleave', ()=>mc.classList.remove('hovering'));
+    });
+  }
+
+  /* Partículas brass en hero */
+  const pCont = document.getElementById('particles');
+  if(pCont){
+    for(let i=0; i<14; i++){
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = (Math.random()*100)+'%';
+      p.style.animation = `floatP ${10+Math.random()*10}s linear ${Math.random()*8}s infinite`;
+      p.style.opacity = .4+Math.random()*.5;
+      pCont.appendChild(p);
+    }
+  }
+
+  /* 3D tilt cards · mouse driven */
+  const tiltSel = '.horario-tier,.linea,.activo-card,.fondo,.radar-card,.compare-col,.card';
+  document.querySelectorAll(tiltSel).forEach(card=>{
+    card.classList.add('tilt-card');
+    if(!card.querySelector('.tilt-shine')){
+      const sh = document.createElement('div');
+      sh.className = 'tilt-shine';
+      card.appendChild(sh);
+    }
+    card.addEventListener('mousemove', e=>{
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left)/r.width;
+      const y = (e.clientY - r.top)/r.height;
+      const rx = (y - .5) * -8;
+      const ry = (x - .5) * 8;
+      card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(8px)`;
+      card.style.setProperty('--mx', (x*100)+'%');
+      card.style.setProperty('--my', (y*100)+'%');
+    });
+    card.addEventListener('mouseleave', ()=>{ card.style.transform = ''; });
+  });
+
+  /* Click ripple */
+  document.querySelectorAll('.horario-tier,.compare-col,.linea,.activo-card,.fondo,.radar-card').forEach(card=>{
+    if(getComputedStyle(card).position === 'static') card.style.position = 'relative';
+    card.style.overflow = 'hidden';
+    card.addEventListener('click', e=>{
+      const r = card.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      ripple.style.left = (e.clientX - r.left) + 'px';
+      ripple.style.top = (e.clientY - r.top) + 'px';
+      ripple.style.width = ripple.style.height = '40px';
+      card.appendChild(ripple);
+      setTimeout(()=>ripple.remove(), 850);
+    });
+  });
+
+  /* Cinturones toast */
+  const beltToast = document.getElementById('beltToast');
+  const beltToastText = document.getElementById('beltToastText');
+  if(beltToast && beltToastText){
+    const belts = [
+      {pct:20, name:'Faja blanca · 20%', cls:''},
+      {pct:40, name:'Faja azul · 40%', cls:'azul'},
+      {pct:60, name:'Faja púrpura · 60%', cls:'purpura'},
+      {pct:80, name:'Faja marrón · 80%', cls:'marron'},
+      {pct:98, name:'Faja negra · 100%', cls:'negro'}
+    ];
+    let lastBelt = -1, beltTimer;
+    window.addEventListener('scroll', ()=>{
+      const scrolled = window.scrollY;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      if(total <= 0) return;
+      const pct = (scrolled/total)*100;
+      for(let i=belts.length-1; i>=0; i--){
+        if(pct >= belts[i].pct && i > lastBelt){
+          lastBelt = i;
+          beltToast.className = 'belt-toast show ' + belts[i].cls;
+          beltToastText.textContent = belts[i].name;
+          clearTimeout(beltTimer);
+          beltTimer = setTimeout(()=>{ beltToast.classList.remove('show'); }, 2400);
+          break;
+        }
+      }
+    }, {passive:true});
+  }
+
+  /* Magnetic FAB */
+  const fab = document.getElementById('simFab');
+  if(fab && !('ontouchstart' in window)){
+    document.addEventListener('mousemove', e=>{
+      const r = fab.getBoundingClientRect();
+      const cx = r.left + r.width/2;
+      const cy = r.top + r.height/2;
+      const dx = e.clientX - cx;
+      const dy = e.clientY - cy;
+      const dist = Math.hypot(dx, dy);
+      if(dist < 160 && !fab.classList.contains('open')){
+        fab.classList.add('near');
+        const pull = Math.min(10, (160-dist)/12);
+        fab.style.transform = `translate(${dx/dist*pull}px, ${dy/dist*pull}px) scale(${1+(160-dist)/700})`;
+      } else if(!fab.classList.contains('open')){
+        fab.classList.remove('near');
+        fab.style.transform = '';
+      }
+    });
+  }
+
+  /* Parallax hero video */
+  const heroVid = document.querySelector('.hero-vid');
+  if(heroVid){
+    window.addEventListener('scroll', ()=>{
+      const scrolled = window.scrollY;
+      if(scrolled < 700){
+        const scale = 1 + scrolled/2800;
+        heroVid.style.transform = `scale(${scale}) translateY(${scrolled/8}px)`;
+        heroVid.style.opacity = Math.max(.10, .45 - scrolled/1400);
+      }
+    }, {passive:true});
+  }
+
+  /* Section swoosh */
+  document.querySelectorAll('.has-swoosh').forEach(sec=>{
+    if(!sec.querySelector('.section-swoosh')){
+      const sw = document.createElement('div');
+      sw.className = 'section-swoosh';
+      sec.prepend(sw);
+    }
+  });
+  if('IntersectionObserver' in window){
+    const swooshObs = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('swoosh-in');
+          swooshObs.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.05, rootMargin:'0px 0px -100px 0px'});
+    document.querySelectorAll('.has-swoosh').forEach(s => swooshObs.observe(s));
+  }
+
+  /* Glitch H2 · data-text */
+  document.querySelectorAll('h2.title').forEach(h=>{
+    h.setAttribute('data-text', h.textContent);
+  });
+
+  /* Count-up desde 0 en nb-val y a-num · sólo cifras puras pequeñas */
+  if('IntersectionObserver' in window){
+    const countUpObs = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting) return;
+        const el = entry.target;
+        if(el.dataset.countup) return;
+        el.dataset.countup = '1';
+        countUpObs.unobserve(el);
+        const txt = el.textContent.trim();
+        if(/^\d+$/.test(txt) && !el.hasAttribute('data-out') && !el.querySelector('[data-out]')){
+          const final = parseInt(txt, 10);
+          if(final > 5 && final < 1000){
+            const dur = 1400, start = performance.now();
+            function tick(t){
+              const p = Math.min(1, (t-start)/dur);
+              const eased = 1 - Math.pow(1-p, 3);
+              el.textContent = Math.round(final * eased);
+              if(p < 1) requestAnimationFrame(tick);
+            }
+            el.textContent = '0';
+            requestAnimationFrame(tick);
+          }
+        }
+      });
+    }, {threshold:0.5});
+    document.querySelectorAll('.a-num').forEach(n=>countUpObs.observe(n));
+  }
+
 })();
 </script>
 
