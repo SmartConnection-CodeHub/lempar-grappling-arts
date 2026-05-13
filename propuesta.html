@@ -77,8 +77,18 @@ main{padding-top:100px}
 .propuesta-badge{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;background:rgba(122,31,31,.10);border:1px solid var(--blood);margin-bottom:18px;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--blood)}
 .propuesta-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--blood);animation:pulseBadge 2.4s infinite}
 @keyframes pulseBadge{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.3)}}
-.hero-logo-wrap{margin-bottom:40px;display:flex;justify-content:center}
-.hero-logo{width:160px;height:160px}
+.hero-logo-wrap{margin-bottom:48px;display:flex;justify-content:center;perspective:1000px}
+.hero-logo{
+  width:clamp(220px,32vw,300px);
+  height:clamp(220px,32vw,300px);
+  cursor:pointer;
+  transition:transform .9s cubic-bezier(.22,1,.36,1),filter .5s;
+  will-change:transform;
+}
+.hero-logo:hover{
+  transform:rotate(360deg) scale(1.05);
+  filter:drop-shadow(0 0 32px rgba(176,141,76,.50));
+}
 .hero-eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.30em;text-transform:uppercase;color:var(--brass);margin-bottom:22px}
 .hero-title{font-family:var(--font-serif);font-size:80px;font-weight:700;line-height:1;letter-spacing:-.02em;color:var(--bone);max-width:920px;margin:0 auto 24px}
 .hero-title em{color:var(--brass);font-style:italic;font-weight:400}
@@ -496,23 +506,42 @@ p.lead{font-size:clamp(.95rem, 2vw, 1.0625rem)}
    MOTION · grappling/jiu-jitsu accents
    ════════════════════════════════════════════════════ */
 
-/* BELT PROGRESS · barra superior estilo cinturones BJJ */
+/* BELT PROGRESS · barra superior estilo cinturones BJJ · grueso visible */
 .belt-progress{
-  position:fixed;top:0;left:0;right:0;height:4px;z-index:201;
+  position:fixed;top:0;left:0;right:0;height:12px;z-index:201;
   background:linear-gradient(90deg,
-    #fefcf6 0%, #fefcf6 20%,                /* blanco */
-    #1e4a8a 20%, #1e4a8a 40%,                /* azul */
-    #6e2a8e 40%, #6e2a8e 60%,                /* púrpura */
-    #6b3e22 60%, #6b3e22 80%,                /* marrón */
-    #0a0a0a 80%, #0a0a0a 100%);              /* negro */
-  opacity:0;transition:opacity .3s;
+    #ffffff 0%, #f0eee5 20%,                  /* blanco */
+    #1a4990 20%, #2a5ba8 40%,                  /* azul */
+    #6b1f8e 40%, #7d2ea0 60%,                  /* púrpura */
+    #5a3318 60%, #7d4824 80%,                  /* marrón */
+    #0a0a0a 80%, #1a1a1a 100%);                /* negro */
+  opacity:0;transition:opacity .4s;
+  box-shadow:0 2px 12px rgba(0,0,0,.30);
+  border-bottom:1px solid rgba(176,141,76,.40);
 }
-.belt-progress.visible{opacity:.65}
+.belt-progress.visible{opacity:1}
+/* Rayas blancas de cinturón (grados) */
+.belt-progress::after{
+  content:'';position:absolute;top:0;bottom:0;
+  left:18%;width:2px;background:rgba(255,255,255,.50);
+  box-shadow:200px 0 0 rgba(255,255,255,.40),350px 0 0 rgba(255,255,255,.40),500px 0 0 rgba(255,255,255,.40);
+}
 .belt-fill{
-  height:100%;width:0%;
-  background:linear-gradient(90deg,var(--brass-bright),var(--brass));
-  box-shadow:0 0 8px rgba(176,141,76,.6);
-  transition:width .12s linear;
+  height:100%;width:0%;position:relative;
+  background:linear-gradient(90deg,var(--brass-bright) 0%,var(--brass) 50%,var(--brass-bright) 100%);
+  background-size:200% 100%;
+  box-shadow:0 0 20px rgba(176,141,76,.85),inset 0 -2px 4px rgba(0,0,0,.30),inset 0 2px 4px rgba(255,255,255,.30);
+  transition:width .15s linear;
+  animation:beltShimmer 2.5s linear infinite;
+}
+@keyframes beltShimmer{
+  0%{background-position:200% 0}
+  100%{background-position:-200% 0}
+}
+.belt-fill::after{
+  content:'';position:absolute;right:-6px;top:-2px;bottom:-2px;width:14px;
+  background:radial-gradient(circle,var(--brass-bright) 0%,transparent 70%);
+  filter:blur(3px);
 }
 
 /* LOGO BREATHING · respiración técnica */
@@ -702,23 +731,118 @@ section.cream > .container{position:relative;z-index:1}
   100%{transform:translate(-50%,-50%) scale(8);opacity:0}
 }
 
-/* CINTURONES TOAST · notificación al cruzar % scroll */
+/* CINTURONES TOAST · grande y visible */
 .belt-toast{
-  position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(40px);
-  z-index:250;display:flex;align-items:center;gap:14px;
-  padding:14px 24px;background:var(--ink);color:var(--bone);
-  border:1px solid var(--brass);border-radius:99px;
-  font-size:11px;font-weight:800;letter-spacing:.20em;text-transform:uppercase;
-  box-shadow:0 8px 30px rgba(13,13,13,.40),0 0 24px rgba(176,141,76,.20);
-  opacity:0;pointer-events:none;
-  transition:opacity .35s,transform .35s cubic-bezier(.34,1.56,.64,1);
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.6);
+  z-index:250;display:flex;flex-direction:column;align-items:center;gap:18px;
+  padding:36px 60px;background:rgba(13,13,13,.96);color:var(--bone);
+  border:3px solid var(--brass);
+  font-family:var(--font-serif);
+  box-shadow:0 30px 80px rgba(13,13,13,.60),0 0 80px rgba(176,141,76,.30);
+  opacity:0;pointer-events:none;backdrop-filter:blur(8px);
+  transition:opacity .4s,transform .5s cubic-bezier(.34,1.8,.64,1);
+  min-width:340px;text-align:center;
 }
-.belt-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.belt-toast .belt-chip{width:18px;height:18px;border-radius:50%;border:2px solid var(--brass);background:var(--bone)}
-.belt-toast.azul .belt-chip{background:#1e4a8a;border-color:#1e4a8a}
-.belt-toast.purpura .belt-chip{background:#6e2a8e;border-color:#6e2a8e}
-.belt-toast.marron .belt-chip{background:#6b3e22;border-color:#6b3e22}
+.belt-toast.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.belt-toast .belt-chip{
+  width:90px;height:18px;background:#fff;border:2px solid var(--brass);position:relative;
+  box-shadow:0 4px 14px rgba(0,0,0,.30);
+}
+.belt-toast .belt-chip::after{
+  content:'';position:absolute;right:10px;top:-3px;bottom:-3px;width:4px;
+  background:rgba(255,255,255,.95);border:1px solid rgba(0,0,0,.20);
+}
+.belt-toast.azul .belt-chip{background:#1a4990}
+.belt-toast.azul .belt-chip::after{background:#fff}
+.belt-toast.purpura .belt-chip{background:#6b1f8e}
+.belt-toast.purpura .belt-chip::after{background:#fff}
+.belt-toast.marron .belt-chip{background:#5a3318}
+.belt-toast.marron .belt-chip::after{background:#fff}
 .belt-toast.negro .belt-chip{background:#0a0a0a;border-color:var(--brass)}
+.belt-toast.negro .belt-chip::after{background:var(--brass)}
+.belt-toast-label{
+  font-size:24px;font-weight:700;letter-spacing:.02em;color:var(--bone);
+  font-family:var(--font-serif);
+}
+.belt-toast-sub{
+  font-size:10px;font-weight:800;letter-spacing:.30em;text-transform:uppercase;color:var(--brass);
+  font-family:var(--font);
+}
+
+/* TAP-OUT FLASH · click en compare-col duo */
+.tap-flash{
+  position:fixed;inset:0;z-index:260;pointer-events:none;
+  background:radial-gradient(circle at center,rgba(122,31,31,.6) 0%,transparent 70%);
+  opacity:0;
+}
+.tap-flash.active{animation:tapOut 1s ease-out}
+@keyframes tapOut{
+  0%{opacity:0}
+  10%{opacity:1}
+  100%{opacity:0}
+}
+.tap-text{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.5) rotate(-8deg);
+  z-index:261;font-family:var(--font-serif);font-size:120px;font-weight:700;
+  color:var(--blood-soft);letter-spacing:-.04em;
+  pointer-events:none;opacity:0;
+  text-shadow:0 0 40px rgba(122,31,31,.8);
+}
+.tap-text.active{animation:tapText 1.2s cubic-bezier(.22,1,.36,1)}
+@keyframes tapText{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.5) rotate(-8deg)}
+  20%{opacity:1;transform:translate(-50%,-50%) scale(1.1) rotate(-3deg)}
+  80%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(0)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(1.4) rotate(2deg)}
+}
+
+/* BLACK BELT achievement · al alcanzar 100% scroll */
+.black-belt{
+  position:fixed;inset:0;z-index:280;pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(176,141,76,.30) 0%,transparent 70%);
+  opacity:0;
+}
+.black-belt.active{animation:blackBeltGlow 3s ease-out}
+.black-belt-content{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+  z-index:281;text-align:center;pointer-events:none;opacity:0;
+}
+.black-belt-content.active{animation:blackBeltText 3s cubic-bezier(.22,1,.36,1)}
+.black-belt-chip{
+  width:160px;height:24px;background:#0a0a0a;border:3px solid var(--brass);margin:0 auto 24px;
+  position:relative;box-shadow:0 0 40px rgba(176,141,76,.6);
+}
+.black-belt-chip::after{
+  content:'';position:absolute;right:18px;top:-4px;bottom:-4px;width:6px;
+  background:var(--brass);box-shadow:0 0 10px var(--brass);
+}
+.black-belt-title{
+  font-family:var(--font-serif);font-size:64px;font-weight:700;
+  color:var(--bone);letter-spacing:-.03em;margin-bottom:8px;
+  text-shadow:0 0 30px rgba(176,141,76,.50);
+}
+.black-belt-sub{
+  font-size:12px;font-weight:800;letter-spacing:.30em;text-transform:uppercase;color:var(--brass);
+}
+@keyframes blackBeltGlow{
+  0%{opacity:0}
+  20%{opacity:1}
+  100%{opacity:0}
+}
+@keyframes blackBeltText{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.7)}
+  15%{opacity:1;transform:translate(-50%,-50%) scale(1.06)}
+  85%{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(1.2)}
+}
+
+/* HEARTBEAT · numbers band pulse rítmico */
+@keyframes heartBeat{
+  0%,40%,100%{transform:scale(1)}
+  20%{transform:scale(1.06)}
+  30%{transform:scale(.98)}
+}
+.numbers-band .number-cell:hover .nb-val{animation:heartBeat 1.2s ease-in-out}
 
 /* MAGNETIC FAB · botón simulador atrae mouse */
 .sim-fab{transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s,background .25s}
@@ -971,10 +1095,23 @@ h2.title:hover::after{
 <!-- CURSOR MAGNÉTICO · brass dot -->
 <div class="magnetic-cursor" id="magCursor"></div>
 
-<!-- CINTURONES TOAST · progresión scroll -->
+<!-- CINTURONES TOAST · grande grado · progresión scroll -->
 <div class="belt-toast" id="beltToast">
   <div class="belt-chip"></div>
-  <span id="beltToastText">Faja blanca</span>
+  <div class="belt-toast-label" id="beltToastText">Faja blanca</div>
+  <div class="belt-toast-sub" id="beltToastSub">20% recorrido</div>
+</div>
+
+<!-- TAP-OUT FLASH -->
+<div class="tap-flash" id="tapFlash"></div>
+<div class="tap-text" id="tapText">TAP</div>
+
+<!-- BLACK BELT achievement -->
+<div class="black-belt" id="blackBelt"></div>
+<div class="black-belt-content" id="blackBeltContent">
+  <div class="black-belt-chip"></div>
+  <div class="black-belt-title">Black Belt</div>
+  <div class="black-belt-sub">Plan LEMPAR completo</div>
 </div>
 
 <nav class="nav-global">
@@ -2726,18 +2863,21 @@ bars.forEach(b=>observer.observe(b));
     });
   });
 
-  /* Cinturones toast */
+  /* Cinturones toast · grande + black belt achievement */
   const beltToast = document.getElementById('beltToast');
   const beltToastText = document.getElementById('beltToastText');
+  const beltToastSub = document.getElementById('beltToastSub');
+  const blackBelt = document.getElementById('blackBelt');
+  const blackBeltContent = document.getElementById('blackBeltContent');
   if(beltToast && beltToastText){
     const belts = [
-      {pct:20, name:'Faja blanca · 20%', cls:''},
-      {pct:40, name:'Faja azul · 40%', cls:'azul'},
-      {pct:60, name:'Faja púrpura · 60%', cls:'purpura'},
-      {pct:80, name:'Faja marrón · 80%', cls:'marron'},
-      {pct:98, name:'Faja negra · 100%', cls:'negro'}
+      {pct:20, name:'Faja Blanca', sub:'20% del plan recorrido', cls:''},
+      {pct:40, name:'Faja Azul', sub:'40% del plan recorrido', cls:'azul'},
+      {pct:60, name:'Faja Púrpura', sub:'60% del plan recorrido', cls:'purpura'},
+      {pct:80, name:'Faja Marrón', sub:'80% del plan recorrido', cls:'marron'},
+      {pct:96, name:'Faja Negra', sub:'Plan completo', cls:'negro'}
     ];
-    let lastBelt = -1, beltTimer;
+    let lastBelt = -1, beltTimer, blackBeltTriggered = false;
     window.addEventListener('scroll', ()=>{
       const scrolled = window.scrollY;
       const total = document.documentElement.scrollHeight - window.innerHeight;
@@ -2748,13 +2888,44 @@ bars.forEach(b=>observer.observe(b));
           lastBelt = i;
           beltToast.className = 'belt-toast show ' + belts[i].cls;
           beltToastText.textContent = belts[i].name;
+          if(beltToastSub) beltToastSub.textContent = belts[i].sub;
           clearTimeout(beltTimer);
-          beltTimer = setTimeout(()=>{ beltToast.classList.remove('show'); }, 2400);
+          beltTimer = setTimeout(()=>{ beltToast.classList.remove('show'); }, 2600);
           break;
         }
       }
+      // Black belt achievement · 99%+
+      if(pct >= 99 && !blackBeltTriggered && blackBelt && blackBeltContent){
+        blackBeltTriggered = true;
+        blackBelt.classList.add('active');
+        blackBeltContent.classList.add('active');
+        setTimeout(()=>{
+          blackBelt.classList.remove('active');
+          blackBeltContent.classList.remove('active');
+        }, 3000);
+      }
     }, {passive:true});
   }
+
+  /* TAP-OUT flash al hacer click en compare-col duo (50/50) */
+  const tapFlash = document.getElementById('tapFlash');
+  const tapText = document.getElementById('tapText');
+  document.querySelectorAll('.compare-col.duo').forEach(col=>{
+    col.addEventListener('click', ()=>{
+      if(!tapFlash || !tapText) return;
+      tapFlash.classList.remove('active');
+      tapText.classList.remove('active');
+      // Force reflow
+      void tapFlash.offsetWidth;
+      void tapText.offsetWidth;
+      tapFlash.classList.add('active');
+      tapText.classList.add('active');
+      setTimeout(()=>{
+        tapFlash.classList.remove('active');
+        tapText.classList.remove('active');
+      }, 1300);
+    });
+  });
 
   /* Magnetic FAB */
   const fab = document.getElementById('simFab');
