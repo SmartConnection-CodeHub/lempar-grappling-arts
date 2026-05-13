@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>War Room · LEMPAR Grappling Arts · 16 agentes SMC · 2026-05-13</title>
+<style>
+:root{
+  --ink:#0d0d0d;
+  --ink-soft:#1a1a1a;
+  --ink-mid:#2a2a2a;
+  --bone:#f4f1ea;
+  --bone-deep:#e8e2d2;
+  --bone-soft:#faf7ef;
+  --brass:#b08d4c;
+  --brass-bright:#c9a463;
+  --brass-pale:rgba(176,141,76,0.10);
+  --blood:#7a1f1f;
+  --blood-soft:#a83232;
+  --mat:#3a5a40;
+  --mat-light:#d9e2dc;
+  --bg:#ffffff;
+  --bg-alt:#f8f6f1;
+  --text:#161616;
+  --muted:#5c5c5c;
+  --subtle:#8a8a8a;
+  --border:#d8d4c8;
+  --border-w:#ece8dc;
+  --font:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Arial,sans-serif;
+  --font-serif:'Playfair Display',Georgia,serif;
+  --shadow-sm:0 2px 10px rgba(13,13,13,0.06);
+  --shadow-md:0 6px 24px rgba(13,13,13,0.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font);
+  background:var(--ink);
+  color:var(--bone);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* HEADER */
+.nav-global{
+  position:fixed;top:0;left:0;right:0;z-index:200;height:50px;
+  background:rgba(13,13,13,0.97);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(176,141,76,0.40);
+  display:flex;align-items:center;padding:0 24px;
+}
+.nav-inner{max-width:1240px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-mark{
+  width:30px;height:30px;border:2px solid var(--brass);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--brass);font-weight:800;font-size:11px;
+  font-family:var(--font-serif);
+}
+.nav-name{font-size:14px;font-weight:800;color:var(--bone);letter-spacing:.20em;text-transform:uppercase}
+.nav-sep{font-size:12px;color:rgba(244,241,234,.25);margin:0 6px}
+.nav-sub{font-size:12px;color:rgba(244,241,234,.55);letter-spacing:.05em}
+.nav-meeting{
+  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:7px 16px;background:var(--blood);color:var(--bone);
+}
+
+/* SUB NAV */
+.sub-nav{
+  position:fixed;top:50px;left:0;right:0;z-index:199;height:50px;
+  background:rgba(20,20,20,.98);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(176,141,76,.20);
+  display:flex;align-items:center;padding:0 24px;
+}
+.sub-inner{max-width:1240px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.sub-brand{font-size:12px;font-weight:800;color:var(--brass);letter-spacing:.18em;text-transform:uppercase}
+.sub-links{display:flex;gap:18px;list-style:none;flex-wrap:wrap}
+.sub-links a{
+  text-decoration:none;font-size:11px;font-weight:700;
+  color:rgba(244,241,234,.55);letter-spacing:.10em;text-transform:uppercase;
+  transition:color .2s;
+}
+.sub-links a:hover{color:var(--brass)}
+
+/* CONTAINER */
+main{padding-top:100px}
+.container{max-width:1240px;margin:0 auto;padding:0 24px}
+
+/* HERO */
+.hero{
+  padding:80px 24px 70px;text-align:center;position:relative;overflow:hidden;
+  background:radial-gradient(ellipse at center,var(--ink-soft) 0%,var(--ink) 70%);
+}
+.hero::before{
+  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+  background-image:
+    linear-gradient(rgba(176,141,76,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(176,141,76,.04) 1px,transparent 1px);
+  background-size:50px 50px;
+  pointer-events:none;
+}
+.hero-inner{position:relative;z-index:1}
+.hero-status{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 18px;background:rgba(122,31,31,.20);
+  border:1px solid var(--blood-soft);margin-bottom:24px;
+}
+.hero-status .dot{width:8px;height:8px;border-radius:50%;background:var(--blood-soft);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
+.hero-status span{font-size:11px;font-weight:800;letter-spacing:.20em;text-transform:uppercase;color:var(--blood-soft)}
+.hero-eyebrow{
+  display:inline-block;font-size:11px;font-weight:700;letter-spacing:.30em;
+  text-transform:uppercase;color:var(--brass);margin-bottom:18px;
+}
+.hero-title{
+  font-family:var(--font-serif);
+  font-size:84px;font-weight:700;line-height:.96;letter-spacing:-.03em;
+  color:var(--bone);max-width:960px;margin:0 auto 22px;
+}
+.hero-title em{color:var(--brass);font-style:italic;font-weight:400}
+.hero-sub{
+  font-size:18px;color:rgba(244,241,234,.65);max-width:720px;margin:0 auto 40px;line-height:1.65;
+}
+
+/* STATS BAND */
+.stats{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:0;
+  border:1px solid rgba(176,141,76,.30);max-width:980px;margin:0 auto;
+}
+.stat{padding:24px 20px;text-align:center;border-right:1px solid rgba(176,141,76,.20)}
+.stat:last-child{border-right:none}
+.stat-val{font-family:var(--font-serif);font-size:42px;font-weight:700;color:var(--brass);line-height:1;letter-spacing:-.02em}
+.stat-lbl{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,241,234,.55);margin-top:8px}
+
+/* SECTION */
+section.block{padding:80px 0;border-bottom:1px solid rgba(176,141,76,.15)}
+section.light{background:var(--bone);color:var(--ink)}
+section.light h2,section.light h3,section.light p,section.light h4{color:var(--ink)}
+section.light p{color:var(--muted)}
+section.light .eyebrow{color:var(--blood)}
+section.light .eyebrow::before{background:var(--blood)}
+
+.eyebrow{
+  display:inline-block;font-size:11px;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--brass);margin-bottom:18px;
+  padding-left:36px;position:relative;
+}
+.eyebrow::before{
+  content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:24px;height:2px;background:var(--brass);
+}
+h2.title{
+  font-family:var(--font-serif);
+  font-size:52px;font-weight:700;line-height:1.05;letter-spacing:-.02em;
+  color:var(--bone);margin-bottom:22px;max-width:880px;
+}
+h2.title em{color:var(--brass);font-style:italic;font-weight:400}
+section.light h2.title em{color:var(--blood)}
+p.lead{
+  font-size:17px;color:rgba(244,241,234,.70);max-width:780px;margin-bottom:50px;line-height:1.7;
+}
+section.light p.lead{color:var(--muted)}
+
+/* WAR TABLE — vista de operación */
+.war-table{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:14px;
+  position:relative;
+}
+.agent-card{
+  background:rgba(255,255,255,.03);border:1px solid rgba(176,141,76,.20);
+  padding:24px 20px;position:relative;
+  transition:transform .25s,border-color .25s,background .25s;
+  cursor:pointer;
+}
+.agent-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--brass);
+  background:rgba(176,141,76,.06);
+}
+.agent-card.priority-1{border-left:3px solid var(--blood-soft)}
+.agent-card.priority-2{border-left:3px solid var(--brass)}
+.agent-card.priority-3{border-left:3px solid rgba(244,241,234,.30)}
+.agent-icon{font-size:28px;margin-bottom:10px;display:block;line-height:1}
+.agent-tag{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:6px}
+.agent-card.priority-1 .agent-tag{color:var(--blood-soft)}
+.agent-card.priority-3 .agent-tag{color:rgba(244,241,234,.50)}
+.agent-name{font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--bone);margin-bottom:8px;letter-spacing:-.01em;line-height:1.15}
+.agent-role{font-size:11px;color:rgba(244,241,234,.55);line-height:1.4;margin-bottom:12px;min-height:46px}
+.agent-prio{
+  position:absolute;top:14px;right:14px;
+  font-size:9px;font-weight:800;letter-spacing:.10em;text-transform:uppercase;
+  padding:2px 8px;
+}
+.prio-p1{background:var(--blood);color:var(--bone)}
+.prio-p2{background:var(--brass);color:var(--ink)}
+.prio-p3{background:rgba(244,241,234,.15);color:rgba(244,241,234,.70)}
+
+/* DETAIL CARDS — diagnóstico por agente */
+.detail-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin-top:30px}
+.detail-card{
+  background:var(--bg);color:var(--ink);
+  border:1px solid var(--border-w);padding:32px 28px;
+  position:relative;border-top:4px solid var(--brass);
+}
+.detail-card.urgent{border-top-color:var(--blood)}
+.detail-card.support{border-top-color:rgba(13,13,13,.20)}
+.detail-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--border-w)}
+.detail-icon{font-size:36px;line-height:1}
+.detail-meta .d-name{font-family:var(--font-serif);font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.01em;line-height:1.1;margin-bottom:4px}
+.detail-meta .d-role{font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--brass)}
+.detail-card.urgent .detail-meta .d-role{color:var(--blood)}
+.detail-block{margin-bottom:18px}
+.detail-block:last-child{margin-bottom:0}
+.detail-label{
+  font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px;
+}
+.detail-text{font-size:13.5px;color:var(--ink);line-height:1.6}
+.detail-list{list-style:none;padding:0;margin:0}
+.detail-list li{
+  font-size:13px;color:var(--muted);padding:6px 0 6px 18px;
+  position:relative;line-height:1.5;
+}
+.detail-list li::before{
+  content:'→';position:absolute;left:0;top:6px;color:var(--brass);font-weight:800;
+}
+.detail-card.urgent .detail-list li::before{color:var(--blood)}
+.detail-kpi{
+  background:var(--bone);padding:12px 16px;margin-top:10px;
+  display:flex;justify-content:space-between;align-items:baseline;
+}
+.detail-kpi .kpi-k{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.detail-kpi .kpi-v{font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--blood)}
+
+/* DEPENDENCY GRAPH */
+.dep-graph{
+  margin-top:40px;padding:40px 32px;
+  background:var(--bg);border:1px solid var(--border-w);position:relative;
+}
+.dep-title{font-family:var(--font-serif);font-size:24px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:-.01em}
+.dep-sub{font-size:13px;color:var(--muted);margin-bottom:30px}
+.dep-flow{display:flex;flex-direction:column;gap:18px}
+.dep-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.dep-week{
+  font-family:var(--font-serif);font-size:14px;font-weight:700;color:var(--brass);
+  letter-spacing:.04em;width:90px;flex-shrink:0;
+}
+.dep-arrow{color:var(--brass);font-weight:800;margin:0 4px}
+.dep-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 14px;background:var(--bone);border:1px solid var(--border-w);
+  font-size:12px;font-weight:700;color:var(--ink);
+}
+.dep-pill .ico{font-size:16px;line-height:1}
+.dep-pill.critical{background:var(--blood);color:var(--bone);border-color:var(--blood)}
+.dep-pill.brass{background:var(--brass);color:var(--ink);border-color:var(--brass)}
+
+/* RIESGOS */
+.risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:30px}
+.risk-card{
+  padding:24px 26px;border-left:4px solid var(--blood);
+  background:rgba(122,31,31,.10);
+}
+.risk-card.medium{background:rgba(176,141,76,.10);border-left-color:var(--brass)}
+.risk-card.low{background:rgba(58,90,64,.10);border-left-color:var(--mat)}
+.risk-label{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--blood-soft);margin-bottom:8px}
+.risk-card.medium .risk-label{color:var(--brass)}
+.risk-card.low .risk-label{color:var(--mat-light)}
+.risk-card h4{font-family:var(--font-serif);font-size:18px;color:var(--bone);margin-bottom:8px;font-weight:700;letter-spacing:-.01em}
+.risk-card p{font-size:13px;color:rgba(244,241,234,.70);line-height:1.6;margin-bottom:10px}
+.risk-card .owner{font-size:10px;font-weight:800;letter-spacing:.10em;text-transform:uppercase;color:var(--brass)}
+
+/* RESUMEN EJECUTIVO */
+.exec-summary{
+  background:linear-gradient(135deg,var(--ink) 0%,var(--ink-soft) 100%);
+  padding:60px 50px;color:var(--bone);position:relative;
+  border-left:6px solid var(--brass);margin-top:40px;
+}
+.exec-summary h3{font-family:var(--font-serif);font-size:32px;color:var(--bone);margin-bottom:20px;letter-spacing:-.02em;line-height:1.2;max-width:840px}
+.exec-summary p{font-size:15px;color:rgba(244,241,234,.78);max-width:780px;line-height:1.75;margin-bottom:14px}
+.exec-summary p strong{color:var(--brass-bright)}
+
+/* TIMELINE 4 WEEKS */
+.timeline-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:30px;border:1px solid rgba(176,141,76,.30)}
+.timeline-col{padding:30px 24px;border-right:1px solid rgba(176,141,76,.20);position:relative}
+.timeline-col:last-child{border-right:none}
+.tl-week{font-family:var(--font-serif);font-size:42px;font-weight:700;color:var(--brass);line-height:1;letter-spacing:-.02em;margin-bottom:6px}
+.tl-label{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,241,234,.55);margin-bottom:20px}
+.tl-task{display:flex;align-items:flex-start;gap:8px;padding:10px 0;font-size:12.5px;color:rgba(244,241,234,.78);line-height:1.5;border-bottom:1px solid rgba(176,141,76,.10)}
+.tl-task:last-child{border-bottom:none}
+.tl-task .agent{font-size:15px;line-height:1;flex-shrink:0;margin-top:1px}
+
+/* FOOTER */
+footer{background:#000;color:var(--bone);padding:40px 24px;text-align:center;border-top:1px solid rgba(176,141,76,.20)}
+footer .f-logo{font-family:var(--font-serif);font-size:14px;letter-spacing:.30em;text-transform:uppercase;color:var(--brass);font-weight:700;margin-bottom:10px}
+footer p{font-size:11px;letter-spacing:.18em;color:rgba(244,241,234,.40);text-transform:uppercase}
+
+/* RESPONSIVE */
+@media (max-width:1100px){
+  .war-table{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:900px){
+  .hero-title{font-size:48px}
+  h2.title{font-size:34px}
+  .war-table{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(odd){border-right:1px solid rgba(176,141,76,.20)}
+  .stat:nth-child(even){border-right:none}
+  .stat{border-bottom:1px solid rgba(176,141,76,.20)}
+  .stat:nth-last-child(-n+2){border-bottom:none}
+  .risk-grid{grid-template-columns:1fr}
+  .timeline-grid{grid-template-columns:1fr}
+  .timeline-col{border-right:none;border-bottom:1px solid rgba(176,141,76,.20)}
+  .sub-links{display:none}
+  .exec-summary{padding:36px 28px}
+  .exec-summary h3{font-size:24px}
+}
+@media (max-width:560px){
+  .war-table{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .stat{border-right:none;border-bottom:1px solid rgba(176,141,76,.20)}
+  .stat:last-child{border-bottom:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav-global">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-mark">L</div>
+      <div class="nav-name">War Room</div>
+      <div class="nav-sep">·</div>
+      <div class="nav-sub">LEMPAR · 16 agentes SMC</div>
+    </div>
+    <div class="nav-meeting">P0 · Activo</div>
+  </div>
+</nav>
+
+<div class="sub-nav">
+  <div class="sub-inner">
+    <div class="sub-brand">Operation LEMPAR · 2026-05-13</div>
+    <ul class="sub-links">
+      <li><a href="#mesa">Mesa</a></li>
+      <li><a href="#diagnostico">Diagnóstico</a></li>
+      <li><a href="#dependencias">Dependencias</a></li>
+      <li><a href="#riesgos">Riesgos</a></li>
+      <li><a href="#timeline">Timeline 4 semanas</a></li>
+      <li><a href="#executive">Executive</a></li>
+    </ul>
+  </div>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-status"><div class="dot"></div><span>War Room Activa · P0</span></div>
+    <span class="hero-eyebrow">Operación LEMPAR · 2026-05-13</span>
+    <h1 class="hero-title">16 agentes <em>sobre la mesa</em>.<br>Un objetivo.</h1>
+    <p class="hero-sub">
+      Activación coordinada del equipo Smart Connection para llevar a LEMPAR Grappling Arts
+      de operación informal a marca registrada · SpA constituida · inversión capitalizada ·
+      escalada a 2-3 horarios en 4 semanas.
+    </p>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-val">16</div>
+        <div class="stat-lbl">Agentes asignados</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">4</div>
+        <div class="stat-lbl">Semanas timeline</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">$8M</div>
+        <div class="stat-lbl">CapEx inicial</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">3</div>
+        <div class="stat-lbl">Riesgos P1</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">11</div>
+        <div class="stat-lbl">Hitos cierre</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MESA DE OPERACIÓN -->
+<section class="block" id="mesa">
+  <div class="container">
+    <span class="eyebrow">01 · Mesa de operación</span>
+    <h2 class="title">Quién está <em>sobre la mesa</em>.</h2>
+    <p class="lead">
+      Tres niveles de prioridad: <strong style="color:var(--blood-soft)">P1 crítico</strong>
+      (bloquean el arranque) · <strong style="color:var(--brass)">P2 importante</strong>
+      (construyen la operación) · <strong style="color:rgba(244,241,234,.55)">P3 apoyo</strong>
+      (capa de marca y crecimiento). El orquestador es Cerebro.
+    </p>
+
+    <div class="war-table">
+
+      <!-- P1 -->
+      <div class="agent-card priority-1">
+        <span class="agent-prio prio-p1">P1</span>
+        <div class="agent-icon">⚖️</div>
+        <div class="agent-tag">Compliance</div>
+        <div class="agent-name">COMPLIANCE</div>
+        <div class="agent-role">Pacto socios · constitución SpA · IP marca · estructura legal del deal con inversionista.</div>
+      </div>
+
+      <div class="agent-card priority-1">
+        <span class="agent-prio prio-p1">P1</span>
+        <div class="agent-icon">🧮</div>
+        <div class="agent-tag">Controller</div>
+        <div class="agent-name">CONTROLLER</div>
+        <div class="agent-role">Régimen tributario 14D N°3 · F29/F22 · crédito y débito fiscal · cuenta corriente.</div>
+      </div>
+
+      <div class="agent-card priority-1">
+        <span class="agent-prio prio-p1">P1</span>
+        <div class="agent-icon">🚀</div>
+        <div class="agent-tag">PRM</div>
+        <div class="agent-name">PRM</div>
+        <div class="agent-role">Define producto LEMPAR: escuela + apparel + eventos. Métricas PMF. Pricing por modelo.</div>
+      </div>
+
+      <div class="agent-card priority-1">
+        <span class="agent-prio prio-p1">P1</span>
+        <div class="agent-icon">💰</div>
+        <div class="agent-tag">Business Dev</div>
+        <div class="agent-name">BUSINESS DEV</div>
+        <div class="agent-role">Modelo inversionista · pricing UF · retención alumnos · propuesta comercial.</div>
+      </div>
+
+      <div class="agent-card priority-1">
+        <span class="agent-prio prio-p1">P1</span>
+        <div class="agent-icon">👔</div>
+        <div class="agent-tag">PM</div>
+        <div class="agent-name">PM</div>
+        <div class="agent-role">Roadmap 4 semanas · sprint planning · priorización RICE · orquesta agentes operativos.</div>
+      </div>
+
+      <div class="agent-card priority-1">
+        <span class="agent-prio prio-p1">P1</span>
+        <div class="agent-icon">⊡</div>
+        <div class="agent-tag">Data-BW</div>
+        <div class="agent-name">DATA-BW</div>
+        <div class="agent-role">QA cuantitativo · revisa flujo caja · cuadra utilidades · detecta inconsistencias aritméticas en propuesta.</div>
+      </div>
+
+      <!-- P2 -->
+      <div class="agent-card priority-2">
+        <span class="agent-prio prio-p2">P2</span>
+        <div class="agent-icon">🐕</div>
+        <div class="agent-tag">Functional-Lead</div>
+        <div class="agent-name">FUNCTIONAL-LEAD</div>
+        <div class="agent-role">BPMN escuela · customer journey alumno · maqueta LEMPAR · diseño UX experiencia.</div>
+      </div>
+
+      <div class="agent-card priority-2">
+        <span class="agent-prio prio-p2">P2</span>
+        <div class="agent-icon">📡</div>
+        <div class="agent-tag">RADAR</div>
+        <div class="agent-name">RADAR</div>
+        <div class="agent-role">Competidores grappling/BJJ Chile · pricing mercado · streetwear deportivo regional · tendencias.</div>
+      </div>
+
+      <div class="agent-card priority-2">
+        <span class="agent-prio prio-p2">P2</span>
+        <div class="agent-icon">🛒</div>
+        <div class="agent-tag">Procurement</div>
+        <div class="agent-name">PROCUREMENT</div>
+        <div class="agent-role">Proveedores colchonetas · fábrica apparel · telas técnicas · packaging branded · negociación.</div>
+      </div>
+
+      <div class="agent-card priority-2">
+        <span class="agent-prio prio-p2">P2</span>
+        <div class="agent-icon">🚚</div>
+        <div class="agent-tag">Supply Chain</div>
+        <div class="agent-name">SUPPLY CHAIN</div>
+        <div class="agent-role">Drops trimestrales · stock e-commerce · logística despacho · Chilexpress · gestión SKU.</div>
+      </div>
+
+      <div class="agent-card priority-2">
+        <span class="agent-prio prio-p2">P2</span>
+        <div class="agent-icon">🎙️</div>
+        <div class="agent-tag">Portavoz</div>
+        <div class="agent-name">PORTAVOZ</div>
+        <div class="agent-role">Voz LEMPAR · Instagram orgánico · narrativa marca · thought leadership grappling Chile.</div>
+      </div>
+
+      <!-- P3 -->
+      <div class="agent-card priority-3">
+        <span class="agent-prio prio-p3">P3</span>
+        <div class="agent-icon">🎬</div>
+        <div class="agent-tag">Video & Img</div>
+        <div class="agent-name">VIDEO & IMG</div>
+        <div class="agent-role">Fotografía drops · video clases · contenido social · producción visual eventos.</div>
+      </div>
+
+      <div class="agent-card priority-3">
+        <span class="agent-prio prio-p3">P3</span>
+        <div class="agent-icon">🧪</div>
+        <div class="agent-tag">Innovation Lab</div>
+        <div class="agent-name">INNOVATION LAB</div>
+        <div class="agent-role">POC formato seminario · validación clínica intensiva · spike modelo membresía.</div>
+      </div>
+
+      <div class="agent-card priority-3">
+        <span class="agent-prio prio-p3">P3</span>
+        <div class="agent-icon">🎨</div>
+        <div class="agent-tag">Frontend</div>
+        <div class="agent-name">FRONTEND</div>
+        <div class="agent-role">Sitio web LEMPAR · e-commerce Shopify · landing · responsive mobile-first.</div>
+      </div>
+
+      <div class="agent-card priority-3">
+        <span class="agent-prio prio-p3">P3</span>
+        <div class="agent-icon">🐾</div>
+        <div class="agent-tag">Hoku</div>
+        <div class="agent-name">HOKU</div>
+        <div class="agent-role">Bot WhatsApp inscripción alumnos · automatización onboarding · agente reservas IA.</div>
+      </div>
+
+      <div class="agent-card priority-3">
+        <span class="agent-prio prio-p3">P3</span>
+        <div class="agent-icon">🧠</div>
+        <div class="agent-tag">Orquestador</div>
+        <div class="agent-name">CEREBRO</div>
+        <div class="agent-role">Coordinación cross-agente · detecta loops · streaming progreso · activa skills auto.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNÓSTICO POR AGENTE -->
+<section class="block light" id="diagnostico">
+  <div class="container">
+    <span class="eyebrow">02 · Diagnóstico · acción · KPI</span>
+    <h2 class="title">Qué dice <em>cada uno</em>.</h2>
+    <p class="lead">
+      Cada agente entrega: lectura del estado actual · 3 acciones inmediatas · KPI de éxito
+      a 90 días. Los P1 (rojos) son bloqueantes · los demás aceleran o suman margen.
+    </p>
+
+    <div class="detail-grid">
+
+      <!-- COMPLIANCE -->
+      <div class="detail-card urgent">
+        <div class="detail-head">
+          <div class="detail-icon">⚖️</div>
+          <div class="detail-meta">
+            <div class="d-name">COMPLIANCE</div>
+            <div class="d-role">P1 · Legal y contratos</div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Diagnóstico</div>
+          <div class="detail-text">El modelo $8M por 50% que propone el inversionista es estructuralmente injusto. Sin pacto de socios firmado, Claude queda atado a decisiones compartidas eternas. La marca LEMPAR todavía no está registrada en INAPI · cualquier tercero puede registrarla primero.</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Acciones inmediatas</div>
+          <ul class="detail-list">
+            <li>Redactar términos préstamo convertible (Modelo B) como alternativa al 50/50</li>
+            <li>Pacto de socios con cláusulas de salida · recompra · vesting</li>
+            <li>Iniciar registro marca LEMPAR clases 25 / 28 / 41 en INAPI</li>
+          </ul>
+        </div>
+        <div class="detail-kpi"><span class="kpi-k">KPI 90 días</span><span class="kpi-v">SpA + Pacto + INAPI ingresada</span></div>
+      </div>
+
+      <!-- CONTROLLER -->
+      <div class="detail-card urgent">
+        <div class="detail-head">
+          <div class="detail-icon">🧮</div>
+          <div class="detail-meta">
+            <div class="d-name">CONTROLLER</div>
+            <div class="d-role">P1 · Tributario y financiero</div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Diagnóstico</div>
+          <div class="detail-text">Operación 100% informal hoy. Cobros directos sin factura · sin IVA débito · sin crédito fiscal. Pierde 19% de potencial deducción. Sin contadora, sin F29, sin F22. Si Claude formaliza ahora · arranca con crédito fiscal limpio desde compras Y1.</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Acciones inmediatas</div>
+          <ul class="detail-list">
+            <li>Definir régimen 14D N°3 Pro-PYME General · contabilidad simplificada</li>
+            <li>Contratar contadora externa (~$100K/mes · F29 mensual · F22 anual)</li>
+            <li>Estructurar plan de gastos deducibles Y1 para minimizar IDPC</li>
+          </ul>
+        </div>
+        <div class="detail-kpi"><span class="kpi-k">KPI 90 días</span><span class="kpi-v">Primer F29 con débito + crédito fiscal real</span></div>
+      </div>
+
+      <!-- PRM -->
+      <div class="detail-card urgent">
+        <div class="detail-head">
+          <div class="detail-icon">🚀</div>
+          <div class="detail-meta">
+            <div class="d-name">PRM · Product Manager</div>
+            <div class="d-role">P1 · Definición de producto</div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Diagnóstico</div>
+          <div class="detail-text">LEMPAR vende mensualidad de clases · pero su producto real es comunidad + identidad. El lever de crecimiento NO es marca, es horarios (capacidad sala). Apparel es margen incremental · no producto principal Y1.</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Acciones inmediatas</div>
+          <ul class="detail-list">
+            <li>Definir 3 tiers: alumno · alumno+apparel · embajador competidor</li>
+            <li>Pricing claro · mensualidad UF para protección inflacionaria</li>
+            <li>Métrica norte: alumnos activos mensuales · NO seguidores Instagram</li>
+          </ul>
+        </div>
+        <div class="detail-kpi"><span class="kpi-k">KPI 90 días</span><span class="kpi-v">2do horario abierto · retención ≥70%</span></div>
+      </div>
+
+      <!-- BUSINESS DEV -->
+      <div class="detail-card urgent">
+        <div class="detail-head">
+          <div class="detail-icon">💰</div>
+          <div class="detail-meta">
+            <div class="d-name">BUSINESS DEVELOPMENT</div>
+            <div class="d-role">P1 · Ciclo cliente y deal inversionista</div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Diagnóstico</div>
+          <div class="detail-text">Pipeline de alumnos está sano (48 universo · ~35 activos) pero sin sistema de captación. La conversación con inversionista necesita un cierre definido: presentar 4 modelos y forzar elección. Sin claridad de modelo, Claude pierde tracción de ambos lados.</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Acciones inmediatas</div>
+          <ul class="detail-list">
+            <li>Reunión inversionista con propuesta Modelo B convertible en mano</li>
+            <li>Funnel inscripción: prospecto IG → clase prueba → mensualidad</li>
+            <li>Estructura retención: rituales · graduación cinturones · comunidad</li>
+          </ul>
+        </div>
+        <div class="detail-kpi"><span class="kpi-k">KPI 90 días</span><span class="kpi-v">Inversión cerrada + 15 alumnos nuevos</span></div>
+      </div>
+
+      <!-- PM -->
+      <div class="detail-card urgent">
+        <div class="detail-head">
+          <div class="detail-icon">👔</div>
+          <div class="detail-meta">
+            <div class="d-name">PM · Project Manager</div>
+            <div class="d-role">P1 · Orquestación y prioridades</div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Diagnóstico</div>
+          <div class="detail-text">14 agentes corriendo en paralelo necesitan un solo orquestador. Riesgo: que Claude se sature siendo dueño y operador. PM coordina · libera a Claude para enseñar y dar clases (su core).</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Acciones inmediatas</div>
+          <ul class="detail-list">
+            <li>Sprint 4 semanas · review semanal · daily 15 min Cerebro</li>
+            <li>Priorización RICE: legal &gt; cuenta &gt; marca &gt; producto &gt; apparel</li>
+            <li>Bloqueo de tiempo de Claude solo para decisiones P1</li>
+          </ul>
+        </div>
+        <div class="detail-kpi"><span class="kpi-k">KPI 90 días</span><span class="kpi-v">100% de hitos P1 cerrados en 30 días</span></div>
+      </div>
+
+      <!-- DATA-BW · QA FINANCIERO -->
+      <div class="detail-card urgent" style="grid-column:1/-1;border-top-color:var(--brass);background:linear-gradient(180deg,var(--bone-soft) 0%,var(--bg) 100%)">
+        <div class="detail-head">
+          <div class="detail-icon">⊡</div>
+          <div class="detail-meta">
+            <div class="d-name">DATA-BW · QA Financiero</div>
+            <div class="d-role" style="color:var(--brass)">P1 · Validación cuantitativa propuesta</div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label" style="color:var(--blood)">📊 Estado HOY · auditoría 2026-05-13</div>
+          <div class="detail-text">Revisión cruzada de todos los números de la propuesta LEMPAR antes de presentar a Claudio. Detectados <strong style="color:var(--blood)">2 bugs aritméticos críticos</strong> + 1 menor. Corregidos en versión actual.</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label" style="color:var(--blood)">🔴 Bugs detectados</div>
+          <ul class="detail-list">
+            <li><strong>Flujo caja mensual Y1 sumaba $8.0M · debía $7.37M</strong> — desfase $630K. Causa: meses M6-M8 estaban planos en $700K en lugar de seguir el ramp-up. Corregido: M4 $550K · M6 $650K · M8 $750K · M12 $370K (estacionalidad fin de año)</li>
+            <li><strong>Gastos deducibles Y1 sumaban $10.3M > Ventas Y1 $7.37M</strong> — imposible matemáticamente sostener utilidad positiva si gastos exceden ingresos. Causa: los importes representaban el techo Y3, no Y1. Corregido: reframe como "Universo deducible · estructura 3 años" con Y1 ajustado $5.6M · Y2 $8M · Y3 $10.3M</li>
+            <li><strong>Cifra ticket promedio en sección Academia</strong> — decía $28-33K basado en 35 alumnos · realidad es $40K (sólo 20 pagan). Corregido en numbers band y tablas</li>
+          </ul>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label" style="color:var(--mat)">✅ Números VALIDADOS post-corrección</div>
+          <ul class="detail-list">
+            <li>20 pagantes × $40K = $800K/mes ingreso real ✓</li>
+            <li>Capital $8M = 2.6 + 1.04 + 1.6 + 1.43 + 1.33 ✓ (suma exacta)</li>
+            <li>Y1 ramp-up mensual ahora suma $7.370.000 exacto ✓</li>
+            <li>IVA: $152K débito − $95K crédito = $57K neto ✓</li>
+            <li>Retiros 3Y Claudio solo: $0 + $2.391.750 + $5.923.200 = $8.314.950 ✓</li>
+            <li>Retiros 3Y 50/50: $0 + $1.195.875 + $2.961.600 = $4.157.475 ✓</li>
+            <li>Diferencia solo vs 50/50 a 3 años: $4.157.475 (50% exacto) ✓</li>
+            <li>IDPC Y1-Y3: $45.9K + $883.250 + $2.116.800 sobre utilidades ✓</li>
+          </ul>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label" style="color:var(--brass)">💡 Recomendaciones DATA-BW</div>
+          <ul class="detail-list">
+            <li>Antes de presentar a Claudio: validar números con contadora (Gladys o equivalente) · ella tiene última palabra tributaria</li>
+            <li>Crear hoja de cálculo viva (Google Sheets) que conecte ingresos → costos → utilidad → impuestos · evitar bugs futuros</li>
+            <li>Actualizar trimestralmente los reales vs proyección para detectar desvíos antes de Y2</li>
+            <li>El "techo de gastos $10.3M" no es objetivo · es referencia de capacidad. Y1 real $5.6M es la meta</li>
+          </ul>
+        </div>
+        <div class="detail-kpi" style="background:var(--ink);color:var(--bone);border:1px solid var(--brass)">
+          <span class="kpi-k" style="color:var(--brass)">Assessment 90 días</span>
+          <span class="kpi-v" style="color:var(--brass-bright)">Score A · cero bugs aritméticos</span>
+        </div>
+      </div>
+
+      <!-- FUNCTIONAL-LEAD -->
+      <div class="detail-card">
+        <div class="detail-head">
+          <div class="detail-icon">🐕</div>
+          <div class="detail-meta">
+            <div class="d-name">FUNCTIONAL-LEAD</div>
+            <div class="d-role">P2 · UX y procesos</div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Diagnóstico</div>
+          <div class="detail-text">Customer journey actual: prospecto entra por DM Instagram, Claude responde manualmente, agenda clase prueba, cobra en efectivo o transferencia. Hay 4 puntos de fricción que se pueden cerrar con maquetación + automatización mínima.</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Acciones inmediatas</div>
+          <ul class="detail-list">
+            <li>BPMN del journey actual y journey objetivo</li>
+            <li>Maqueta HTML LEMPAR · landing + flujo inscripción</li>
+            <li>Spec funcional para Frontend + Hoku (bot WhatsApp)</li>
+          </ul>
+        </div>
+        <div class="detail-kpi"><span class="kpi-k">KPI 90 días</span><span class="kpi-v">Inscripción 100% digital · cero fricción</span></div>
+      </div>
+
+      <!-- RADAR -->
+      <div class="detail-card">
+        <div class="detail-head">
+          <div class="detail-icon">📡</div>
+          <div class="detail-meta">
+            <div class="d-name">RADAR</div>
+            <div class="d-role">P2 · Inteligencia externa</div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Diagnóstico</div>
+          <div class="detail-text">Mercado grappling/BJJ Chile en crecimiento sostenido (~15-20% anual). Streetwear deportivo nacional dominado por marcas importadas (FoG, Vans). Hay espacio claro para identidad local auténtica con ticket $25-65K. Competidores directos sin línea de apparel coherente.</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Acciones inmediatas</div>
+          <ul class="detail-list">
+            <li>Mapa 10 escuelas grappling V-Region · pricing comparativo</li>
+            <li>Tendencias 2026 grappling apparel (Tatami · Hayabusa · locales)</li>
+            <li>Brief mensual a Portavoz · oportunidades de contenido</li>
+          </ul>
+        </div>
+        <div class="detail-kpi"><span class="kpi-k">KPI 90 días</span><span class="kpi-v">3 oportunidades comerciales detectadas</span></div>
+      </div>
+
+      <!-- PROCUREMENT -->
+      <div class="detail-card">
+        <div class="detail-head">
+          <div class="detail-icon">🛒</div>
+          <div class="detail-meta">
+            <div class="d-name">PROCUREMENT</div>
+            <div class="d-role">P2 · Compras estratégicas</div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Diagnóstico</div>
+          <div class="detail-text">$2.6M en equipamiento sala (colchonetas top categoría) y $1.6M en primer drop apparel son compras decisivas. Sin negociación · sin TCO claro · sin alternativas cotizadas · puede inflarse 30-40%. Hay opciones nacionales y de importación directa que pueden bajar 20%.</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Acciones inmediatas</div>
+          <ul class="detail-list">
+            <li>3 cotizaciones colchonetas (nacional · importado · usado profesional)</li>
+            <li>Fábrica apparel nacional vs importación pequeña escala</li>
+            <li>Negociación con proveedor de telas técnicas (poliester deportivo)</li>
+          </ul>
+        </div>
+        <div class="detail-kpi"><span class="kpi-k">KPI 90 días</span><span class="kpi-v">15% ahorro CapEx vs cotización inicial</span></div>
+      </div>
+
+      <!-- SUPPLY CHAIN -->
+      <div class="detail-card">
+        <div class="detail-head">
+          <div class="detail-icon">🚚</div>
+          <div class="detail-meta">
+            <div class="d-name">SUPPLY CHAIN</div>
+            <div class="d-role">P2 · Logística e inventario</div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Diagnóstico</div>
+          <div class="detail-text">Drops trimestrales (4 al año) limitados a 30-80 prendas evitan inventario muerto. Despacho nacional Chilexpress · ticket promedio $4-6K envío · agregar al precio. Stock cero entre drops es estrategia, no problema.</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Acciones inmediatas</div>
+          <ul class="detail-list">
+            <li>Tabla de tallas + SKUs · 4 prendas × 4 tallas = 16 SKUs base</li>
+            <li>Integración Shopify + Webpay + Chilexpress API</li>
+            <li>Política devolución 30 días · gestión cambios</li>
+          </ul>
+        </div>
+        <div class="detail-kpi"><span class="kpi-k">KPI 90 días</span><span class="kpi-v">Primer drop sold-out · cero stock muerto</span></div>
+      </div>
+
+      <!-- PORTAVOZ -->
+      <div class="detail-card">
+        <div class="detail-head">
+          <div class="detail-icon">🎙️</div>
+          <div class="detail-meta">
+            <div class="d-name">PORTAVOZ</div>
+            <div class="d-role">P2 · Comunicación de marca</div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Diagnóstico</div>
+          <div class="detail-text">Instagram @lempar.grappling.arts tiene tono auténtico pero falta consistencia editorial. Sin calendario · sin frecuencia · sin pilares de contenido definidos. La autoridad técnica de Claude es el activo subutilizado más grande de la marca.</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Acciones inmediatas</div>
+          <ul class="detail-list">
+            <li>3 pilares contenido: técnica · cultura · comunidad alumnos</li>
+            <li>Frecuencia: 3 posts + 5 stories semanales · 1 reel/semana</li>
+            <li>Calendario editorial 90 días alineado con drops y graduaciones</li>
+          </ul>
+        </div>
+        <div class="detail-kpi"><span class="kpi-k">KPI 90 días</span><span class="kpi-v">+50% followers · 8% engagement</span></div>
+      </div>
+
+      <!-- VIDEO & IMG -->
+      <div class="detail-card support">
+        <div class="detail-head">
+          <div class="detail-icon">🎬</div>
+          <div class="detail-meta">
+            <div class="d-name">VIDEO & IMG</div>
+            <div class="d-role">P3 · Producción visual</div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Diagnóstico</div>
+          <div class="detail-text">Contenido visual actual: amateur, sin sello de marca. Cada drop necesita lookbook fotográfico + reel + 5 piezas social. Costo externo: $280K por sesión completa.</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Acciones inmediatas</div>
+          <ul class="detail-list">
+            <li>Lookbook fotográfico drop 1 (4 prendas · 1 modelo · ubicación local)</li>
+            <li>Reel técnico: 1 minuto, técnica + grit + identidad</li>
+            <li>Identidad visual: paleta · tipografía · grid Instagram</li>
+          </ul>
+        </div>
+        <div class="detail-kpi"><span class="kpi-k">KPI 90 días</span><span class="kpi-v">Lookbook drop 1 + 12 piezas content</span></div>
+      </div>
+
+      <!-- INNOVATION LAB -->
+      <div class="detail-card support">
+        <div class="detail-head">
+          <div class="detail-icon">🧪</div>
+          <div class="detail-meta">
+            <div class="d-name">INNOVATION LAB</div>
+            <div class="d-role">P3 · POC y formatos nuevos</div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Diagnóstico</div>
+          <div class="detail-text">Hay 3 spikes que vale la pena probar antes de invertir grande: seminario fin de semana, clínica intensiva mensual, modelo de membresía anual con descuento. Cada POC es bajo costo y rápido feedback.</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Acciones inmediatas</div>
+          <ul class="detail-list">
+            <li>POC seminario sábado (4 horas · $40K) · medir interés</li>
+            <li>POC clínica mensual: técnica avanzada · 8 cupos · $30K</li>
+            <li>POC membresía anual: $260K vs $33K × 12 (descuento 20%)</li>
+          </ul>
+        </div>
+        <div class="detail-kpi"><span class="kpi-k">KPI 90 días</span><span class="kpi-v">3 POCs ejecutados · 1 escala</span></div>
+      </div>
+
+      <!-- FRONTEND -->
+      <div class="detail-card support">
+        <div class="detail-head">
+          <div class="detail-icon">🎨</div>
+          <div class="detail-meta">
+            <div class="d-name">FRONTEND</div>
+            <div class="d-role">P3 · Sitio web + e-commerce</div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Diagnóstico</div>
+          <div class="detail-text">Sin sitio web propio. Toda venta y captación pasa por Instagram. Shopify o Webflow + Webpay puede vivir lado a lado del Instagram sin reemplazar. Costo bajo · valor alto para fondos públicos (Sercotec valora canal digital propio).</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Acciones inmediatas</div>
+          <ul class="detail-list">
+            <li>Landing minimal: hero · clases · embajadores · drops · contacto</li>
+            <li>E-commerce Shopify: catálogo + checkout Webpay · 1 día setup</li>
+            <li>Mobile-first responsive · SEO básico · Lighthouse &gt;90</li>
+          </ul>
+        </div>
+        <div class="detail-kpi"><span class="kpi-k">KPI 90 días</span><span class="kpi-v">Sitio live · primer drop online</span></div>
+      </div>
+
+      <!-- HOKU -->
+      <div class="detail-card support">
+        <div class="detail-head">
+          <div class="detail-icon">🐾</div>
+          <div class="detail-meta">
+            <div class="d-name">HOKU</div>
+            <div class="d-role">P3 · Automatización IA</div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Diagnóstico</div>
+          <div class="detail-text">Claude pasa demasiado tiempo respondiendo DMs sobre horarios, precios y disponibilidad. Bot WhatsApp con FAQ + agenda clase prueba puede liberarle 5-8 horas/semana sin perder calidez de marca. Fallback humano siempre activo.</div>
+        </div>
+        <div class="detail-block">
+          <div class="detail-label">Acciones inmediatas</div>
+          <ul class="detail-list">
+            <li>Bot WhatsApp Business · FAQ + reserva clase prueba</li>
+            <li>Integración con CRM mínimo (Notion / Airtable)</li>
+            <li>Métricas: respuestas auto vs humano · tiempo respuesta</li>
+          </ul>
+        </div>
+        <div class="detail-kpi"><span class="kpi-k">KPI 90 días</span><span class="kpi-v">70% DMs respondidos por bot</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DEPENDENCIAS -->
+<section class="block" id="dependencias">
+  <div class="container">
+    <span class="eyebrow">03 · Dependencias y flujo</span>
+    <h2 class="title">Quién <em>bloquea a quién</em>.</h2>
+    <p class="lead">
+      Mapa de dependencias críticas. COMPLIANCE y CONTROLLER habilitan todo lo demás
+      (sin SpA · no hay cuenta · sin cuenta · no hay facturación · sin facturación ·
+      no hay deducciones).
+    </p>
+
+    <div class="dep-graph">
+      <div class="dep-title">Cadena crítica · 4 semanas</div>
+      <div class="dep-sub">Cada flecha = bloqueo. Salir de izquierda a derecha es el camino más corto a operación formal.</div>
+
+      <div class="dep-flow">
+        <div class="dep-row">
+          <span class="dep-week">Sem 1</span>
+          <span class="dep-pill critical"><span class="ico">⚖️</span> Pacto socios</span>
+          <span class="dep-arrow">→</span>
+          <span class="dep-pill brass"><span class="ico">⚖️</span> Constitución SpA</span>
+          <span class="dep-arrow">→</span>
+          <span class="dep-pill"><span class="ico">🧮</span> Inicio actividades SII</span>
+        </div>
+        <div class="dep-row">
+          <span class="dep-week">Sem 2</span>
+          <span class="dep-pill"><span class="ico">🧮</span> Cuenta corriente PYME</span>
+          <span class="dep-arrow">→</span>
+          <span class="dep-pill"><span class="ico">🧮</span> Contadora F29/F22</span>
+          <span class="dep-arrow">→</span>
+          <span class="dep-pill brass"><span class="ico">💰</span> Decisión modelo inversionista</span>
+        </div>
+        <div class="dep-row">
+          <span class="dep-week">Sem 2-3</span>
+          <span class="dep-pill"><span class="ico">⚖️</span> INAPI registro marca</span>
+          <span class="dep-arrow">→</span>
+          <span class="dep-pill"><span class="ico">🛒</span> Compras CapEx ($8M)</span>
+          <span class="dep-arrow">→</span>
+          <span class="dep-pill"><span class="ico">🐕</span> Maqueta + Frontend live</span>
+        </div>
+        <div class="dep-row">
+          <span class="dep-week">Sem 3-4</span>
+          <span class="dep-pill"><span class="ico">🛒</span> Primer drop apparel</span>
+          <span class="dep-arrow">→</span>
+          <span class="dep-pill"><span class="ico">🎬</span> Lookbook + reel</span>
+          <span class="dep-arrow">→</span>
+          <span class="dep-pill"><span class="ico">🎙️</span> Lanzamiento social</span>
+        </div>
+        <div class="dep-row">
+          <span class="dep-week">Sem 4+</span>
+          <span class="dep-pill"><span class="ico">🚀</span> 2do horario abierto</span>
+          <span class="dep-arrow">→</span>
+          <span class="dep-pill"><span class="ico">🧪</span> POC seminario</span>
+          <span class="dep-arrow">→</span>
+          <span class="dep-pill brass"><span class="ico">💰</span> Postulación Sercotec</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RIESGOS -->
+<section class="block" id="riesgos">
+  <div class="container">
+    <span class="eyebrow">04 · Riesgos identificados</span>
+    <h2 class="title">Lo que <em>puede romper</em> el plan.</h2>
+    <p class="lead">
+      6 riesgos críticos detectados · cada uno con un owner asignado y mitigación inicial.
+      Los 3 rojos son los que hay que neutralizar antes de constituir la SpA.
+    </p>
+
+    <div class="risk-grid">
+
+      <div class="risk-card">
+        <div class="risk-label">P1 · Alto</div>
+        <h4>Firmar el 50/50 sin pacto de socios</h4>
+        <p>El modelo $8M = 50% sin protección contractual deja a Claude expuesto a bloqueos de decisión, dilución forzada y salida imposible. Es el peor escenario.</p>
+        <div class="owner">Owner · ⚖️ COMPLIANCE</div>
+      </div>
+
+      <div class="risk-card">
+        <div class="risk-label">P1 · Alto</div>
+        <h4>No registrar marca antes del primer drop</h4>
+        <p>Si se vende apparel con la marca "LEMPAR" antes de registrar en INAPI, un tercero puede registrarla y forzar el cese de uso. Pérdida total del activo de marca.</p>
+        <div class="owner">Owner · ⚖️ COMPLIANCE</div>
+      </div>
+
+      <div class="risk-card">
+        <div class="risk-label">P1 · Alto</div>
+        <h4>Operar sin formalizar y luego ser fiscalizado</h4>
+        <p>SII puede detectar movimientos bancarios sin facturación correspondiente. Multas + reconstitución de declaraciones desde el primer ingreso real. Cuesta más caro arreglar después.</p>
+        <div class="owner">Owner · 🧮 CONTROLLER</div>
+      </div>
+
+      <div class="risk-card medium">
+        <div class="risk-label">P2 · Medio</div>
+        <h4>Sobreinversión en primer drop</h4>
+        <p>Tentación de imprimir 100+ prendas en el primer drop con poca data. Recomendación: 50 prendas máximo · vender 80% en 30 días antes de drop 2.</p>
+        <div class="owner">Owner · 🚚 SUPPLY CHAIN + 🛒 PROCUREMENT</div>
+      </div>
+
+      <div class="risk-card medium">
+        <div class="risk-label">P2 · Medio</div>
+        <h4>Claude saturado entre operar y gestionar</h4>
+        <p>Dueño que da clases + responde DMs + gestiona contratos + apparel = colapso a mes 3. Necesita delegar (instructor parcial para horarios extra + bot WhatsApp).</p>
+        <div class="owner">Owner · 👔 PM + 🐾 HOKU</div>
+      </div>
+
+      <div class="risk-card low">
+        <div class="risk-label">P3 · Bajo</div>
+        <h4>Estacionalidad invierno baja asistencia</h4>
+        <p>Junio-Agosto típicamente baja asistencia 20-30%. Mitigación: clínicas intensivas + descuentos paquete trimestre · evitar quiebres de caja.</p>
+        <div class="owner">Owner · 💰 BUSINESS DEV</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE 4 SEMANAS -->
+<section class="block light" id="timeline">
+  <div class="container">
+    <span class="eyebrow">05 · Timeline coordinado · 4 semanas</span>
+    <h2 class="title">Operación <em>4 sprints</em>.</h2>
+    <p class="lead">
+      Cada semana tiene 3-4 entregables específicos repartidos entre agentes. PM
+      coordina · CEREBRO orquesta · cada agente reporta avance en daily 15 min.
+    </p>
+
+    <div class="timeline-grid">
+
+      <div class="timeline-col">
+        <div class="tl-week">01</div>
+        <div class="tl-label">Semana 1 · Legal</div>
+        <div class="tl-task"><span class="agent">⚖️</span><div>Decisión modelo inversionista (recomendado: Modelo B convertible)</div></div>
+        <div class="tl-task"><span class="agent">⚖️</span><div>Borrador pacto de socios o términos préstamo</div></div>
+        <div class="tl-task"><span class="agent">📡</span><div>Brief competidores grappling V-Region</div></div>
+        <div class="tl-task"><span class="agent">🚀</span><div>Definición producto LEMPAR Y1 (3 tiers)</div></div>
+      </div>
+
+      <div class="timeline-col">
+        <div class="tl-week">02</div>
+        <div class="tl-label">Semana 2 · Constitución</div>
+        <div class="tl-task"><span class="agent">⚖️</span><div>Firmar constitución SpA + pacto</div></div>
+        <div class="tl-task"><span class="agent">🧮</span><div>Inicio actividades SII + contadora contratada</div></div>
+        <div class="tl-task"><span class="agent">🧮</span><div>Apertura cuenta corriente PYME BancoEstado</div></div>
+        <div class="tl-task"><span class="agent">⚖️</span><div>Registro marca INAPI (clases 25/28/41)</div></div>
+      </div>
+
+      <div class="timeline-col">
+        <div class="tl-week">03</div>
+        <div class="tl-label">Semana 3 · Compras</div>
+        <div class="tl-task"><span class="agent">🛒</span><div>Cotizaciones colchonetas + apparel · negociación</div></div>
+        <div class="tl-task"><span class="agent">🐕</span><div>Maqueta HTML LEMPAR + spec funcional</div></div>
+        <div class="tl-task"><span class="agent">🎨</span><div>Landing live + Shopify configurado</div></div>
+        <div class="tl-task"><span class="agent">🎬</span><div>Lookbook fotográfico drop 1</div></div>
+      </div>
+
+      <div class="timeline-col">
+        <div class="tl-week">04</div>
+        <div class="tl-label">Semana 4 · Lanzamiento</div>
+        <div class="tl-task"><span class="agent">🚚</span><div>Primer drop apparel · stock en sala</div></div>
+        <div class="tl-task"><span class="agent">🎙️</span><div>Campaña lanzamiento Instagram + WhatsApp</div></div>
+        <div class="tl-task"><span class="agent">🚀</span><div>Apertura 2do horario · agenda llena</div></div>
+        <div class="tl-task"><span class="agent">💰</span><div>Postulación Sercotec próxima convocatoria</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXECUTIVE SUMMARY -->
+<section class="block" id="executive">
+  <div class="container">
+    <span class="eyebrow">06 · Executive summary</span>
+    <h2 class="title">El veredicto <em>del equipo</em>.</h2>
+
+    <div class="exec-summary">
+      <h3>LEMPAR es un negocio sano operando al 25% de su capacidad. Necesita formalizarse, capitalizarse con $8M sin perder control, y abrir más horarios. En ese orden.</h3>
+
+      <p><strong>1. Los $1M/mes que genera 1 horario son la prueba más sólida que tiene cualquier emprendimiento en esta etapa.</strong> No es proyección · es realidad. Lo que falta es construir la estructura legal y operativa alrededor de esa realidad para que escale.</p>
+
+      <p><strong>2. El modelo 50/50 con el inversionista NO debe firmarse así.</strong> COMPLIANCE y la abogada coinciden: $8M por 50% subvalora gravemente la marca + base de alumnos + proyección. Modelo B (préstamo convertible) es la salida más justa para ambas partes.</p>
+
+      <p><strong>3. El crecimiento Y1-Y3 no depende de marca ni apparel.</strong> Depende de abrir el 2do horario. Apparel y línea propia son margen incremental y branding · NO son el motor. El motor sigue siendo Claude enseñando.</p>
+
+      <p><strong>4. 4 semanas alcanzan para tener SpA + cuenta + marca registrada + primer drop + 2do horario.</strong> 16 agentes coordinados pueden ejecutar esto si Claude se enfoca solo en decisiones P1 y dejá operación a equipo SMC.</p>
+
+      <p style="margin-top:24px;padding-top:24px;border-top:1px solid rgba(176,141,76,.30)"><strong style="color:var(--brass)">Próximo paso inmediato:</strong> reunión Claude + COMPLIANCE para revisar Modelo B convertible y agendar firma de constitución con notario. Sin esto, el resto del plan no arranca.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="f-logo">War Room LEMPAR</div>
+  <p>16 agentes SMC · Operación coordinada · 2026-05-13</p>
+  <p style="margin-top:8px;color:rgba(244,241,234,.25)">Cerebro orquesta · PM coordina · Claude decide</p>
+</footer>
+
+</body>
+</html>

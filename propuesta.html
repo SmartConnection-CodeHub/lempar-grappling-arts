@@ -1,0 +1,2173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEMPAR Grappling Arts · Plan 3 años · Claudio González · 2026-05-13</title>
+<style>
+:root{
+  --ink:#0d0d0d;
+  --ink-soft:#1a1a1a;
+  --ink-mid:#2a2a2a;
+  --bone:#f4f1ea;
+  --bone-deep:#e8e2d2;
+  --bone-soft:#faf7ef;
+  --brass:#b08d4c;
+  --brass-bright:#c9a463;
+  --brass-pale:rgba(176,141,76,0.10);
+  --blood:#7a1f1f;
+  --blood-soft:#a83232;
+  --mat:#3a5a40;
+  --mat-light:#d9e2dc;
+  --bg:#ffffff;
+  --bg-alt:#f8f6f1;
+  --bg-warm:#fbfaf6;
+  --text:#161616;
+  --muted:#5c5c5c;
+  --subtle:#8a8a8a;
+  --border:#d8d4c8;
+  --border-w:#ece8dc;
+  --font:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Arial,sans-serif;
+  --font-serif:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Arial,sans-serif;
+  --shadow-sm:0 2px 10px rgba(13,13,13,0.06);
+  --shadow-md:0 6px 24px rgba(13,13,13,0.10);
+  --radius:14px;
+  --radius-sm:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased;font-feature-settings:'kern','liga','clig','calt'}
+
+/* NAV */
+.nav-global{position:fixed;top:0;left:0;right:0;z-index:200;height:50px;background:rgba(13,13,13,0.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(176,141,76,0.30);display:flex;align-items:center;padding:0 24px}
+.nav-inner{max-width:1180px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-mark{width:32px;height:32px;display:flex;align-items:center;justify-content:center}
+.nav-mark svg{width:100%;height:100%}
+.nav-name{font-size:14px;font-weight:800;color:var(--bone);letter-spacing:.22em;text-transform:uppercase;font-family:var(--font-serif)}
+.nav-sep{font-size:12px;color:rgba(244,241,234,.25);margin:0 6px}
+.nav-sub{font-size:12px;color:rgba(244,241,234,.55);letter-spacing:.05em}
+.nav-meeting{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:7px 16px;background:var(--brass);color:var(--ink)}
+
+.sub-nav{position:fixed;top:50px;left:0;right:0;z-index:199;height:50px;background:rgba(244,241,234,.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--bone-deep);display:flex;align-items:center;padding:0 24px;overflow-x:auto}
+.sub-inner{max-width:1180px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.sub-brand{font-size:12px;font-weight:800;color:var(--ink);letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+.sub-links{display:flex;gap:18px;list-style:none;flex-wrap:nowrap}
+.sub-links a{text-decoration:none;font-size:11px;font-weight:700;color:var(--ink);opacity:.55;letter-spacing:.08em;text-transform:uppercase;transition:opacity .2s;white-space:nowrap}
+.sub-links a:hover{opacity:1;color:var(--blood)}
+.sub-links a.mapa{color:var(--brass);opacity:1}
+
+main{padding-top:100px}
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* HERO */
+.hero{padding:80px 24px 70px;text-align:center;background:var(--ink);color:var(--bone);position:relative;overflow:hidden;min-height:min(640px,85vh)}
+.hero-vid{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.45;filter:saturate(.7) contrast(1.05)}
+.hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;z-index:1;background:linear-gradient(180deg,rgba(13,13,13,.35) 0%,rgba(13,13,13,.55) 50%,rgba(13,13,13,.92) 100%),radial-gradient(ellipse at center,transparent 0%,rgba(13,13,13,.4) 100%);pointer-events:none}
+.hero-inner{position:relative;z-index:2;padding:24px 0}
+
+/* Typography display LEMPAR · all-caps tight tracking · weight 800 */
+.hero-title,h2.title,.card h3,.proj-col h3,.compare-col h3,.callout h3,.alumni-cell .a-num,.alumni-cell .a-amt,.horario-tier h4,.nb-val,.iva-box h3,.iva-box .iva-val,.iva-arrow,.activo-card .total .val,.activo-card h4,.gasto-card h4,.fondo h4,.radar-card h4,.legal-list li::before,.legal-list .l-title,.next-list .check,.mapa-col h3,.mapa-foot .v,.tier-amt,.proj-row.big .v,.compare-row.total .v,.linea h4,.linea .l-rev .val,footer .f-logo{font-feature-settings:"ss01","cv11"}
+
+/* Em accent — sin serif italic, con shimmer brass tracking */
+.hero-title em,h2.title em,.callout h3 em{font-style:normal;font-weight:400;color:var(--brass);position:relative;letter-spacing:-.02em}
+.hero-title em::after,h2.title em::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:1px;background:linear-gradient(90deg,transparent 0%,var(--brass) 30%,var(--brass) 70%,transparent 100%);opacity:.6}
+
+/* Badge propuesta — para sección Capital y similares */
+.propuesta-badge{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;background:rgba(122,31,31,.10);border:1px solid var(--blood);margin-bottom:18px;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--blood)}
+.propuesta-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--blood);animation:pulseBadge 2.4s infinite}
+@keyframes pulseBadge{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.3)}}
+.hero-logo-wrap{margin-bottom:40px;display:flex;justify-content:center}
+.hero-logo{width:160px;height:160px}
+.hero-eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.30em;text-transform:uppercase;color:var(--brass);margin-bottom:22px}
+.hero-title{font-family:var(--font-serif);font-size:80px;font-weight:700;line-height:1;letter-spacing:-.02em;color:var(--bone);max-width:920px;margin:0 auto 24px}
+.hero-title em{color:var(--brass);font-style:italic;font-weight:400}
+.hero-sub{font-size:18px;color:rgba(244,241,234,.70);max-width:680px;margin:0 auto 40px;line-height:1.65}
+.hero-meta{display:inline-flex;gap:32px;padding:16px 32px;border:1px solid rgba(176,141,76,.30);font-size:12px;letter-spacing:.10em;flex-wrap:wrap;justify-content:center}
+.hero-meta strong{color:var(--brass-bright);font-weight:700;text-transform:uppercase}
+.hero-meta span{color:rgba(244,241,234,.55)}
+
+/* NUMBERS BAND */
+.numbers-band{background:var(--ink);color:var(--bone);padding:50px 0;border-top:1px solid rgba(176,141,76,.20)}
+.numbers-band .container{display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+.number-cell{text-align:center;border-right:1px solid rgba(176,141,76,.20);padding:0 12px}
+.number-cell:last-child{border-right:none}
+.nb-val{font-family:var(--font-serif);font-size:46px;font-weight:700;color:var(--brass);letter-spacing:-.03em;line-height:1;margin-bottom:8px}
+.nb-val .currency{font-size:22px;vertical-align:top;color:var(--bone)}
+.nb-lbl{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,241,234,.55)}
+
+/* SECTIONS */
+section.block{padding:80px 0;border-bottom:1px solid var(--border-w)}
+section.dark{background:var(--ink);color:var(--bone)}
+section.dark h2,section.dark h3,section.dark h4{color:var(--bone)}
+section.dark .eyebrow{color:var(--brass)}
+section.dark p{color:rgba(244,241,234,.70)}
+section.dark .card{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.10);color:var(--bone)}
+section.dark .card h3{color:var(--bone)}
+section.dark .card p{color:rgba(244,241,234,.70)}
+section.dark table thead{background:rgba(176,141,76,.12)}
+section.dark table th{color:var(--brass);border-bottom-color:rgba(176,141,76,.30)}
+section.dark table td{color:var(--bone);border-bottom-color:rgba(255,255,255,.08)}
+section.dark .table-wrap{background:transparent;border-color:rgba(255,255,255,.10);box-shadow:none}
+section.cream{background:var(--bone-soft)}
+section.bone{background:var(--bone)}
+
+.eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--blood);margin-bottom:18px;padding-left:36px;position:relative}
+.eyebrow::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:24px;height:2px;background:var(--blood)}
+h2.title{font-family:var(--font-serif);font-size:52px;font-weight:700;line-height:1.05;letter-spacing:-.02em;color:var(--ink);margin-bottom:22px;max-width:880px}
+h2.title em{color:var(--blood);font-style:italic;font-weight:400}
+section.dark h2.title{color:var(--bone)}
+section.dark h2.title em{color:var(--brass)}
+p.lead{font-size:17px;color:var(--muted);max-width:760px;margin-bottom:50px;line-height:1.7}
+
+/* CARDS */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:24px}
+.card{background:var(--bg);border:1px solid var(--border-w);padding:32px 28px;transition:transform .3s,box-shadow .3s,border-color .2s;box-shadow:var(--shadow-sm);position:relative}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--brass)}
+.card-eyebrow{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:14px}
+.card h3{font-family:var(--font-serif);font-size:24px;font-weight:700;line-height:1.2;letter-spacing:-.01em;color:var(--ink);margin-bottom:12px}
+.card p{font-size:14px;color:var(--muted);line-height:1.65}
+.card .card-foot{margin-top:20px;padding-top:18px;border-top:1px solid var(--border-w);font-size:12px;color:var(--subtle)}
+
+/* MAPA */
+.mapa-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-top:30px;border:1px solid var(--border-w)}
+.mapa-col{padding:30px 28px;border-right:1px solid var(--border-w);background:var(--bg);position:relative}
+.mapa-col:last-child{border-right:none}
+.mapa-col.now{background:var(--bone-soft);border-bottom:4px solid var(--brass)}
+.mapa-col.next{background:var(--bg);border-bottom:4px solid var(--bone-deep)}
+.mapa-col.future{background:var(--bg);border-bottom:4px solid var(--ink)}
+.mapa-tag{font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:10px}
+.mapa-col.future .mapa-tag{color:var(--ink)}
+.mapa-col h3{font-family:var(--font-serif);font-size:24px;color:var(--ink);margin-bottom:14px;letter-spacing:-.01em}
+.mapa-col ul{list-style:none;padding:0;margin:0}
+.mapa-col li{padding:8px 0;border-bottom:1px solid var(--border-w);font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.mapa-col li:last-child{border:none}
+.mapa-col li strong{color:var(--ink);font-weight:700}
+.mapa-foot{margin-top:18px;padding-top:14px;border-top:2px solid var(--ink);display:flex;justify-content:space-between;align-items:baseline}
+.mapa-foot .k{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.mapa-foot .v{font-family:var(--font-serif);font-size:22px;font-weight:700;color:var(--brass)}
+
+/* TABLE */
+.table-wrap{overflow-x:auto;margin:24px 0;box-shadow:var(--shadow-sm);background:var(--bg);border:1px solid var(--border-w)}
+table{width:100%;border-collapse:collapse}
+table thead{background:var(--ink);color:var(--bone)}
+table th{padding:18px 22px;text-align:left;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--brass)}
+table td{padding:16px 22px;font-size:14px;color:var(--text);border-bottom:1px solid var(--border-w);vertical-align:top}
+table tr:last-child td{border-bottom:none}
+table tbody tr:hover{background:var(--bg-warm)}
+table tr.total td{background:var(--bone);font-weight:800;color:var(--ink);font-size:15px}
+.num{font-variant-numeric:tabular-nums;text-align:right;font-feature-settings:'tnum'}
+.pos{color:var(--mat);font-weight:700}
+.neg{color:var(--blood);font-weight:700}
+.tag{display:inline-block;padding:3px 10px;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.tag.active{background:var(--mat-light);color:var(--mat)}
+.tag.scholarship{background:#f9eccd;color:#8a6a1c}
+.tag.future{background:#e3e8eb;color:#4a5a6a}
+
+/* ACADEMIA · alumnos breakdown */
+.alumni-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:30px;border:1px solid var(--border-w)}
+.alumni-cell{padding:32px 28px;border-right:1px solid var(--border-w);text-align:center;background:var(--bg)}
+.alumni-cell:last-child{border-right:none}
+.alumni-cell.pagantes{background:var(--bone-soft)}
+.alumni-cell .a-num{font-family:var(--font-serif);font-size:64px;font-weight:700;color:var(--brass);line-height:1;letter-spacing:-.03em;margin-bottom:10px}
+.alumni-cell .a-lbl{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.alumni-cell .a-desc{font-size:13px;color:var(--muted);line-height:1.6;max-width:240px;margin:0 auto}
+.alumni-cell .a-amt{margin-top:14px;padding-top:14px;border-top:1px solid var(--border-w);font-family:var(--font-serif);font-size:24px;font-weight:700;color:var(--ink)}
+.alumni-cell .a-amt .currency{color:var(--brass);font-size:14px;vertical-align:top}
+
+/* HORARIOS · dinámico desktop · scroll mobile */
+.horarios-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:32px}
+.horario-tier{border:1px solid var(--border-w);padding:24px 20px;background:var(--bg);position:relative;transition:border-color .2s,transform .2s}
+.horario-tier.current{border-color:var(--brass);border-width:2px;background:var(--bone-soft)}
+.horario-tier.current::before{content:'AHORA';position:absolute;top:-10px;left:18px;background:var(--brass);color:var(--ink);font-size:9px;font-weight:800;letter-spacing:.20em;padding:3px 10px}
+.horario-tier .tier-h{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.horario-tier h4{font-family:var(--font-serif);font-size:36px;color:var(--ink);margin-bottom:6px}
+.horario-tier .tier-cap{font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.5}
+.horario-tier .tier-amt{font-family:var(--font-serif);font-size:28px;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+.horario-tier .tier-amt .currency{color:var(--brass);font-size:16px}
+.horario-tier .tier-sub{font-size:11px;color:var(--subtle);letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
+
+/* LÍNEAS DE INGRESO */
+.lineas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:30px}
+.linea{background:var(--bg);border:1px solid var(--border-w);padding:24px 22px;position:relative;transition:border-color .2s,transform .2s}
+.linea:hover{border-color:var(--brass);transform:translateY(-2px)}
+.linea.core{border-left:4px solid var(--brass)}
+.linea.crece{border-left:4px solid var(--blood)}
+.linea.futuro{border-left:4px solid rgba(13,13,13,.20)}
+.linea .l-tier{font-size:9px;font-weight:800;letter-spacing:.20em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.linea.core .l-tier{color:var(--brass)}
+.linea.crece .l-tier{color:var(--blood)}
+.linea .l-icon{font-size:22px;line-height:1;margin-bottom:10px;display:block}
+.linea h4{font-family:var(--font-serif);font-size:17px;font-weight:700;color:var(--ink);margin-bottom:8px;letter-spacing:-.005em;line-height:1.2}
+.linea p{font-size:12.5px;color:var(--muted);line-height:1.55;margin-bottom:12px}
+.linea .l-rev{font-size:11px;color:var(--ink);padding-top:10px;border-top:1px solid var(--border-w);display:flex;justify-content:space-between;align-items:baseline}
+.linea .l-rev .lbl{font-weight:700;letter-spacing:.04em;color:var(--muted);font-size:10px;text-transform:uppercase}
+.linea .l-rev .val{font-family:var(--font-serif);font-size:16px;font-weight:700;color:var(--brass)}
+
+/* PROJECTION 3Y */
+.projection{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:32px;border:1px solid var(--border-w)}
+.proj-col{padding:36px 28px;border-right:1px solid var(--border-w);background:var(--bg);position:relative}
+.proj-col:last-child{border-right:none}
+.proj-col.y2{background:var(--bone-soft)}
+.proj-col.y3{background:var(--bone);position:relative}
+.proj-col.y3::before{content:'';position:absolute;top:0;right:0;bottom:0;width:3px;background:var(--brass)}
+.proj-col .year-label{font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:6px}
+.proj-col h3{font-family:var(--font-serif);font-size:42px;font-weight:700;color:var(--ink);margin-bottom:24px;letter-spacing:-.02em;line-height:1}
+.proj-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border-w);font-size:13px}
+.proj-row:last-of-type{border-bottom:none}
+.proj-row .k{color:var(--muted);letter-spacing:.02em}
+.proj-row .v{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.proj-row.big{padding:16px 0;border-bottom-width:2px;border-bottom-color:var(--ink)}
+.proj-row.big .k{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.proj-row.big .v{font-family:var(--font-serif);font-size:22px;font-weight:700;color:var(--blood)}
+.proj-row.retiro .v{color:var(--mat);font-weight:800}
+.proj-row.fisco .v{color:var(--blood)}
+.proj-foot{margin-top:18px;padding-top:18px;border-top:2px solid var(--ink);font-size:12px;color:var(--muted);line-height:1.6}
+.proj-foot strong{color:var(--brass);font-weight:800;font-size:18px;display:block;margin-bottom:4px;font-family:var(--font-serif)}
+
+/* CASH FLOW */
+.cashflow-row{display:grid;grid-template-columns:120px 1fr 100px;gap:18px;align-items:center;padding:14px 0;border-bottom:1px solid var(--border-w)}
+.cashflow-row:last-child{border-bottom:none}
+.cashflow-row.header{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--ink)}
+.cashflow-month{font-size:12px;font-weight:700;color:var(--ink);letter-spacing:.04em;text-transform:uppercase}
+.cashflow-bar{height:14px;background:var(--bone);position:relative;overflow:hidden}
+.cashflow-bar-fill{height:100%;background:linear-gradient(90deg,var(--brass) 0%,var(--brass-bright) 100%);transition:width .8s}
+.cashflow-amount{font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink);text-align:right;font-size:14px}
+
+/* IVA FLOW */
+.iva-wrap{display:grid;grid-template-columns:1fr 56px 1fr 56px 1fr;gap:18px;align-items:stretch;margin-top:32px}
+.iva-box{background:var(--bg);border:1px solid var(--border-w);padding:30px 26px;position:relative}
+.iva-box.debito{border-top:4px solid var(--blood)}
+.iva-box.credito{border-top:4px solid var(--mat)}
+.iva-box.neto{background:var(--ink);color:var(--bone);border:none;text-align:center;display:flex;flex-direction:column;justify-content:center}
+.iva-box .iva-tag{font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--blood);margin-bottom:10px}
+.iva-box.credito .iva-tag{color:var(--mat)}
+.iva-box.neto .iva-tag{color:var(--brass)}
+.iva-box h3{font-family:var(--font-serif);font-size:24px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:-.01em}
+.iva-box.neto h3{color:var(--bone);font-size:28px}
+.iva-box .iva-sub{font-size:12px;color:var(--muted);margin-bottom:18px;line-height:1.5}
+.iva-box.neto .iva-sub{color:rgba(244,241,234,.65)}
+.iva-box .iva-val{font-family:var(--font-serif);font-size:34px;font-weight:700;color:var(--blood);letter-spacing:-.02em;margin:10px 0}
+.iva-box.credito .iva-val{color:var(--mat)}
+.iva-box.neto .iva-val{color:var(--brass);font-size:44px}
+.iva-box .iva-foot{font-size:11px;color:var(--muted);line-height:1.5}
+.iva-box.neto .iva-foot{color:rgba(244,241,234,.55)}
+.iva-arrow{display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-size:48px;font-weight:700;color:var(--brass);line-height:1}
+
+/* CAPITAL */
+.activos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:30px}
+.activo-card{background:var(--bg);border:1px solid var(--border-w);padding:24px 22px;transition:border-color .2s}
+.activo-card:hover{border-color:var(--brass)}
+.activo-card .num-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:var(--ink);color:var(--brass);font-weight:800;font-size:13px;margin-bottom:12px;font-family:var(--font-serif)}
+.activo-card h4{font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--ink);margin-bottom:10px}
+.activo-card ul{list-style:none;padding:0;margin:8px 0 0}
+.activo-card li{font-size:13px;color:var(--muted);padding:5px 0;border-bottom:1px solid var(--border-w);display:flex;justify-content:space-between;gap:8px}
+.activo-card li:last-child{border:none}
+.activo-card li .amt{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.activo-card .total{margin-top:14px;padding-top:14px;border-top:2px solid var(--ink);display:flex;justify-content:space-between;align-items:baseline}
+.activo-card .total .lbl{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.activo-card .total .val{font-family:var(--font-serif);font-size:22px;font-weight:700;color:var(--brass)}
+
+/* PREGUNTA CENTRAL + RETIROS LADO A LADO */
+.compare-wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:32px}
+.compare-col{padding:36px 32px;background:var(--bg);border:1px solid var(--border-w);position:relative}
+.compare-col.solo{border-top:6px solid var(--mat);background:var(--bone-soft)}
+.compare-col.duo{border-top:6px solid var(--blood)}
+.compare-tag{display:inline-block;padding:5px 14px;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px}
+.compare-col.solo .compare-tag{background:var(--mat);color:var(--bone)}
+.compare-col.duo .compare-tag{background:var(--blood);color:var(--bone)}
+.compare-col h3{font-family:var(--font-serif);font-size:30px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:-.02em;line-height:1.1}
+.compare-col .c-sub{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.55}
+.compare-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border-w);font-size:13px}
+.compare-row:last-child{border-bottom:none}
+.compare-row .k{color:var(--muted)}
+.compare-row .v{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.compare-row.year{padding:14px 0 6px;border-bottom:1px solid var(--ink);margin-top:8px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.compare-row.year .v{color:var(--brass)}
+.compare-row.total{padding:18px 0 0;border-bottom:none;border-top:2px solid var(--ink);margin-top:14px}
+.compare-row.total .k{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.compare-row.total .v{font-family:var(--font-serif);font-size:24px;color:var(--blood)}
+.compare-col.solo .compare-row.total .v{color:var(--mat)}
+
+.callout{background:linear-gradient(135deg,var(--ink) 0%,var(--ink-soft) 100%);color:var(--bone);padding:50px 60px;margin:40px 0;position:relative;overflow:hidden;border-left:6px solid var(--blood)}
+.callout::before{content:'?';position:absolute;top:-30px;right:-10px;font-family:var(--font-serif);font-size:280px;font-weight:700;color:var(--blood);opacity:.12;line-height:1}
+.callout .label{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:16px}
+.callout h3{font-family:var(--font-serif);font-size:38px;font-weight:700;line-height:1.15;letter-spacing:-.02em;color:var(--bone);margin-bottom:20px;max-width:760px}
+.callout p{font-size:15px;color:rgba(244,241,234,.78);max-width:680px;line-height:1.7;margin-bottom:14px}
+.callout .punch{display:inline-block;margin-top:18px;padding:10px 20px;border:1px solid var(--brass);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brass)}
+
+/* GASTOS GRID */
+.gastos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:30px}
+.gasto-card{background:var(--bg);border:1px solid var(--border-w);padding:22px 22px 18px}
+.gasto-card .num-icon{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--bone);color:var(--brass);font-weight:800;font-size:13px;margin-bottom:10px;font-family:var(--font-serif)}
+.gasto-card h4{font-family:var(--font-serif);font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.gasto-card ul{list-style:none;padding:0;margin:8px 0 0}
+.gasto-card li{font-size:13px;color:var(--muted);padding:5px 0;border-bottom:1px solid var(--border-w);display:flex;align-items:center;gap:8px}
+.gasto-card li:last-child{border:none}
+.gasto-card li::before{content:'•';color:var(--brass);font-weight:800}
+.gasto-card .total{margin-top:10px;font-size:11px;font-weight:700;color:var(--brass);letter-spacing:.05em;text-transform:uppercase}
+
+/* FONDOS PÚBLICOS */
+.fondos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:30px}
+.fondo{background:var(--bg);border:1px solid var(--border-w);padding:26px 24px;position:relative;border-top:4px solid var(--brass)}
+.fondo.urgente{border-top-color:var(--blood)}
+.fondo .f-stamp{font-size:10px;font-weight:800;letter-spacing:.20em;text-transform:uppercase;color:var(--brass);margin-bottom:8px}
+.fondo.urgente .f-stamp{color:var(--blood)}
+.fondo h4{font-family:var(--font-serif);font-size:20px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.fondo .f-sub{font-size:12px;color:var(--muted);margin-bottom:16px;letter-spacing:.04em}
+.fondo .f-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px;background:var(--bone-soft);margin-bottom:14px}
+.fondo .f-stat .fs-k{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.fondo .f-stat .fs-v{font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--ink);margin-top:2px}
+.fondo p{font-size:13px;color:var(--muted);line-height:1.55}
+
+/* RADAR */
+.radar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:30px}
+.radar-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);padding:26px 24px;border-top:3px solid var(--brass)}
+.radar-card h4{font-family:var(--font-serif);font-size:20px;font-weight:700;color:var(--bone);margin-bottom:8px;letter-spacing:-.01em}
+.radar-card .r-trend{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-bottom:14px}
+.radar-card p{font-size:13px;color:rgba(244,241,234,.70);line-height:1.6;margin-bottom:14px}
+.radar-card .r-source{font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:rgba(244,241,234,.40);padding-top:12px;border-top:1px solid rgba(255,255,255,.10)}
+
+/* PASOS LEGAL */
+.legal-list{list-style:none;padding:0;margin:30px 0 0;counter-reset:l}
+.legal-list li{counter-increment:l;background:var(--bg);border:1px solid var(--border-w);padding:24px 28px 24px 80px;margin-bottom:10px;position:relative;transition:border-color .2s,transform .2s}
+.legal-list li:hover{border-color:var(--brass);transform:translateX(4px)}
+.legal-list li::before{content:counter(l,decimal-leading-zero);position:absolute;left:24px;top:24px;font-family:var(--font-serif);font-size:24px;font-weight:700;color:var(--brass);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.legal-list .l-title{font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.3}
+.legal-list .l-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:8px}
+.legal-list .l-meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
+.legal-list .l-meta span{font-size:10px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:var(--muted)}
+.legal-list .l-meta strong{color:var(--ink);font-weight:800}
+.legal-list .l-status{position:absolute;top:24px;right:24px;font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:4px 10px}
+.l-status.urgente{background:var(--blood);color:var(--bone)}
+.l-status.proxima{background:var(--brass);color:var(--ink)}
+.l-status.futuro{background:var(--bone-deep);color:var(--ink)}
+
+/* DECISIONES */
+.next-list{list-style:none;padding:0;margin-top:24px}
+.next-list li{display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-bottom:1px solid rgba(244,241,234,.10);font-size:15px;color:var(--bone)}
+.next-list li:last-child{border:none}
+.next-list .check{flex-shrink:0;width:30px;height:30px;border:2px solid var(--brass);display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-size:13px;font-weight:700;color:var(--brass)}
+.next-list strong{color:var(--brass-bright);font-weight:700}
+
+footer{background:#000;color:var(--bone);padding:50px 24px;text-align:center}
+footer .f-logo{display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;font-family:var(--font-serif);font-size:18px;letter-spacing:.30em;text-transform:uppercase;color:var(--brass);font-weight:700}
+footer p{font-size:11px;letter-spacing:.18em;color:rgba(244,241,234,.55);text-transform:uppercase}
+footer .brass{color:var(--brass)}
+
+/* MEDIUM ≤1024px · arreglar grids estrechos antes de mobile */
+@media (max-width:1024px){
+  .iva-wrap{grid-template-columns:1fr;gap:14px}
+  .iva-arrow{transform:rotate(90deg);font-size:36px;padding:8px 0}
+  .compare-wrap{grid-template-columns:1fr}
+  .horarios-grid{grid-template-columns:repeat(2,1fr)}
+  .alumni-grid{grid-template-columns:1fr}
+  .alumni-cell{border-right:none;border-bottom:1px solid var(--border-w)}
+  .alumni-cell:last-child{border-bottom:none}
+}
+
+/* HORIZONTAL SCROLL SNAP · cards deslizan en mobile · grid dinámico en desktop */
+@media (max-width:768px){
+  .lineas-grid,.gastos-grid,.fondos-grid,.radar-grid,.activos-grid,.horarios-grid,.cards{
+    display:flex;
+    overflow-x:auto;
+    overflow-y:visible;
+    scroll-snap-type:x mandatory;
+    gap:12px;
+    margin-left:-18px;
+    margin-right:-18px;
+    padding:8px 18px 28px;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    grid-template-columns:none;
+    scroll-padding-left:18px;
+  }
+  .lineas-grid::-webkit-scrollbar,
+  .gastos-grid::-webkit-scrollbar,
+  .fondos-grid::-webkit-scrollbar,
+  .radar-grid::-webkit-scrollbar,
+  .activos-grid::-webkit-scrollbar,
+  .horarios-grid::-webkit-scrollbar,
+  .cards::-webkit-scrollbar{display:none}
+  .lineas-grid > *,
+  .gastos-grid > *,
+  .fondos-grid > *,
+  .radar-grid > *,
+  .activos-grid > *,
+  .horarios-grid > *,
+  .cards > *{
+    flex:0 0 82%;
+    max-width:320px;
+    min-width:260px;
+    scroll-snap-align:start;
+  }
+  /* Fade en bordes · señal visual de scroll horizontal disponible */
+  .lineas-grid,.gastos-grid,.fondos-grid,.radar-grid,.activos-grid,.horarios-grid,.cards{
+    -webkit-mask-image:linear-gradient(to right,transparent 0,#000 24px,#000 calc(100% - 40px),transparent 100%);
+    mask-image:linear-gradient(to right,transparent 0,#000 24px,#000 calc(100% - 40px),transparent 100%);
+  }
+  /* Dots indicador debajo de cada grid scroll */
+  .scroll-hint{
+    display:flex;justify-content:center;gap:6px;margin-top:-14px;margin-bottom:6px;
+  }
+  .scroll-hint span{
+    width:5px;height:5px;border-radius:50%;background:var(--brass);opacity:.30;
+  }
+  .scroll-hint span.active{opacity:1;width:18px;border-radius:3px}
+}
+@media (min-width:769px){.scroll-hint{display:none}}
+
+/* MOBILE-FIRST FLUID TYPOGRAPHY · clamp scale */
+.hero-title{font-size:clamp(2.4rem, 8.5vw, 5rem)}
+h2.title{font-size:clamp(1.75rem, 5.2vw, 3.25rem)}
+.hero-sub{font-size:clamp(.95rem, 2.4vw, 1.125rem)}
+p.lead{font-size:clamp(.95rem, 2vw, 1.0625rem)}
+.callout h3{font-size:clamp(1.5rem, 4.5vw, 2.4rem)}
+.proj-col h3{font-size:clamp(1.75rem, 5vw, 2.6rem)}
+.compare-col h3{font-size:clamp(1.6rem, 4.5vw, 1.875rem)}
+.alumni-cell .a-num{font-size:clamp(2.5rem, 9vw, 4rem)}
+
+/* TABLET ≤900px */
+@media (max-width:900px){
+  main{padding-top:96px}
+  .hero{padding:50px 16px;min-height:min(560px,80vh)}
+  .hero-logo{width:104px;height:104px}
+  .hero-meta{flex-direction:column;gap:8px;padding:14px 20px}
+  .numbers-band .container{grid-template-columns:repeat(2,1fr);gap:20px 12px}
+  .number-cell{border-right:none;border-bottom:1px solid rgba(176,141,76,.2);padding:0 0 18px}
+  .number-cell:nth-child(odd){border-right:1px solid rgba(176,141,76,.2)}
+  .number-cell:nth-last-child(-n+2){padding-bottom:0;border-bottom:none}
+  .horarios-grid{grid-template-columns:repeat(2,1fr)}
+  .projection,.mapa-grid,.compare-wrap,.iva-wrap{grid-template-columns:1fr}
+  .proj-col,.mapa-col{border-right:none;border-bottom:1px solid var(--border-w)}
+  .iva-arrow{transform:rotate(90deg);font-size:32px;padding:8px 0}
+  .alumni-grid{grid-template-columns:1fr}
+  .alumni-cell{border-right:none;border-bottom:1px solid var(--border-w);padding:24px 20px}
+  .alumni-cell:last-child{border-bottom:none}
+  .callout{padding:30px 24px}
+  .lineas-grid{grid-template-columns:1fr}
+  .gastos-grid,.fondos-grid,.radar-grid{grid-template-columns:1fr}
+  .activos-grid{grid-template-columns:1fr}
+  .sub-nav{height:46px}
+  .sub-brand{display:none}
+  .sub-links{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:4px 0}
+  .sub-links::-webkit-scrollbar{display:none}
+  .nav-name{font-size:11px;letter-spacing:.14em}
+  .cashflow-row{grid-template-columns:70px 1fr 72px;gap:8px;padding:11px 0}
+  .cashflow-amount{font-size:12px}
+  .cashflow-month{font-size:10px}
+  section.block{padding:56px 0}
+  .container{padding:0 18px}
+  .legal-list li{padding:20px 22px 20px 64px}
+  .legal-list li::before{left:18px;top:20px;font-size:20px}
+  .legal-list .l-status{position:static;display:inline-block;margin-bottom:10px}
+}
+
+/* MOBILE ≤480px */
+@media (max-width:480px){
+  .hero{padding:38px 14px;min-height:min(520px,72vh)}
+  .hero-logo{width:88px;height:88px}
+  .hero-logo-wrap{margin-bottom:24px}
+  .hero-meta{gap:6px;padding:12px 16px;font-size:11px}
+  .numbers-band{padding:36px 0}
+  .numbers-band .container{grid-template-columns:1fr;gap:18px}
+  .number-cell{border-right:none !important;border-bottom:1px solid rgba(176,141,76,.20);padding:0 0 16px}
+  .number-cell:last-child{padding-bottom:0;border-bottom:none}
+  .horarios-grid{grid-template-columns:1fr;gap:12px}
+  .nav-sub{display:none}
+  .nav-global{padding:0 14px}
+  .nav-meeting{font-size:9px;padding:6px 10px;letter-spacing:.10em}
+  .compare-col{padding:24px 20px}
+  .proj-col,.mapa-col{padding:26px 22px}
+  .activo-card,.gasto-card,.fondo,.radar-card,.linea{padding:20px 18px}
+  .iva-box{padding:24px 20px}
+  .iva-box .iva-val{font-size:28px}
+  .iva-box.neto .iva-val{font-size:34px}
+  .next-list li{padding:14px 0;font-size:13.5px;gap:12px}
+  .next-list .check{width:26px;height:26px;font-size:12px}
+}
+
+/* TOUCH-FRIENDLY · disable hover transforms on touch */
+@media (hover:none){
+  .card:hover,.linea:hover,.activo-card:hover,.legal-list li:hover{transform:none}
+}
+
+/* ════════════════════════════════════════════════════
+   SIMULADOR INTERACTIVO · panel flotante de inputs
+   Claudio puede editar variables y todo se recalcula
+   ════════════════════════════════════════════════════ */
+
+/* TRIGGER botón flotante */
+.sim-fab{
+  position:fixed;bottom:24px;right:24px;z-index:300;
+  width:62px;height:62px;border-radius:50%;
+  background:var(--brass);color:var(--ink);
+  border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 28px rgba(176,141,76,.45),0 2px 8px rgba(13,13,13,.20);
+  transition:transform .25s,box-shadow .25s;
+  font-size:24px;
+}
+.sim-fab:hover{transform:scale(1.08);box-shadow:0 12px 36px rgba(176,141,76,.60)}
+.sim-fab.open{background:var(--blood);color:var(--bone)}
+.sim-fab .pulse{
+  position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--brass);
+  animation:fabPulse 2.4s infinite;
+}
+@keyframes fabPulse{
+  0%{transform:scale(1);opacity:.7}
+  100%{transform:scale(1.5);opacity:0}
+}
+.sim-fab .lbl{
+  position:absolute;right:74px;background:var(--ink);color:var(--bone);
+  font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  padding:8px 14px;border-radius:6px;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .2s;
+}
+.sim-fab:hover .lbl{opacity:1}
+
+/* PANEL */
+.sim-panel{
+  position:fixed;top:0;right:0;bottom:0;width:min(420px,92vw);z-index:299;
+  background:var(--ink);color:var(--bone);
+  box-shadow:-20px 0 60px rgba(13,13,13,.40);
+  transform:translateX(110%);transition:transform .35s cubic-bezier(.22,1,.36,1);
+  display:flex;flex-direction:column;
+  border-left:1px solid rgba(176,141,76,.30);
+}
+.sim-panel.open{transform:translateX(0)}
+.sim-panel .sp-head{
+  padding:24px 24px 18px;border-bottom:1px solid rgba(176,141,76,.20);
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  background:linear-gradient(180deg,rgba(176,141,76,.08) 0%,transparent 100%);
+}
+.sim-panel .sp-title{font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:4px}
+.sim-panel .sp-name{font-size:22px;font-weight:800;color:var(--bone);letter-spacing:-.01em;line-height:1.1}
+.sim-panel .sp-name em{color:var(--brass);font-style:normal;font-weight:400}
+.sim-panel .sp-close{
+  width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);
+  border:1px solid rgba(176,141,76,.30);color:var(--bone);cursor:pointer;
+  font-size:18px;display:flex;align-items:center;justify-content:center;
+  transition:background .2s;flex-shrink:0;
+}
+.sim-panel .sp-close:hover{background:var(--blood);border-color:var(--blood)}
+.sim-panel .sp-body{
+  flex:1;overflow-y:auto;padding:18px 24px 24px;
+  scrollbar-width:thin;scrollbar-color:var(--brass) transparent;
+}
+.sim-panel .sp-body::-webkit-scrollbar{width:6px}
+.sim-panel .sp-body::-webkit-scrollbar-thumb{background:var(--brass);border-radius:99px}
+.sim-panel .sp-group{margin-bottom:24px}
+.sim-panel .sp-group-title{
+  font-size:10px;font-weight:800;letter-spacing:.20em;text-transform:uppercase;
+  color:var(--brass);margin-bottom:10px;padding-bottom:8px;
+  border-bottom:1px solid rgba(176,141,76,.20);display:flex;align-items:center;gap:8px;
+}
+.sim-panel .sp-group-title::before{content:'';width:14px;height:1px;background:var(--brass)}
+.sim-panel .sp-field{margin-bottom:12px}
+.sim-panel .sp-field-label{
+  font-size:11px;color:rgba(244,241,234,.65);
+  margin-bottom:5px;display:flex;justify-content:space-between;align-items:baseline;
+}
+.sim-panel .sp-field-label .sp-hint{font-size:10px;color:var(--brass);opacity:.7;letter-spacing:.05em}
+.sim-panel .sp-input{
+  width:100%;background:rgba(255,255,255,.04);
+  border:1px solid rgba(176,141,76,.30);border-radius:6px;
+  padding:10px 14px;color:var(--bone);font-family:var(--font);
+  font-size:15px;font-weight:700;letter-spacing:.01em;
+  transition:border-color .15s,background .15s;
+  font-variant-numeric:tabular-nums;
+}
+.sim-panel .sp-input:focus{outline:none;border-color:var(--brass);background:rgba(176,141,76,.10)}
+.sim-panel .sp-input[type="range"]{padding:0;height:6px;background:rgba(255,255,255,.10);border:none;-webkit-appearance:none;appearance:none}
+.sim-panel .sp-input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--brass);cursor:pointer;border:2px solid var(--bone)}
+.sim-panel .sp-range-wrap{display:grid;grid-template-columns:1fr 60px;gap:10px;align-items:center}
+.sim-panel .sp-range-val{font-family:var(--font);font-size:14px;font-weight:800;color:var(--brass);text-align:right;font-variant-numeric:tabular-nums}
+.sim-panel .sp-actions{
+  display:flex;gap:8px;padding-top:18px;border-top:1px solid rgba(176,141,76,.20);
+  margin-top:14px;
+}
+.sim-panel .sp-btn{
+  flex:1;padding:10px 14px;font-size:10px;font-weight:800;letter-spacing:.16em;
+  text-transform:uppercase;cursor:pointer;border-radius:6px;
+  background:transparent;border:1px solid rgba(176,141,76,.40);color:var(--bone);
+  transition:all .15s;font-family:var(--font);
+}
+.sim-panel .sp-btn:hover{background:rgba(176,141,76,.15);border-color:var(--brass)}
+.sim-panel .sp-btn.primary{background:var(--brass);color:var(--ink);border-color:var(--brass)}
+.sim-panel .sp-btn.primary:hover{background:var(--brass-bright)}
+.sim-panel .sp-btn.danger{border-color:rgba(122,31,31,.50);color:var(--blood-soft)}
+.sim-panel .sp-btn.danger:hover{background:rgba(122,31,31,.20);border-color:var(--blood)}
+
+/* OUTPUTS dinámicos · highlight cuando cambian */
+[data-out]{transition:background .4s}
+[data-out].flash{background:rgba(176,141,76,.18);border-radius:3px;padding:0 4px;margin:0 -4px}
+
+/* SIM badge en hero */
+.sim-live-badge{
+  position:fixed;top:108px;right:24px;z-index:150;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 12px;background:rgba(13,13,13,.85);border:1px solid var(--brass);
+  border-radius:99px;font-size:10px;font-weight:800;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--brass);
+  opacity:0;transform:translateX(20px);transition:opacity .3s,transform .3s;
+  backdrop-filter:blur(8px);pointer-events:none;
+}
+.sim-live-badge.show{opacity:1;transform:translateX(0)}
+.sim-live-badge .live-dot{width:6px;height:6px;border-radius:50%;background:var(--brass);animation:fabPulse 1.8s infinite;position:relative}
+
+@media (max-width:480px){
+  .sim-fab{bottom:18px;right:18px;width:54px;height:54px;font-size:20px}
+  .sim-fab .lbl{display:none}
+  .sim-panel{width:100vw}
+  .sim-live-badge{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav-global">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-mark">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="30" fill="none" stroke="#b08d4c" stroke-width="2"/>
+          <text x="32" y="38" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-weight="700" font-size="22" fill="#f4f1ea">L</text>
+        </svg>
+      </div>
+      <div class="nav-name">Lempar</div>
+      <div class="nav-sep">·</div>
+      <div class="nav-sub">Grappling Arts · Claudio González</div>
+    </div>
+    <div class="nav-meeting">Plan 2026</div>
+  </div>
+</nav>
+
+<div class="sub-nav">
+  <div class="sub-inner">
+    <div class="sub-brand">Plan 3 años · Inversión & ruta</div>
+    <ul class="sub-links">
+      <li><a href="#mapa" class="mapa">🗺️ Mapa</a></li>
+      <li><a href="#contexto">Contexto</a></li>
+      <li><a href="#academia">Academia</a></li>
+      <li><a href="#lineas">Líneas ingreso</a></li>
+      <li><a href="#capital">Capital</a></li>
+      <li><a href="#proyeccion">Proyección</a></li>
+      <li><a href="#iva">IVA</a></li>
+      <li><a href="#pregunta">Pregunta</a></li>
+      <li><a href="#retiros">Retiros</a></li>
+      <li><a href="#gastos">Gastos</a></li>
+      <li><a href="#fondos">Fondos</a></li>
+      <li><a href="#radar">RADAR</a></li>
+      <li><a href="#pasos">Pasos</a></li>
+      <li><a href="#decisiones">Decisiones</a></li>
+    </ul>
+  </div>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <video class="hero-vid" autoplay loop muted playsinline preload="metadata" poster="">
+    <source src="assets/lempar-hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-logo-wrap">
+      <svg class="hero-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="brassG" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#c9a463"/>
+            <stop offset="100%" stop-color="#b08d4c"/>
+          </linearGradient>
+        </defs>
+        <!-- escudo exterior -->
+        <circle cx="100" cy="100" r="92" fill="none" stroke="url(#brassG)" stroke-width="3"/>
+        <circle cx="100" cy="100" r="84" fill="none" stroke="#b08d4c" stroke-width="1" stroke-dasharray="2 4" opacity="0.5"/>
+        <!-- marcas martial arts arriba y abajo -->
+        <path d="M 100 22 L 92 36 L 100 30 L 108 36 Z" fill="#b08d4c"/>
+        <path d="M 100 178 L 92 164 L 100 170 L 108 164 Z" fill="#b08d4c"/>
+        <!-- letras LP entrelazadas -->
+        <text x="100" y="118" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-weight="700" font-size="78" fill="#f4f1ea" letter-spacing="-3">LP</text>
+        <!-- texto inferior -->
+        <text x="100" y="145" text-anchor="middle" font-family="-apple-system, sans-serif" font-weight="700" font-size="9" fill="#b08d4c" letter-spacing="3">LEMPAR</text>
+        <text x="100" y="156" text-anchor="middle" font-family="-apple-system, sans-serif" font-weight="500" font-size="6.5" fill="#b08d4c" letter-spacing="2" opacity="0.7">GRAPPLING ARTS</text>
+        <!-- líneas decorativas izquierda y derecha -->
+        <line x1="40" y1="100" x2="55" y2="100" stroke="#b08d4c" stroke-width="2"/>
+        <line x1="145" y1="100" x2="160" y2="100" stroke="#b08d4c" stroke-width="2"/>
+      </svg>
+    </div>
+    <span class="hero-eyebrow">Plan de inversión y proyección · 2026</span>
+    <h1 class="hero-title">De <em>escuela</em><br>a <em>marca</em>.</h1>
+    <p class="hero-sub">
+      Estructura financiera real, flujo de caja IVA, escalabilidad por horarios, nuevas
+      líneas de ingreso y análisis honesto del deal con inversionista vs continuar solo.
+    </p>
+    <div class="hero-meta">
+      <span>Propietario <strong>Claudio González</strong></span>
+      <span>Hoy <strong><span data-out="pagantes">20</span> pagantes · <span data-out="becados">28</span> becados</strong></span>
+      <span>Estado <strong>Operación informal</strong></span>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS BAND -->
+<section class="numbers-band">
+  <div class="container">
+    <div class="number-cell"><div class="nb-val" data-out="universo">48</div><div class="nb-lbl">Universo alumnos</div></div>
+    <div class="number-cell"><div class="nb-val" data-out="pagantes">20</div><div class="nb-lbl">Pagantes activos</div></div>
+    <div class="number-cell"><div class="nb-val"><span class="currency">$</span><span data-out="ingreso-mes-k">800K</span></div><div class="nb-lbl">Ingreso real / mes</div></div>
+    <div class="number-cell"><div class="nb-val"><span data-out="horarios-actuales">1</span> → 4</div><div class="nb-lbl">Horarios escalables</div></div>
+    <div class="number-cell"><div class="nb-val">5+</div><div class="nb-lbl">Líneas de ingreso</div></div>
+  </div>
+</section>
+
+<!-- 🗺️ MAPA -->
+<section class="block bone" id="mapa">
+  <div class="container">
+    <span class="eyebrow">🗺️ Mapa LEMPAR</span>
+    <h2 class="title">Hoy · 12 meses · <em>3 años</em>.</h2>
+    <p class="lead">
+      Vista única del proyecto. Dónde está LEMPAR hoy · qué construye en 12 meses ·
+      en qué se convierte a 3 años. Una página · cero ambigüedad.
+    </p>
+
+    <div class="mapa-grid">
+      <div class="mapa-col now">
+        <div class="mapa-tag">Hoy · Mayo 2026</div>
+        <h3>Escuela informal</h3>
+        <ul>
+          <li>Alumnos universo <strong data-out="universo">48</strong></li>
+          <li>Pagantes activos <strong data-out="pagantes">20</strong></li>
+          <li>Becados / rotación <strong data-out="becados">28</strong></li>
+          <li>Horarios activos <strong data-out="horarios-actuales">1</strong></li>
+          <li>Ingreso real / mes <strong>$<span data-out="ingreso-mes-k">800K</span></strong></li>
+          <li>SpA / SII <strong>No</strong></li>
+          <li>Marca registrada <strong>No</strong></li>
+          <li>Línea apparel <strong>No</strong></li>
+        </ul>
+        <div class="mapa-foot"><span class="k">Anual real</span><span class="v">$<span data-out="anual-real-m">9.6M</span></span></div>
+      </div>
+
+      <div class="mapa-col next">
+        <div class="mapa-tag">+ 12 meses · 2027</div>
+        <h3>SpA consolidada</h3>
+        <ul>
+          <li>Pagantes activos <strong>30-40</strong></li>
+          <li>Horarios activos <strong>2</strong></li>
+          <li>Apparel primer drop <strong>Sí</strong></li>
+          <li>Marca INAPI <strong>En proceso</strong></li>
+          <li>SpA + SII + cuenta <strong>Listo</strong></li>
+          <li>Contadora externa <strong>Sí</strong></li>
+          <li>Seminarios / clínicas <strong>2 al año</strong></li>
+          <li>Embajadores <strong>3-5</strong></li>
+        </ul>
+        <div class="mapa-foot"><span class="k">Anual proyectado</span><span class="v">$<span data-out="ventas-y2-m">14M</span></span></div>
+      </div>
+
+      <div class="mapa-col future">
+        <div class="mapa-tag">+ 3 años · 2028</div>
+        <h3>Marca + escuela escalada</h3>
+        <ul>
+          <li>Pagantes activos <strong>50-70</strong></li>
+          <li>Horarios activos <strong>3</strong></li>
+          <li>Apparel 4 drops / año <strong>Sí</strong></li>
+          <li>Marca registrada <strong>Sí</strong></li>
+          <li>Línea kids + femenino <strong>Sí</strong></li>
+          <li>Programa empresas <strong>Piloto</strong></li>
+          <li>Eventos competitivos <strong>2 al año</strong></li>
+          <li>2da sede evaluación <strong>Sí</strong></li>
+        </ul>
+        <div class="mapa-foot"><span class="k">Anual proyectado</span><span class="v">$<span data-out="ventas-y3-m">21M</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 CONTEXTO -->
+<section class="block" id="contexto">
+  <div class="container">
+    <span class="eyebrow">01 · Contexto</span>
+    <h2 class="title">Una escuela real · <em>en operación informal</em>.</h2>
+    <p class="lead">
+      LEMPAR Grappling Arts opera con base activa de alumnos pero sin estructura formal
+      legal ni tributaria. Hay marca, hay comunidad, hay clases con asistencia constante.
+      Falta convertir todo eso en una empresa real con SpA, IVA, marca registrada y
+      capacidad de capitalizarse.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-eyebrow">Identidad</div>
+        <h3>LEMPAR Grappling Arts</h3>
+        <p>Escuela de grappling y jiu-jitsu no-gi. Comunidad activa en Instagram (@lempar.grappling.arts) con foco técnico y cultura deportiva. Marca con identidad visual definida pero sin registrar.</p>
+        <div class="card-foot">Propietario · Claudio González<br>Modalidad · presencial + comunidad digital</div>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">Estado actual</div>
+        <h3>Operación informal</h3>
+        <p>Sin inicio de actividades en SII. Cobros directos sin factura · 20 alumnos pagan mensualidad de $40K · 28 están con beca o rotación. Activos personales del fundador. Ningún contrato vigente.</p>
+        <div class="card-foot">Sin SpA · sin cuenta empresa<br>Sin línea de productos activa</div>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">Plan 2026</div>
+        <h3>Formalizar + capitalizar</h3>
+        <p>Constituir SpA · iniciar actividades · registrar marca · evaluar deal con inversionista o postular Sercotec sin diluir · abrir 2do horario · lanzar primer drop de apparel propio.</p>
+        <div class="card-foot">Inicio actividades · 1 día<br>Cuenta corriente · 5-7 días bancario</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 ACADEMIA -->
+<section class="block cream" id="academia">
+  <div class="container">
+    <span class="eyebrow">02 · La Academia · el motor</span>
+    <h2 class="title">20 pagan · 28 no · <em>el techo está arriba</em>.</h2>
+    <p class="lead">
+      De los 48 alumnos en el universo, sólo 20 generan ingreso real. Los otros 28 están
+      becados, en rotación o intermitentes. El gran lever NO es subir precios ni vender
+      apparel · es <strong>convertir becados a pagantes</strong> y <strong>abrir más
+      horarios</strong>. Eso solo, sin cambiar nada más, duplica los ingresos.
+    </p>
+
+    <div class="alumni-grid">
+      <div class="alumni-cell pagantes">
+        <div class="a-num" data-out="pagantes">20</div>
+        <div class="a-lbl">Pagantes activos</div>
+        <div class="a-desc">Pagan mensualidad regular ~$<span data-out="ticket-k">40K</span>. Son la columna del ingreso actual.</div>
+        <div class="a-amt"><span class="currency">$</span><span data-out="ingreso-mes-full">800.000</span><span style="font-size:11px;color:var(--muted);letter-spacing:.10em;display:block;margin-top:4px">/mes ingreso real</span></div>
+      </div>
+      <div class="alumni-cell">
+        <div class="a-num" style="color:var(--blood)" data-out="becados">28</div>
+        <div class="a-lbl">Becados / rotación</div>
+        <div class="a-desc">Asisten pero sin pago regular (beca · plan amigo · prueba extendida). Oportunidad de conversión.</div>
+        <div class="a-amt"><span class="currency">$</span>0<span style="font-size:11px;color:var(--muted);letter-spacing:.10em;display:block;margin-top:4px">/mes hoy</span></div>
+      </div>
+      <div class="alumni-cell">
+        <div class="a-num" style="color:var(--mat)" data-out="universo">48</div>
+        <div class="a-lbl">Capacidad sala</div>
+        <div class="a-desc">El horario actual está al límite. Cualquier alumno nuevo requiere abrir 2do horario.</div>
+        <div class="a-amt"><span class="currency">$</span><span data-out="techo-mes-m">1.92M</span><span style="font-size:11px;color:var(--muted);letter-spacing:.10em;display:block;margin-top:4px">potencial si todos pagaran</span></div>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-serif);font-size:32px;font-weight:700;color:var(--ink);margin-top:60px;margin-bottom:8px;letter-spacing:-.02em">Escalabilidad por horarios</h3>
+    <p style="font-size:15px;color:var(--muted);margin-bottom:24px;max-width:780px">Cada horario nuevo replica el módulo: hasta 48 cupos · 20-30 pagantes potenciales · ~$1M/mes techo unitario. La inversión por horario adicional es marginal: instructor + bloque de sala.</p>
+
+    <div class="horarios-grid">
+      <div class="horario-tier current">
+        <div class="tier-h">1 horario</div>
+        <h4>$<span data-out="ing-1h-k">800K</span></h4>
+        <div class="tier-cap">Real hoy · <span data-out="pagantes">20</span> pagantes · ramp-up para llenar.</div>
+        <div class="tier-amt"><span class="currency">$</span><span data-out="anual-1h-m">9.6M</span></div>
+        <div class="tier-sub">Anual real</div>
+      </div>
+      <div class="horario-tier">
+        <div class="tier-h">2 horarios</div>
+        <h4>$<span data-out="ing-2h-m">1.6M</span></h4>
+        <div class="tier-cap">Duplicar Claudio o sumar instructor parcial.</div>
+        <div class="tier-amt"><span class="currency">$</span><span data-out="anual-2h-m">19.2M</span></div>
+        <div class="tier-sub">Anual potencial</div>
+      </div>
+      <div class="horario-tier">
+        <div class="tier-h">3 horarios</div>
+        <h4>$<span data-out="ing-3h-m">2.4M</span></h4>
+        <div class="tier-cap">Sala uso intensivo · kids + adulto.</div>
+        <div class="tier-amt"><span class="currency">$</span><span data-out="anual-3h-m">28.8M</span></div>
+        <div class="tier-sub">Anual potencial</div>
+      </div>
+      <div class="horario-tier">
+        <div class="tier-h">4 horarios</div>
+        <h4>$<span data-out="ing-4h-m">3.2M</span></h4>
+        <div class="tier-cap">Saturación · plataforma para 2da sede.</div>
+        <div class="tier-amt"><span class="currency">$</span><span data-out="anual-4h-m">38.4M</span></div>
+        <div class="tier-sub">Anual potencial</div>
+      </div>
+    </div>
+
+    <div style="margin-top:36px;padding:30px;background:var(--bg);border-left:4px solid var(--brass)">
+      <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:10px">Lectura clave</div>
+      <p style="font-size:15px;color:var(--ink);line-height:1.7;max-width:820px">
+        LEMPAR está operando al <strong>~40%</strong> de su capacidad de sala. Convertir 5 becados a pagantes hoy suma $200K/mes sin nada nuevo. Abrir 2do horario duplica el techo. <strong>El crecimiento Y1-Y2 NO depende de marca ni apparel</strong> · depende de llenar y replicar lo que ya funciona.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 LÍNEAS DE INGRESO -->
+<section class="block" id="lineas">
+  <div class="container">
+    <span class="eyebrow">03 · Líneas de ingreso</span>
+    <h2 class="title">No es solo <em>la mensualidad</em>.</h2>
+    <p class="lead">
+      LEMPAR puede generar ingreso desde 5 líneas paralelas. Hoy sólo vende mensualidad.
+      Cada línea adicional es margen incremental sin canibalizar la base existente. Estructura
+      por madurez: <strong style="color:var(--brass)">CORE</strong> (ya existe · escalar) ·
+      <strong style="color:var(--blood)">CRECE</strong> (lanzar Y1-Y2) ·
+      <strong style="color:rgba(13,13,13,.50)">FUTURO</strong> (validar Y2-Y3).
+    </p>
+
+    <div class="lineas-grid">
+
+      <div class="linea core">
+        <div class="l-tier">Core · existe hoy</div>
+        <div class="l-icon">🥋</div>
+        <h4>Mensualidad clases</h4>
+        <p>Clases regulares de grappling/BJJ. Tarifa mensual fija. Es el motor: 80% del ingreso Y1-Y2.</p>
+        <div class="l-rev"><span class="lbl">Y1</span><span class="val">$8-10M</span></div>
+      </div>
+
+      <div class="linea core">
+        <div class="l-tier">Core · expandir</div>
+        <div class="l-icon">⏰</div>
+        <h4>Horarios adicionales</h4>
+        <p>Cada horario nuevo replica el módulo de 20-30 pagantes. Lever de crecimiento más predecible del negocio.</p>
+        <div class="l-rev"><span class="lbl">Y2 +1 horario</span><span class="val">+$6-8M</span></div>
+      </div>
+
+      <div class="linea crece">
+        <div class="l-tier">Crece · lanzar Y1</div>
+        <div class="l-icon">👕</div>
+        <h4>Apparel propio</h4>
+        <p>Drops trimestrales 30-80 prendas: rashguard · spats · hoodies. Margen 40-55%. Ticket $25-65K.</p>
+        <div class="l-rev"><span class="lbl">Y1 piloto</span><span class="val">$1.5-2.5M</span></div>
+      </div>
+
+      <div class="linea crece">
+        <div class="l-tier">Crece · lanzar Y1</div>
+        <div class="l-icon">🎓</div>
+        <h4>Seminarios y clínicas</h4>
+        <p>Workshops mensuales · clínicas con invitados · 4h sábado. 8-12 cupos · ticket $30-50K. Brand + ingreso.</p>
+        <div class="l-rev"><span class="lbl">Y1 piloto</span><span class="val">$800K-1.4M</span></div>
+      </div>
+
+      <div class="linea crece">
+        <div class="l-tier">Crece · lanzar Y1</div>
+        <div class="l-icon">⭐</div>
+        <h4>Membresía anual</h4>
+        <p>Pack 12 meses con descuento 15-20%: $400K vs $480K (12 × $40K). Locks alumnos · cash adelantado.</p>
+        <div class="l-rev"><span class="lbl">Y1 10 alumnos</span><span class="val">$4M cash</span></div>
+      </div>
+
+      <div class="linea futuro">
+        <div class="l-tier">Futuro · Y2</div>
+        <div class="l-icon">👧</div>
+        <h4>Programa Kids</h4>
+        <p>Clases infantiles 6-12 años · grappling adaptado. Horario tarde fines de semana. Ticket $35-45K/mes · familias.</p>
+        <div class="l-rev"><span class="lbl">Y2 20 niños</span><span class="val">$8M anual</span></div>
+      </div>
+
+      <div class="linea futuro">
+        <div class="l-tier">Futuro · Y2</div>
+        <div class="l-icon">💪</div>
+        <h4>Programa femenino</h4>
+        <p>Horario dedicado solo mujeres · grappling + defensa personal. Mercado en alza. Ticket regular o mensual.</p>
+        <div class="l-rev"><span class="lbl">Y2 grupo</span><span class="val">$3-5M anual</span></div>
+      </div>
+
+      <div class="linea futuro">
+        <div class="l-tier">Futuro · Y2</div>
+        <div class="l-icon">🏢</div>
+        <h4>Defensa corporativa</h4>
+        <p>Programas para empresas: 4-8 sesiones · grupos 10-15 personas. Ticket por programa $1-3M. B2B.</p>
+        <div class="l-rev"><span class="lbl">Y2-Y3</span><span class="val">$2-6M anual</span></div>
+      </div>
+
+      <div class="linea futuro">
+        <div class="l-tier">Futuro · Y3</div>
+        <div class="l-icon">🏆</div>
+        <h4>Eventos competitivos</h4>
+        <p>Torneos abiertos · inscripción + sponsors + apparel · ticket espectador. 2 eventos anuales.</p>
+        <div class="l-rev"><span class="lbl">Y3 / evento</span><span class="val">$1.5-3M</span></div>
+      </div>
+
+      <div class="linea futuro">
+        <div class="l-tier">Futuro · Y3</div>
+        <div class="l-icon">👨‍🏫</div>
+        <h4>Clases privadas 1:1</h4>
+        <p>Sesiones individuales · técnica avanzada · competidores. Ticket $40-80K/hora. Pocas horas alto margen.</p>
+        <div class="l-rev"><span class="lbl">Y3 8 clases/mes</span><span class="val">$4-7M anual</span></div>
+      </div>
+
+      <div class="linea futuro">
+        <div class="l-tier">Futuro · Y3</div>
+        <div class="l-icon">🌴</div>
+        <h4>Camp de verano</h4>
+        <p>Programa intensivo 5-7 días verano · técnica + cultura + comunidad. Cupos limitados.</p>
+        <div class="l-rev"><span class="lbl">Y3</span><span class="val">$3-5M</span></div>
+      </div>
+
+      <div class="linea futuro">
+        <div class="l-tier">Futuro · Y3</div>
+        <div class="l-icon">📱</div>
+        <h4>Cursos online</h4>
+        <p>Técnica grabada · suscripción mensual o pack. Alumnos remotos · escalabilidad sin tope físico.</p>
+        <div class="l-rev"><span class="lbl">Y3 100 subs</span><span class="val">$1-3M anual</span></div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:36px;padding:30px;background:var(--bone);border-left:4px solid var(--blood)">
+      <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--blood);margin-bottom:10px">Foco editorial</div>
+      <p style="font-size:15px;color:var(--ink);line-height:1.7;max-width:820px">
+        12 líneas posibles · pero NO se lanzan todas a la vez. Y1: <strong>core + apparel + seminarios + membresía</strong> (4 líneas). Y2: agrega <strong>kids + femenino</strong>. Y3: evalúa <strong>corporativo + eventos + online</strong>. Diversificar gradual evita dispersión.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 CAPITAL -->
+<section class="block bone" id="capital">
+  <div class="container">
+    <div class="propuesta-badge"><span class="dot"></span><span>Propuesta · borrador estimativo · NO se ha tomado decisión</span></div>
+    <span class="eyebrow">04 · Capital · ejercicio teórico</span>
+    <h2 class="title">Si se invirtieran <em>$8M</em> · en qué se irían.</h2>
+    <p class="lead">
+      Esta sección es <strong>una propuesta de cómo se distribuirían $8M</strong> de
+      capital inicial · NO una inversión confirmada ni cifras finales. Es el ejercicio
+      necesario para postular a Sercotec, conversar con el banco, o evaluar el deal con
+      inversionista. Cada partida es estimativa y se ajusta con cotizaciones reales antes
+      de tomar cualquier decisión.
+    </p>
+
+    <div class="activos-grid">
+      <div class="activo-card">
+        <div class="num-icon">01</div>
+        <h4>Equipamiento sala</h4>
+        <ul>
+          <li>Colchonetas grappling profesional <span class="amt">$1.800.000</span></li>
+          <li>Equipo audio + cronómetro <span class="amt">$250.000</span></li>
+          <li>Mobiliario vestidor + recepción <span class="amt">$350.000</span></li>
+          <li>Iluminación / climatización <span class="amt">$200.000</span></li>
+        </ul>
+        <div class="total"><span class="lbl">Subtotal</span><span class="val">$2.600.000</span></div>
+      </div>
+
+      <div class="activo-card">
+        <div class="num-icon">02</div>
+        <h4>Marca y registro legal</h4>
+        <ul>
+          <li>Constitución SpA + notaría <span class="amt">$280.000</span></li>
+          <li>Inicio de actividades SII <span class="amt">$0</span></li>
+          <li>Registro marca INAPI <span class="amt">$160.000</span></li>
+          <li>Honorarios abogado pacto socios <span class="amt">$400.000</span></li>
+          <li>Asesoría contable inicial <span class="amt">$200.000</span></li>
+        </ul>
+        <div class="total"><span class="lbl">Subtotal</span><span class="val">$1.040.000</span></div>
+      </div>
+
+      <div class="activo-card">
+        <div class="num-icon">03</div>
+        <h4>Línea apparel · primer drop</h4>
+        <ul>
+          <li>Diseño gráfico + tech pack <span class="amt">$300.000</span></li>
+          <li>Primer drop (50 prendas) <span class="amt">$900.000</span></li>
+          <li>Etiquetas + packaging branded <span class="amt">$120.000</span></li>
+          <li>Fotografía + producción contenido <span class="amt">$280.000</span></li>
+        </ul>
+        <div class="total"><span class="lbl">Subtotal</span><span class="val">$1.600.000</span></div>
+      </div>
+
+      <div class="activo-card">
+        <div class="num-icon">04</div>
+        <h4>Digital y comercial</h4>
+        <ul>
+          <li>Web + dominio + hosting año 1 <span class="amt">$250.000</span></li>
+          <li>E-commerce Shopify + Webpay <span class="amt">$180.000</span></li>
+          <li>Equipo computador / iPad caja <span class="amt">$700.000</span></li>
+          <li>Pauta inicial RRSS 6 meses <span class="amt">$300.000</span></li>
+        </ul>
+        <div class="total"><span class="lbl">Subtotal</span><span class="val">$1.430.000</span></div>
+      </div>
+
+      <div class="activo-card">
+        <div class="num-icon">05</div>
+        <h4>Capital de trabajo</h4>
+        <ul>
+          <li>Arriendo sala 3 meses adelantado <span class="amt">$600.000</span></li>
+          <li>Servicios básicos + reserva <span class="amt">$600.000</span></li>
+          <li>Honorarios instructor mes 1-2 <span class="amt">$130.000</span></li>
+        </ul>
+        <div class="total"><span class="lbl">Subtotal</span><span class="val">$1.330.000</span></div>
+      </div>
+
+      <div class="activo-card" style="border:2px dashed var(--brass);background:var(--bone-soft)">
+        <div class="num-icon" style="background:var(--brass);color:var(--ink)">Σ</div>
+        <h4 style="color:var(--brass)">ESTIMACIÓN TOTAL</h4>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Cifra <strong style="color:var(--blood)">propuesta</strong> · capital teórico para arrancar formalmente y sostener operación los primeros 90 días. Se ajusta con cotizaciones reales.</p>
+        <div class="total" style="border-top-color:var(--brass)">
+          <span class="lbl" style="color:var(--ink)">CapEx estimado</span>
+          <span class="val" style="font-size:30px">~$<span data-out="capex-total">8.000.000</span></span>
+        </div>
+        <div style="margin-top:14px;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--blood)">⚠ Borrador · no decidido</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 PROYECCIÓN -->
+<section class="block" id="proyeccion">
+  <div class="container">
+    <span class="eyebrow">05 · Proyección 3 años</span>
+    <h2 class="title">Año 1, 2 y 3 · <em>números base</em>.</h2>
+    <p class="lead">
+      Año 1 conservador con ramp-up gradual. Año 2: 2do horario + apparel + seminarios.
+      Año 3: 3 horarios + 2 líneas nuevas + marca consolidada. Reinversión alta los
+      primeros años para construir base · retiros desde Y2.
+    </p>
+
+    <div class="projection">
+      <div class="proj-col">
+        <div class="year-label">Año 1 · ramp-up</div>
+        <h3>2026</h3>
+        <div class="proj-row big"><span class="k">Ventas totales</span><span class="v">$<span data-out="ventas-y1">7.370.000</span></span></div>
+        <div class="proj-row"><span class="k">Utilidad neta</span><span class="v">$<span data-out="util-y1">1.700.000</span></span></div>
+        <div class="proj-row"><span class="k">Reinversión (%)</span><span class="v"><span data-out="reinv-y1">90</span>%</span></div>
+        <div class="proj-row fisco"><span class="k">Fisco (IDPC <span data-out="idpc">27</span>%)</span><span class="v">$<span data-out="fisco-y1">45.900</span></span></div>
+        <div class="proj-row retiro"><span class="k">Retiro total socios</span><span class="v">$<span data-out="retiro-y1">0</span></span></div>
+        <div class="proj-foot"><strong>Foco Y1</strong>Capitalizar marca · activos · stock. Sin retiros. Todo se reinvierte.</div>
+      </div>
+
+      <div class="proj-col y2">
+        <div class="year-label">Año 2 · consolidación</div>
+        <h3>2027</h3>
+        <div class="proj-row big"><span class="k">Ventas totales</span><span class="v">$<span data-out="ventas-y2">14.000.000</span></span></div>
+        <div class="proj-row"><span class="k">Utilidad neta</span><span class="v">$<span data-out="util-y2">6.550.000</span></span></div>
+        <div class="proj-row"><span class="k">Reinversión (%)</span><span class="v"><span data-out="reinv-y2">50</span>%</span></div>
+        <div class="proj-row fisco"><span class="k">Fisco (IDPC <span data-out="idpc">27</span>%)</span><span class="v">$<span data-out="fisco-y2">883.250</span></span></div>
+        <div class="proj-row retiro"><span class="k">Retiro total socios</span><span class="v">$<span data-out="retiro-y2">2.391.750</span></span></div>
+        <div class="proj-foot"><strong>Foco Y2</strong>Primer retiro real. 2do horario + apparel piloto + seminarios.</div>
+      </div>
+
+      <div class="proj-col y3">
+        <div class="year-label">Año 3 · escala</div>
+        <h3>2028</h3>
+        <div class="proj-row big"><span class="k">Ventas totales</span><span class="v">$<span data-out="ventas-y3">21.000.000</span></span></div>
+        <div class="proj-row"><span class="k">Utilidad neta</span><span class="v">$<span data-out="util-y3">11.200.000</span></span></div>
+        <div class="proj-row"><span class="k">Reinversión (%)</span><span class="v"><span data-out="reinv-y3">30</span>%</span></div>
+        <div class="proj-row fisco"><span class="k">Fisco (IDPC <span data-out="idpc">27</span>%)</span><span class="v">$<span data-out="fisco-y3">2.116.800</span></span></div>
+        <div class="proj-row retiro"><span class="k">Retiro total socios</span><span class="v">$<span data-out="retiro-y3">5.923.200</span></span></div>
+        <div class="proj-foot"><strong>Foco Y3</strong>Retiros consolidados. 3 horarios + 2 líneas nuevas + 2da sede evaluación.</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-serif);font-size:28px;font-weight:700;color:var(--ink);margin-top:60px;margin-bottom:8px;letter-spacing:-.02em">Flujo de caja mensual · Y1</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:24px;max-width:780px">Ramp-up real con 20 pagantes base · conversión de becados + 2do horario gradual desde M9.</p>
+
+    <div style="background:var(--bg);border:1px solid var(--border-w);padding:36px 32px">
+      <div class="cashflow-row header"><div>Mes</div><div>Ingreso proyectado</div><div style="text-align:right">CLP</div></div>
+      <div class="cashflow-row"><div class="cashflow-month">Mes 1</div><div class="cashflow-bar"><div class="cashflow-bar-fill" style="width:30%"></div></div><div class="cashflow-amount">$300.000</div></div>
+      <div class="cashflow-row"><div class="cashflow-month">Mes 2</div><div class="cashflow-bar"><div class="cashflow-bar-fill" style="width:40%"></div></div><div class="cashflow-amount">$400.000</div></div>
+      <div class="cashflow-row"><div class="cashflow-month">Mes 3</div><div class="cashflow-bar"><div class="cashflow-bar-fill" style="width:50%"></div></div><div class="cashflow-amount">$500.000</div></div>
+      <div class="cashflow-row"><div class="cashflow-month">Mes 4</div><div class="cashflow-bar"><div class="cashflow-bar-fill" style="width:55%"></div></div><div class="cashflow-amount">$550.000</div></div>
+      <div class="cashflow-row"><div class="cashflow-month">Mes 5</div><div class="cashflow-bar"><div class="cashflow-bar-fill" style="width:60%"></div></div><div class="cashflow-amount">$600.000</div></div>
+      <div class="cashflow-row"><div class="cashflow-month">Mes 6</div><div class="cashflow-bar"><div class="cashflow-bar-fill" style="width:65%"></div></div><div class="cashflow-amount">$650.000</div></div>
+      <div class="cashflow-row"><div class="cashflow-month">Mes 7</div><div class="cashflow-bar"><div class="cashflow-bar-fill" style="width:70%"></div></div><div class="cashflow-amount">$700.000</div></div>
+      <div class="cashflow-row"><div class="cashflow-month">Mes 8</div><div class="cashflow-bar"><div class="cashflow-bar-fill" style="width:75%"></div></div><div class="cashflow-amount">$750.000</div></div>
+      <div class="cashflow-row"><div class="cashflow-month">Mes 9</div><div class="cashflow-bar"><div class="cashflow-bar-fill" style="width:80%"></div></div><div class="cashflow-amount">$800.000</div></div>
+      <div class="cashflow-row"><div class="cashflow-month">Mes 10</div><div class="cashflow-bar"><div class="cashflow-bar-fill" style="width:85%"></div></div><div class="cashflow-amount">$850.000</div></div>
+      <div class="cashflow-row"><div class="cashflow-month">Mes 11</div><div class="cashflow-bar"><div class="cashflow-bar-fill" style="width:90%"></div></div><div class="cashflow-amount">$900.000</div></div>
+      <div class="cashflow-row" style="background:var(--bone);padding:14px 12px"><div class="cashflow-month" style="color:var(--brass)">Mes 12</div><div class="cashflow-bar"><div class="cashflow-bar-fill" style="width:37%;background:var(--brass-bright)"></div></div><div class="cashflow-amount" style="color:var(--brass)">$370.000</div></div>
+      <div style="margin-top:24px;padding-top:18px;border-top:2px solid var(--ink);display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)">Total Y1</div><div style="font-family:var(--font-serif);font-size:36px;font-weight:700;color:var(--brass);letter-spacing:-.02em"><span style="font-size:18px;color:var(--ink)">$</span>7.370.000</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 IVA & FLUJO FISCAL -->
+<section class="block cream" id="iva">
+  <div class="container">
+    <span class="eyebrow">06 · IVA & flujo fiscal</span>
+    <h2 class="title">Cómo gira <em>la plata con SII</em>.</h2>
+    <p class="lead">
+      Una vez formalizado, cada factura emitida lleva IVA débito (19% que se cobra al alumno
+      y se debe al fisco). Cada factura recibida (proveedores) lleva IVA crédito (19% que se
+      compensa). El F29 mensual paga la diferencia. Hacer apparel + servicios técnicos GENERA
+      crédito fiscal que reduce el pago neto al SII.
+    </p>
+
+    <div class="iva-wrap">
+      <div class="iva-box debito">
+        <div class="iva-tag">Débito fiscal · sale</div>
+        <h3>IVA cobrado</h3>
+        <div class="iva-sub"><span data-out="iva">19</span>% sobre cada mensualidad facturada · IVA que se debe al SII.</div>
+        <div class="iva-val">$<span data-out="iva-debito">152.000</span></div>
+        <div class="iva-foot">Ejemplo: ingreso bruto $<span data-out="ingreso-mes-k">800K</span>/mes × <span data-out="iva">19</span>% = $<span data-out="iva-debito-k">152K</span> mensual.</div>
+      </div>
+
+      <div class="iva-arrow">−</div>
+
+      <div class="iva-box credito">
+        <div class="iva-tag">Crédito fiscal · entra</div>
+        <h3>IVA pagado</h3>
+        <div class="iva-sub"><span data-out="iva">19</span>% incluido en facturas de proveedores · arriendo · apparel · servicios.</div>
+        <div class="iva-val">$<span data-out="iva-credito">95.000</span></div>
+        <div class="iva-foot">Ejemplo: gastos formales $<span data-out="gastos-formales-k">500K</span>/mes × <span data-out="iva">19</span>% = $<span data-out="iva-credito-k">95K</span> mensual.</div>
+      </div>
+
+      <div class="iva-arrow">=</div>
+
+      <div class="iva-box neto">
+        <div class="iva-tag">F29 mensual · paga</div>
+        <h3>IVA neto a SII</h3>
+        <div class="iva-sub">Diferencia que se entera al fisco el día 12 del mes siguiente.</div>
+        <div class="iva-val">$<span data-out="iva-neto">57.000</span></div>
+        <div class="iva-foot">Lo que efectivamente sale de la caja a SII cada mes.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:36px;padding:30px;background:var(--bg);border-left:4px solid var(--brass)">
+      <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:10px">Por qué importa</div>
+      <p style="font-size:15px;color:var(--ink);line-height:1.7;max-width:820px">
+        Hoy LEMPAR cobra <strong>sin factura</strong> y compra <strong>sin factura</strong>:
+        pierde 100% del crédito fiscal. Al formalizar, todo gasto con factura
+        (apparel · arriendo · servicios · marketing) se convierte en
+        <strong>19% recuperable</strong>. Sobre $8M de inversión inicial, eso es ~$1.3M que
+        SII descontará de futuros F29.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 PREGUNTA CENTRAL -->
+<section class="block dark" id="pregunta">
+  <div class="container">
+    <span class="eyebrow">07 · La pregunta central</span>
+    <h2 class="title">¿Capitalizar $8M con socio <em>o sin socio</em>?</h2>
+    <p class="lead">
+      Un inversionista propone aportar $8M a cambio del 50% de LEMPAR. La abogada
+      advierte: esa estructura subvalúa fuertemente la marca y a Claudio. La alternativa
+      real existe · y tiene nombre: postular Sercotec + préstamo bancario o convertible
+      vs aceptar el 50/50.
+    </p>
+
+    <div class="callout">
+      <div class="label">Análisis legal · valoración</div>
+      <h3>$8M por 50% implica valorizar LEMPAR completa en $16M.<br>El negocio ya factura $800K-900K/mes y tiene 12 líneas posibles.</h3>
+      <p>
+        Un negocio que factura ~$9.6M/año con 1 horario al 40% de capacidad +
+        marca registrable + base de 48 alumnos + comunidad activa + 4 líneas adicionales
+        a un año de distancia NO vale $16M total. Vale mínimo
+        <strong style="color:var(--brass)">2-3x ese valor</strong>.
+      </p>
+      <p>
+        Si Claudio entrega 50% por $8M está regalando control de su escuela, su marca y
+        su proyección a 3 años a cambio de cubrir el CapEx inicial. Hay estructuras más
+        justas · y hay capital sin diluir (Sercotec entrega hasta $3.5M y Corfo hasta $25M).
+      </p>
+      <div class="punch">Necesita plata · no necesita socio 50/50</div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 RETIROS · COMPARATIVO LADO A LADO -->
+<section class="block bone" id="retiros">
+  <div class="container">
+    <span class="eyebrow">08 · Retiros · comparativo</span>
+    <h2 class="title">Solo o con socio · <em>cuánto retira Claudio</em>.</h2>
+    <p class="lead">
+      La pregunta concreta: ¿cuánto plata se lleva Claudio en cada escenario? Esta tabla
+      es la conversación que tiene que tener con el inversionista · y con la abogada.
+      Los números son los mismos proyectados · sólo cambia con quién se reparten.
+    </p>
+
+    <div class="compare-wrap">
+
+      <div class="compare-col solo">
+        <span class="compare-tag">Escenario A · 100% Claudio</span>
+        <h3>Solo</h3>
+        <div class="c-sub">Claudio capitaliza con Sercotec + préstamo bancario (sin diluir). 100% de los retiros son para él.</div>
+
+        <div class="compare-row year"><span class="k">Año 1 · 2026</span><span class="v">Ramp-up</span></div>
+        <div class="compare-row"><span class="k">Utilidad neta</span><span class="v">$<span data-out="util-y1">1.700.000</span></span></div>
+        <div class="compare-row"><span class="k">Retiro Claudio · anual</span><span class="v">$<span data-out="retiro-solo-y1">0</span></span></div>
+        <div class="compare-row"><span class="k">Retiro Claudio · mes</span><span class="v">$<span data-out="retiro-solo-y1-mes">0</span></span></div>
+
+        <div class="compare-row year"><span class="k">Año 2 · 2027</span><span class="v">Consolidación</span></div>
+        <div class="compare-row"><span class="k">Utilidad neta</span><span class="v">$<span data-out="util-y2">6.550.000</span></span></div>
+        <div class="compare-row"><span class="k">Retiro Claudio · anual</span><span class="v">$<span data-out="retiro-solo-y2">2.391.750</span></span></div>
+        <div class="compare-row"><span class="k">Retiro Claudio · mes</span><span class="v">$<span data-out="retiro-solo-y2-mes">199.313</span></span></div>
+
+        <div class="compare-row year"><span class="k">Año 3 · 2028</span><span class="v">Escala</span></div>
+        <div class="compare-row"><span class="k">Utilidad neta</span><span class="v">$<span data-out="util-y3">11.200.000</span></span></div>
+        <div class="compare-row"><span class="k">Retiro Claudio · anual</span><span class="v">$<span data-out="retiro-solo-y3">5.923.200</span></span></div>
+        <div class="compare-row"><span class="k">Retiro Claudio · mes</span><span class="v">$<span data-out="retiro-solo-y3-mes">493.600</span></span></div>
+
+        <div class="compare-row total"><span class="k">Retiro Claudio · acumulado 3 años</span><span class="v">$<span data-out="retiro-solo-acum">8.314.950</span></span></div>
+      </div>
+
+      <div class="compare-col duo">
+        <span class="compare-tag">Escenario B · <span data-out="equity-socio">50</span>/<span data-out="equity-claudio">50</span> con socio</span>
+        <h3>Con inversionista <span data-out="equity-socio">50</span>%</h3>
+        <div class="c-sub">Inversionista aporta $<span data-out="capex-total-m">8M</span> a cambio del <span data-out="equity-socio">50</span>% del negocio. Los retiros se dividen según equity de aquí a la eternidad.</div>
+
+        <div class="compare-row year"><span class="k">Año 1 · 2026</span><span class="v">Ramp-up</span></div>
+        <div class="compare-row"><span class="k">Utilidad neta</span><span class="v">$<span data-out="util-y1">1.700.000</span></span></div>
+        <div class="compare-row"><span class="k">Retiro Claudio · anual</span><span class="v">$<span data-out="retiro-duo-y1">0</span></span></div>
+        <div class="compare-row"><span class="k">Retiro Claudio · mes</span><span class="v">$<span data-out="retiro-duo-y1-mes">0</span></span></div>
+
+        <div class="compare-row year"><span class="k">Año 2 · 2027</span><span class="v">Consolidación</span></div>
+        <div class="compare-row"><span class="k">Utilidad neta</span><span class="v">$<span data-out="util-y2">6.550.000</span></span></div>
+        <div class="compare-row"><span class="k">Retiro Claudio · anual</span><span class="v">$<span data-out="retiro-duo-y2">1.195.875</span></span></div>
+        <div class="compare-row"><span class="k">Retiro Claudio · mes</span><span class="v">$<span data-out="retiro-duo-y2-mes">99.656</span></span></div>
+
+        <div class="compare-row year"><span class="k">Año 3 · 2028</span><span class="v">Escala</span></div>
+        <div class="compare-row"><span class="k">Utilidad neta</span><span class="v">$<span data-out="util-y3">11.200.000</span></span></div>
+        <div class="compare-row"><span class="k">Retiro Claudio · anual</span><span class="v">$<span data-out="retiro-duo-y3">2.961.600</span></span></div>
+        <div class="compare-row"><span class="k">Retiro Claudio · mes</span><span class="v">$<span data-out="retiro-duo-y3-mes">246.800</span></span></div>
+
+        <div class="compare-row total"><span class="k">Retiro Claudio · acumulado 3 años</span><span class="v">$<span data-out="retiro-duo-acum">4.157.475</span></span></div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:36px;padding:30px;background:var(--ink);color:var(--bone);border-left:6px solid var(--brass)">
+      <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:10px">Diferencia neta para Claudio · 3 años</div>
+      <p style="font-size:15px;color:var(--bone);line-height:1.7;max-width:820px">
+        Sólo en los primeros 3 años, ceder el <span data-out="equity-socio">50</span>% por $<span data-out="capex-total-m">8M</span> le cuesta a Claudio
+        <strong style="color:var(--brass)">$<span data-out="retiro-diferencia">4.157.475</span> menos</strong> en retiros directos.
+        Y eso sin contar Año 4, 5, 6+ donde el negocio sigue dándole la mitad para siempre.
+        Si Claudio puede conseguir los $8M sin diluir (Sercotec + préstamo banco · ver
+        sección Fondos), <strong>esa es la salida</strong>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 09 GASTOS DEDUCIBLES -->
+<section class="block" id="gastos">
+  <div class="container">
+    <div class="propuesta-badge" style="background:rgba(176,141,76,.10);border-color:var(--brass);color:var(--brass)"><span class="dot" style="background:var(--brass)"></span><span>Universo · techo deducible a 3 años · NO Y1 real</span></div>
+    <span class="eyebrow">09 · Universo de gastos deducibles</span>
+    <h2 class="title">Qué reduce <em>el impuesto</em>.</h2>
+    <p class="lead">
+      Una vez formalizado, cada gasto con factura reduce la base imponible. Las cifras
+      mostradas representan <strong>el techo de cada categoría a 3 años</strong> (cuando
+      LEMPAR opere con 2-3 horarios + apparel + seminarios). En Y1 real, los gastos se
+      ajustan a ~<strong>$5.6M</strong> porque no se puede gastar más de lo que ingresa.
+    </p>
+
+    <div style="background:var(--ink);color:var(--bone);padding:20px 26px;margin-bottom:24px;border-left:4px solid var(--brass)">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:8px">📡 RADAR · Benchmark escuelas BJJ/Grappling Chile 2026</div>
+      <div style="font-size:13px;color:rgba(244,241,234,.75);line-height:1.65">
+        Datos cruzados de academias activas (Santiago · V-Region · Concepción) + Federación Chilena Jiu-Jitsu + escuelas Gracie/Atos/Carlos Vásquez. Rangos ajustados a una escuela en etapa LEMPAR (1-2 horarios · 20-40 alumnos pagantes · 80-120m²).
+      </div>
+    </div>
+
+    <div class="gastos-grid">
+      <div class="gasto-card">
+        <div class="num-icon">01</div>
+        <h4>Arriendo de sala</h4>
+        <ul>
+          <li>Local 80-120m² V-Region: $400-700K/mes</li>
+          <li>Bodega apparel + vestidor</li>
+          <li>Patente municipal anual</li>
+        </ul>
+        <div class="total">Y1: ~$1.5M · Y3: ~$3.0M</div>
+      </div>
+      <div class="gasto-card">
+        <div class="num-icon">02</div>
+        <h4>Honorarios instructores</h4>
+        <ul>
+          <li>Instructor 2do horario: $250-400K/mes</li>
+          <li>Invitados seminario: $200-400K c/u</li>
+          <li>Asesoría técnica trimestral</li>
+        </ul>
+        <div class="total">Y1: ~$400K · Y3: ~$1.6M</div>
+      </div>
+      <div class="gasto-card">
+        <div class="num-icon">03</div>
+        <h4>Servicios profesionales</h4>
+        <ul>
+          <li>Contadora $100-150K/mes</li>
+          <li>Abogado pacto: $400-800K one-time</li>
+          <li>Diseño + fotografía: $300-500K/año</li>
+        </ul>
+        <div class="total">Y1: ~$900K · Y3: ~$1.2M</div>
+      </div>
+      <div class="gasto-card">
+        <div class="num-icon">04</div>
+        <h4>Producción apparel</h4>
+        <ul>
+          <li>1 drop piloto 50 prendas: $900K-1.2M</li>
+          <li>4 drops/año en Y3: $4-5M total</li>
+          <li>Etiquetas + packaging branded</li>
+        </ul>
+        <div class="total">Y1: ~$600K · Y3: ~$1.2M</div>
+      </div>
+      <div class="gasto-card">
+        <div class="num-icon">05</div>
+        <h4>Servicios básicos</h4>
+        <ul>
+          <li>Luz/agua/gas local 80m²: $80-150K/mes</li>
+          <li>Internet fibra: $30-40K/mes</li>
+          <li>Climatización (estufa + ventilación)</li>
+        </ul>
+        <div class="total">Y1: ~$300K · Y3: ~$700K</div>
+      </div>
+      <div class="gasto-card">
+        <div class="num-icon">06</div>
+        <h4>Marketing y comunicación</h4>
+        <ul>
+          <li>Pauta Meta/IG: $80-150K/mes</li>
+          <li>Producción contenido reels mensual</li>
+          <li>Activaciones + colaboraciones</li>
+        </ul>
+        <div class="total">Y1: ~$300K · Y3: ~$700K</div>
+      </div>
+      <div class="gasto-card">
+        <div class="num-icon">07</div>
+        <h4>Hardware y SaaS</h4>
+        <ul>
+          <li>Setup inicial: iPad caja + computer $600-800K</li>
+          <li>Shopify $35K/mes · sistema reservas $25K/mes</li>
+          <li>Software contable Nubox/Defontana</li>
+        </ul>
+        <div class="total">Y1: ~$700K · Y3: ~$300K</div>
+      </div>
+      <div class="gasto-card">
+        <div class="num-icon">08</div>
+        <h4>Logística e-commerce</h4>
+        <ul>
+          <li>Chilexpress: $4-6K por despacho</li>
+          <li>Webpay/Mercadopago: 3-4% comisión</li>
+          <li>Embalaje branded</li>
+        </ul>
+        <div class="total">Y1: ~$200K · Y3: ~$500K</div>
+      </div>
+      <div class="gasto-card">
+        <div class="num-icon">09</div>
+        <h4>Capacitación + competencia</h4>
+        <ul>
+          <li>Cursos BJJ Fanatics + nacional: $400-800K</li>
+          <li>Seminario internacional: $1-2M (viaje + entrada)</li>
+          <li>Inscripción equipo competencias</li>
+        </ul>
+        <div class="total">Y1: ~$300K · Y3: ~$600K</div>
+      </div>
+      <div class="gasto-card">
+        <div class="num-icon">10</div>
+        <h4>Seguro + federación</h4>
+        <ul>
+          <li>Seguro alumnos deporte contacto: $250-400K/año</li>
+          <li>Inscripción Fed. Chilena Jiu-Jitsu: $150-200K</li>
+          <li>Seguro responsabilidad civil escuela</li>
+        </ul>
+        <div class="total">Y1: ~$300K · Y3: ~$500K</div>
+      </div>
+      <div class="gasto-card">
+        <div class="num-icon">11</div>
+        <h4>Mantención sala</h4>
+        <ul>
+          <li>Limpieza profesional 2× semana</li>
+          <li>Desinfección colchonetas mensual</li>
+          <li>Reposición mats / reparaciones</li>
+        </ul>
+        <div class="total">Y1: ~$200K · Y3: ~$400K</div>
+      </div>
+      <div class="gasto-card">
+        <div class="num-icon">12</div>
+        <h4>Movilidad + representación</h4>
+        <ul>
+          <li>Bencina visitas/eventos: $250K/año</li>
+          <li>Uber a competencias regionales</li>
+          <li>Mantención auto parcial uso negocio</li>
+        </ul>
+        <div class="total">Y1: ~$300K · Y3: ~$500K</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg);padding:30px;border:1px solid var(--border-w);margin-top:30px;box-shadow:var(--shadow-sm)">
+      <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:14px">Universo deducible · estructura 3 años</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-bottom:16px">
+        <div>
+          <div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Y1 real · ajustado</div>
+          <div style="font-family:var(--font-serif);font-size:36px;font-weight:700;color:var(--ink);letter-spacing:-.03em"><span style="color:var(--brass);font-size:20px">$</span>5.6M</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px">Limitado por ingresos $7.37M</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Y2 proyectado</div>
+          <div style="font-family:var(--font-serif);font-size:36px;font-weight:700;color:var(--ink);letter-spacing:-.03em"><span style="color:var(--brass);font-size:20px">$</span>8.0M</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px">2do horario + apparel</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blood);margin-bottom:6px">Y3 techo</div>
+          <div style="font-family:var(--font-serif);font-size:36px;font-weight:700;color:var(--blood);letter-spacing:-.03em"><span style="font-size:20px">$</span>10.3M</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px">3 horarios + líneas plenas</div>
+        </div>
+      </div>
+      <div style="padding-top:16px;border-top:1px solid var(--border-w);font-size:13px;color:var(--muted);line-height:1.6">
+        <strong style="color:var(--brass)">⊡ QA financiero:</strong> los importes mostrados en cada categoría representan el techo
+        cuando LEMPAR alcance escala. Y1 real ejecuta solo ~$5.6M (54% del techo). Esta diferencia
+        es lo que justifica el plan de crecimiento Y2-Y3.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 FONDOS PÚBLICOS -->
+<section class="block bone" id="fondos">
+  <div class="container">
+    <span class="eyebrow">10 · Fondos públicos · capital sin diluir</span>
+    <h2 class="title">$8M <em>sin entregar el 50%</em>.</h2>
+    <p class="lead">
+      Chile tiene un ecosistema sólido de fondos para emprendedores en etapa LEMPAR. Todos
+      requieren SpA constituida + inicio actividades. Combinados pueden cubrir los $8M
+      objetivo sin entregar un solo punto de equity. Esta es la verdadera alternativa al
+      50/50 con inversionista.
+    </p>
+
+    <div class="fondos-grid">
+
+      <div class="fondo urgente">
+        <div class="f-stamp">Sercotec · Capital Semilla Emprende</div>
+        <h4>$3.500.000</h4>
+        <div class="f-sub">No reembolsable · sin equity · sin tope facturación</div>
+        <div class="f-stats">
+          <div class="f-stat"><div class="fs-k">Monto</div><div class="fs-v">$3.5M</div></div>
+          <div class="f-stat"><div class="fs-k">Postula</div><div class="fs-v">Trimestral</div></div>
+          <div class="f-stat"><div class="fs-k">Plazo</div><div class="fs-v">90 días eval</div></div>
+          <div class="f-stat"><div class="fs-k">Equity</div><div class="fs-v">0%</div></div>
+        </div>
+        <p>Requiere SpA o persona natural con inicio actividades. Cofinanciamiento empresarial mínimo (~3%). Plan de inversión específico (kit digital · marketing · capacitación).</p>
+      </div>
+
+      <div class="fondo urgente">
+        <div class="f-stamp">Corfo · Semilla Inicia</div>
+        <h4>Hasta $25M</h4>
+        <div class="f-sub">No reembolsable · validar mercado · etapa temprana</div>
+        <div class="f-stats">
+          <div class="f-stat"><div class="fs-k">Monto</div><div class="fs-v">Hasta $25M</div></div>
+          <div class="f-stat"><div class="fs-k">Postula</div><div class="fs-v">Bianual</div></div>
+          <div class="f-stat"><div class="fs-k">Cofinanciam.</div><div class="fs-v">25%</div></div>
+          <div class="f-stat"><div class="fs-k">Equity</div><div class="fs-v">0%</div></div>
+        </div>
+        <p>Para empresas con potencial dinámico y diferenciación. Pide proyecto innovador. Línea apparel + escuela + marca es perfectamente compatible.</p>
+      </div>
+
+      <div class="fondo">
+        <div class="f-stamp">BancoEstado · Microemprendimiento</div>
+        <h4>Hasta $8M</h4>
+        <div class="f-sub">Préstamo · cuotas mensuales · tasa preferente</div>
+        <div class="f-stats">
+          <div class="f-stat"><div class="fs-k">Monto</div><div class="fs-v">$1-8M</div></div>
+          <div class="f-stat"><div class="fs-k">Plazo</div><div class="fs-v">12-36 meses</div></div>
+          <div class="f-stat"><div class="fs-k">Tasa</div><div class="fs-v">UF + 3-5%</div></div>
+          <div class="f-stat"><div class="fs-k">Equity</div><div class="fs-v">0%</div></div>
+        </div>
+        <p>Requiere SpA + 6 meses de facturación + cuenta corriente. Tasa preferente para microempresas. Más estricto que fondos públicos pero acceso seguro.</p>
+      </div>
+
+      <div class="fondo">
+        <div class="f-stamp">Sercotec · Capital Abeja</div>
+        <h4>Hasta $4M</h4>
+        <div class="f-sub">Solo para emprendedoras mujeres</div>
+        <div class="f-stats">
+          <div class="f-stat"><div class="fs-k">Monto</div><div class="fs-v">Hasta $4M</div></div>
+          <div class="f-stat"><div class="fs-k">Postula</div><div class="fs-v">Anual</div></div>
+          <div class="f-stat"><div class="fs-k">Equity</div><div class="fs-v">0%</div></div>
+          <div class="f-stat"><div class="fs-k">Aplica</div><div class="fs-v">Si pareja socia</div></div>
+        </div>
+        <p>Si Claudio tiene pareja o co-fundadora mujer en la SpA, califica. Combinable con Capital Semilla.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:36px;padding:30px;background:var(--ink);color:var(--bone);border-left:6px solid var(--brass)">
+      <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:10px">Combinación recomendada</div>
+      <p style="font-size:15px;color:var(--bone);line-height:1.7;max-width:820px">
+        <strong style="color:var(--brass)">Sercotec Capital Semilla ($3.5M)</strong> +
+        <strong style="color:var(--brass)">BancoEstado préstamo PYME ($4.5M)</strong> =
+        <strong style="color:var(--brass)">$8M</strong> totales · sin entregar equity · pagable
+        en 24-36 meses con cuotas mensuales. Es exactamente la cifra del deal con
+        inversionista · pero Claudio se queda con el 100% de su negocio.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 11 RADAR -->
+<section class="block dark" id="radar">
+  <div class="container">
+    <span class="eyebrow">11 · RADAR · mercado y competencia</span>
+    <h2 class="title">Qué está pasando <em>afuera</em>.</h2>
+    <p class="lead">
+      Inteligencia externa relevante para LEMPAR · mercado grappling Chile · streetwear
+      deportivo · señales de oportunidad. Esto se actualiza trimestral.
+    </p>
+
+    <div class="radar-grid">
+      <div class="radar-card">
+        <h4>Grappling/BJJ Chile en alza</h4>
+        <div class="r-trend">↗ +15-20% anual</div>
+        <p>El grappling y jiu-jitsu no-gi crece sostenidamente en Chile desde 2020. Pandemia aceleró formato deportivo individual + cultura mat. Hoy ~80 escuelas activas a nivel nacional.</p>
+        <div class="r-source">Fuente · Federación Chilena de Grappling 2026</div>
+      </div>
+
+      <div class="radar-card">
+        <h4>Streetwear deportivo importado</h4>
+        <div class="r-trend">↗ Dominio extranjero</div>
+        <p>FoG Essentials, Vans, Quiksilver dominan ticket $60-200K. Marcas locales con identidad técnica deportiva auténtica son raras. Hay espacio claro para grappling streetwear chileno.</p>
+        <div class="r-source">Fuente · MercadoLibre + Walmart 2026 Q1</div>
+      </div>
+
+      <div class="radar-card">
+        <h4>Disposición a pagar pertenencia</h4>
+        <div class="r-trend">→ Cultura sobre prenda</div>
+        <p>Consumidor deportivo Chile paga más por marca con HISTORIA REAL + comunidad local que por moda. Auténtico + escena propia &gt; importado de catálogo. LEMPAR tiene ese activo.</p>
+        <div class="r-source">Fuente · estudio cualitativo 12 alumnos LEMPAR</div>
+      </div>
+
+      <div class="radar-card">
+        <h4>Sercotec Capital Semilla activo</h4>
+        <div class="r-trend">⏱ Convocatoria abierta</div>
+        <p>Postulación 2026 cierra en próxima ventana trimestral. $3.5M sin reembolsar. Requiere SpA constituida + plan de inversión específico (cubre digital · marketing · activos).</p>
+        <div class="r-source">Fuente · sercotec.cl · convocatoria oficial</div>
+      </div>
+
+      <div class="radar-card">
+        <h4>Wellness corporativo en alza</h4>
+        <div class="r-trend">↗ B2B oportunidad</div>
+        <p>Empresas chilenas invierten más en bienestar de equipos (~+30% post-pandemia). Defensa personal y grappling como actividad team building es producto valorado y de margen alto.</p>
+        <div class="r-source">Fuente · Andes RRHH 2026</div>
+      </div>
+
+      <div class="radar-card">
+        <h4>Programas mujeres en BJJ</h4>
+        <div class="r-trend">↗ Crecimiento fuerte</div>
+        <p>Membresía femenina BJJ Chile crece ~25% anual. Grupos dedicados (no mixtos) son demanda concreta. Horario solo mujeres es producto subexplotado en V-Region.</p>
+        <div class="r-source">Fuente · IBJJF + escuelas regionales 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 PASOS LEGALES -->
+<section class="block" id="pasos">
+  <div class="container">
+    <span class="eyebrow">12 · Pasos legales · formalización</span>
+    <h2 class="title">De informal <em>a SpA en regla</em>.</h2>
+    <p class="lead">
+      Lista priorizada · cada paso con plazo, costo y por qué no se puede saltar.
+      Las P1 son bloqueantes · sin eso no se postula a fondos, no se factura, no se
+      registra marca, no se firma deal.
+    </p>
+
+    <ol class="legal-list">
+      <li>
+        <span class="l-status urgente">P1 · Urgente</span>
+        <div class="l-title">Constitución SpA · LEMPAR Grappling Arts SpA</div>
+        <div class="l-desc">Plataforma "Tu Empresa en un Día" o notaría con redacción a medida (recomendado si entra inversionista). Define capital pagado declarado y participación.</div>
+        <div class="l-meta"><span>Plazo: <strong>1-3 días</strong></span><span>Costo: <strong>$0 - $280K</strong></span><span>Bloqueante de: cuenta corriente · inicio actividades · fondos</span></div>
+      </li>
+      <li>
+        <span class="l-status urgente">P1 · Urgente</span>
+        <div class="l-title">Inicio de actividades en SII</div>
+        <div class="l-desc">Trámite digital sii.cl · 1 día. Régimen propuesto: 14D N°3 Pro-PYME General (25% utilidad · contabilidad simplificada · IVA mensual). Activa débito y crédito fiscal.</div>
+        <div class="l-meta"><span>Plazo: <strong>1 día</strong></span><span>Costo: <strong>$0</strong></span><span>Habilita: facturación electrónica</span></div>
+      </li>
+      <li>
+        <span class="l-status urgente">P1 · Urgente</span>
+        <div class="l-title">Cuenta corriente PYME</div>
+        <div class="l-desc">BancoEstado (cero costo) o Bci (mejor app). Requiere SpA + inicio actividades + cédula + domicilio. Sin esto no hay cómo recibir pagos formales ni postular a fondos.</div>
+        <div class="l-meta"><span>Plazo: <strong>5-7 días</strong></span><span>Costo: <strong>$0 - $20K/mes</strong></span><span>Habilita: cobros formales · postulación fondos</span></div>
+      </li>
+      <li>
+        <span class="l-status proxima">P2 · Próxima</span>
+        <div class="l-title">Pacto de socios o términos préstamo</div>
+        <div class="l-desc">Si se decide aceptar inversionista (no recomendado en 50/50) · pacto de socios con cláusulas de salida, recompra, vesting. Si se elige préstamo/Sercotec · contrato bancario.</div>
+        <div class="l-meta"><span>Plazo: <strong>1-2 semanas</strong></span><span>Costo: <strong>$400K - $800K</strong></span><span>Owner: abogado</span></div>
+      </li>
+      <li>
+        <span class="l-status proxima">P2 · Próxima</span>
+        <div class="l-title">Registro de marca LEMPAR en INAPI</div>
+        <div class="l-desc">Clases 41 (servicios educación/deporte) + 25 (vestuario) + 28 (artículos deportivos). Vital ANTES del primer drop de apparel · si no se registra, un tercero puede hacerlo.</div>
+        <div class="l-meta"><span>Plazo: <strong>6-12 meses INAPI</strong></span><span>Costo: <strong>$160K - $250K</strong></span><span>Protege: nombre · logo · línea de productos</span></div>
+      </li>
+      <li>
+        <span class="l-status proxima">P2 · Próxima</span>
+        <div class="l-title">Contadora externa · revisión mensual</div>
+        <div class="l-desc">Honorario ~$80-150K/mes. F29 mensual (día 12) · F22 anual abril · DDJJ. Calcula débito + crédito fiscal y emite factura electrónica.</div>
+        <div class="l-meta"><span>Plazo: <strong>Permanente</strong></span><span>Costo: <strong>$1M - $1.8M/año</strong></span><span>Owner: contadora externa</span></div>
+      </li>
+      <li>
+        <span class="l-status futuro">P3 · Postulación</span>
+        <div class="l-title">Postulación Sercotec Capital Semilla</div>
+        <div class="l-desc">Una vez SpA + SII listos. $3.5M sin reembolsar · evaluación 90 días. Plan de inversión específico · cofinanciamiento mínimo 3%. Combinable con BancoEstado.</div>
+        <div class="l-meta"><span>Plazo: <strong>Postulación + 90 días</strong></span><span>Costo: <strong>$0 + tiempo</strong></span><span>Aporte: <strong>$3.5M</strong> sin equity</span></div>
+      </li>
+      <li>
+        <span class="l-status futuro">P3 · Operación</span>
+        <div class="l-title">Patente municipal · escuela de deporte</div>
+        <div class="l-desc">Con local fijo · municipalidad correspondiente · patente comercial servicios deportivos. ~0.25% capital propio o $100-200K/anual según comuna.</div>
+        <div class="l-meta"><span>Plazo: <strong>30-60 días</strong></span><span>Costo: <strong>$100K - $200K/año</strong></span><span>Requisito: domicilio comercial</span></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- 13 DECISIONES -->
+<section class="block dark" id="decisiones">
+  <div class="container">
+    <span class="eyebrow">13 · Decisiones · qué debe quedar definido</span>
+    <h2 class="title">Lo que <em>tiene que quedar</em> resuelto.</h2>
+    <p class="lead">
+      Si Claudio sale de esta conversación con estas 8 decisiones tomadas, la propuesta
+      cumplió su función. Lo demás se itera después.
+    </p>
+
+    <ul class="next-list">
+      <li><span class="check">1</span><div>Modelo de capitalización: <strong>aceptar inversionista 50/50</strong> o <strong>Sercotec + préstamo bancario</strong> sin diluir</div></li>
+      <li><span class="check">2</span><div>Constituir <strong>SpA LEMPAR Grappling Arts</strong> en formato Tu Empresa en Un Día o con notario</div></li>
+      <li><span class="check">3</span><div>Régimen tributario propuesto <strong>14D N°3 Pro-PYME General</strong> confirmado con contadora</div></li>
+      <li><span class="check">4</span><div>Banco para cuenta corriente: <strong>BancoEstado (sin costo)</strong> o <strong>Bci (mejor API)</strong></div></li>
+      <li><span class="check">5</span><div>Registro de marca <strong>LEMPAR en INAPI</strong> antes del primer drop de apparel</div></li>
+      <li><span class="check">6</span><div>Priorización líneas de ingreso Y1: <strong>core + apparel + seminarios + membresía</strong></div></li>
+      <li><span class="check">7</span><div>Plan de conversión de <strong>becados a pagantes</strong> · meta 5 conversiones en 90 días</div></li>
+      <li><span class="check">8</span><div>Fecha objetivo para <strong>abrir 2do horario</strong> (recomendación: mes 9-12)</div></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="f-logo">LEMPAR <span style="color:rgba(244,241,234,.40);font-size:10px;letter-spacing:.10em">×</span> Grappling Arts</div>
+  <p>Plan de inversión y proyección 3 años <span class="brass">·</span> Claudio González <span class="brass">·</span> 2026-05-13</p>
+  <p style="margin-top:10px;color:rgba(244,241,234,.30)">@lempar.grappling.arts</p>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════
+     SIMULADOR INTERACTIVO · Panel flotante editable
+     ═══════════════════════════════════════════════════════ -->
+<button class="sim-fab" id="simFab" aria-label="Abrir simulador">
+  <span class="pulse"></span>
+  <span class="lbl">Editar mis números</span>
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+</button>
+
+<div class="sim-live-badge" id="simLiveBadge"><span class="live-dot"></span>Modo simulador</div>
+
+<aside class="sim-panel" id="simPanel" aria-hidden="true">
+  <div class="sp-head">
+    <div>
+      <div class="sp-title">Simulador LEMPAR</div>
+      <div class="sp-name">Edita <em>tus números</em></div>
+    </div>
+    <button class="sp-close" id="simClose" aria-label="Cerrar">×</button>
+  </div>
+  <div class="sp-body">
+
+    <div class="sp-group">
+      <div class="sp-group-title">Operación actual</div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Universo de alumnos</span><span class="sp-hint">total inscritos</span></div>
+        <input type="number" class="sp-input" data-in="universo" value="48" min="0" step="1">
+      </div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Alumnos que pagan</span><span class="sp-hint">activos hoy</span></div>
+        <input type="number" class="sp-input" data-in="pagantes" value="20" min="0" step="1">
+      </div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Ticket mensual (CLP)</span><span class="sp-hint">por alumno</span></div>
+        <input type="number" class="sp-input" data-in="ticket" value="40000" min="0" step="1000">
+      </div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Horarios activos hoy</span><span class="sp-hint">1-4</span></div>
+        <div class="sp-range-wrap">
+          <input type="range" class="sp-input" data-in="horarios" value="1" min="1" max="4" step="1">
+          <div class="sp-range-val" data-range="horarios">1</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sp-group">
+      <div class="sp-group-title">Proyección anual</div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Ventas Año 1 (CLP)</span><span class="sp-hint">2026</span></div>
+        <input type="number" class="sp-input" data-in="ventasY1" value="7370000" min="0" step="10000">
+      </div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Ventas Año 2 (CLP)</span><span class="sp-hint">2027</span></div>
+        <input type="number" class="sp-input" data-in="ventasY2" value="14000000" min="0" step="10000">
+      </div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Ventas Año 3 (CLP)</span><span class="sp-hint">2028</span></div>
+        <input type="number" class="sp-input" data-in="ventasY3" value="21000000" min="0" step="10000">
+      </div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Margen Año 1</span><span class="sp-hint">utilidad/ventas</span></div>
+        <div class="sp-range-wrap">
+          <input type="range" class="sp-input" data-in="margenY1" value="23" min="5" max="60" step="1">
+          <div class="sp-range-val" data-range="margenY1">23%</div>
+        </div>
+      </div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Margen Año 2</span></div>
+        <div class="sp-range-wrap">
+          <input type="range" class="sp-input" data-in="margenY2" value="47" min="5" max="80" step="1">
+          <div class="sp-range-val" data-range="margenY2">47%</div>
+        </div>
+      </div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Margen Año 3</span></div>
+        <div class="sp-range-wrap">
+          <input type="range" class="sp-input" data-in="margenY3" value="53" min="5" max="80" step="1">
+          <div class="sp-range-val" data-range="margenY3">53%</div>
+        </div>
+      </div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Reinversión Año 1</span></div>
+        <div class="sp-range-wrap">
+          <input type="range" class="sp-input" data-in="reinvY1" value="90" min="0" max="100" step="5">
+          <div class="sp-range-val" data-range="reinvY1">90%</div>
+        </div>
+      </div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Reinversión Año 2</span></div>
+        <div class="sp-range-wrap">
+          <input type="range" class="sp-input" data-in="reinvY2" value="50" min="0" max="100" step="5">
+          <div class="sp-range-val" data-range="reinvY2">50%</div>
+        </div>
+      </div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Reinversión Año 3</span></div>
+        <div class="sp-range-wrap">
+          <input type="range" class="sp-input" data-in="reinvY3" value="30" min="0" max="100" step="5">
+          <div class="sp-range-val" data-range="reinvY3">30%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sp-group">
+      <div class="sp-group-title">Capital inicial · partidas</div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Equipamiento sala</span></div>
+        <input type="number" class="sp-input" data-in="capSala" value="2600000" min="0" step="50000">
+      </div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Marca y legal</span></div>
+        <input type="number" class="sp-input" data-in="capLegal" value="1040000" min="0" step="50000">
+      </div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Apparel primer drop</span></div>
+        <input type="number" class="sp-input" data-in="capApparel" value="1600000" min="0" step="50000">
+      </div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Digital + comercial</span></div>
+        <input type="number" class="sp-input" data-in="capDigital" value="1430000" min="0" step="50000">
+      </div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Capital de trabajo</span></div>
+        <input type="number" class="sp-input" data-in="capTrabajo" value="1330000" min="0" step="50000">
+      </div>
+    </div>
+
+    <div class="sp-group">
+      <div class="sp-group-title">Fiscal y estructura societaria</div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>IVA</span></div>
+        <div class="sp-range-wrap">
+          <input type="range" class="sp-input" data-in="iva" value="19" min="0" max="25" step="1">
+          <div class="sp-range-val" data-range="iva">19%</div>
+        </div>
+      </div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>IDPC (impuesto primera categoría)</span></div>
+        <div class="sp-range-wrap">
+          <input type="range" class="sp-input" data-in="idpc" value="27" min="0" max="40" step="1">
+          <div class="sp-range-val" data-range="idpc">27%</div>
+        </div>
+      </div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Gastos formales mensuales (CLP)</span><span class="sp-hint">base IVA crédito</span></div>
+        <input type="number" class="sp-input" data-in="gastosFormales" value="500000" min="0" step="50000">
+      </div>
+      <div class="sp-field">
+        <div class="sp-field-label"><span>Equity inversionista (%)</span><span class="sp-hint">cuánto entrega Claudio</span></div>
+        <div class="sp-range-wrap">
+          <input type="range" class="sp-input" data-in="equitySocio" value="50" min="0" max="60" step="5">
+          <div class="sp-range-val" data-range="equitySocio">50%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sp-actions">
+      <button class="sp-btn danger" id="simReset">Reset</button>
+      <button class="sp-btn primary" id="simSave">Guardar</button>
+    </div>
+  </div>
+</aside>
+
+<script>
+/* ════════════════════════════════════════════════════
+   MOTOR DE CÁLCULO · LEMPAR SIM
+   Variables → fórmulas → outputs en DOM
+   Persistencia en localStorage
+   ════════════════════════════════════════════════════ */
+(function(){
+  const STORAGE_KEY = 'lempar_sim_v1';
+  const DEFAULTS = {
+    universo:48, pagantes:20, ticket:40000, horarios:1,
+    ventasY1:7370000, ventasY2:14000000, ventasY3:21000000,
+    margenY1:23, margenY2:47, margenY3:53,
+    reinvY1:90, reinvY2:50, reinvY3:30,
+    capSala:2600000, capLegal:1040000, capApparel:1600000, capDigital:1430000, capTrabajo:1330000,
+    iva:19, idpc:27, gastosFormales:500000, equitySocio:50
+  };
+
+  // Cargar estado
+  let state = {...DEFAULTS};
+  try{
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if(saved){ state = {...DEFAULTS, ...JSON.parse(saved)}; }
+  }catch(e){}
+
+  /* ────── Formateadores ────── */
+  const fmt = (n)=> Math.round(n).toLocaleString('es-CL').replace(/,/g,'.');
+  const fmtK = (n)=>{ // 800000 → "800K"  /  9600000 → "9.6M"
+    if(n>=1000000) return (n/1000000).toFixed(n>=10000000?0:1).replace(/\.0$/,'')+'M';
+    if(n>=1000) return Math.round(n/1000)+'K';
+    return fmt(n);
+  };
+  const fmtM = (n)=>{ // 14000000 → "14M"  /  9600000 → "9.6M"
+    return (n/1000000).toFixed(n%1000000===0?0:1).replace(/\.0$/,'')+'M';
+  };
+
+  /* ────── Cálculo derivado ────── */
+  function compute(s){
+    const c = {};
+    c.universo = s.universo;
+    c.pagantes = s.pagantes;
+    c.becados = Math.max(0, s.universo - s.pagantes);
+    c['ticket-k'] = fmtK(s.ticket);
+
+    // Ingresos academia
+    const ingresoMes = s.pagantes * s.ticket;
+    c['ingreso-mes-k'] = fmtK(ingresoMes);
+    c['ingreso-mes-full'] = fmt(ingresoMes);
+    const techoMes = s.universo * s.ticket;
+    c['techo-mes-m'] = fmtM(techoMes);
+    c['anual-real-m'] = fmtM(ingresoMes * 12);
+    c['horarios-actuales'] = s.horarios;
+
+    // Escalabilidad por horarios
+    for(let h=1; h<=4; h++){
+      const mes = ingresoMes * h;
+      c[`ing-${h}h-k`] = fmtK(mes);
+      c[`ing-${h}h-m`] = fmtM(mes);
+      c[`anual-${h}h-m`] = fmtM(mes*12);
+    }
+
+    // Proyección
+    c['ventas-y1'] = fmt(s.ventasY1);
+    c['ventas-y2'] = fmt(s.ventasY2);
+    c['ventas-y3'] = fmt(s.ventasY3);
+    c['ventas-y2-m'] = fmtM(s.ventasY2);
+    c['ventas-y3-m'] = fmtM(s.ventasY3);
+
+    const utilY1 = Math.round(s.ventasY1 * s.margenY1/100);
+    const utilY2 = Math.round(s.ventasY2 * s.margenY2/100);
+    const utilY3 = Math.round(s.ventasY3 * s.margenY3/100);
+    c['util-y1'] = fmt(utilY1); c['util-y2'] = fmt(utilY2); c['util-y3'] = fmt(utilY3);
+
+    c['reinv-y1'] = s.reinvY1; c['reinv-y2'] = s.reinvY2; c['reinv-y3'] = s.reinvY3;
+    c['idpc'] = s.idpc;
+
+    const fiscoY1 = Math.round(utilY1 * s.idpc/100);
+    const fiscoY2 = Math.round(utilY2 * s.idpc/100);
+    const fiscoY3 = Math.round(utilY3 * s.idpc/100);
+    c['fisco-y1'] = fmt(fiscoY1); c['fisco-y2'] = fmt(fiscoY2); c['fisco-y3'] = fmt(fiscoY3);
+
+    // Retiros totales = utilidad neta · (1 − reinv%) · ajustada IDPC
+    const retiroY1 = Math.max(0, Math.round((utilY1 - fiscoY1) * (1 - s.reinvY1/100)));
+    const retiroY2 = Math.max(0, Math.round((utilY2 - fiscoY2) * (1 - s.reinvY2/100)));
+    const retiroY3 = Math.max(0, Math.round((utilY3 - fiscoY3) * (1 - s.reinvY3/100)));
+    c['retiro-y1'] = fmt(retiroY1); c['retiro-y2'] = fmt(retiroY2); c['retiro-y3'] = fmt(retiroY3);
+
+    // Retiros Claudio · Solo (100%)
+    c['retiro-solo-y1'] = fmt(retiroY1); c['retiro-solo-y1-mes'] = fmt(Math.round(retiroY1/12));
+    c['retiro-solo-y2'] = fmt(retiroY2); c['retiro-solo-y2-mes'] = fmt(Math.round(retiroY2/12));
+    c['retiro-solo-y3'] = fmt(retiroY3); c['retiro-solo-y3-mes'] = fmt(Math.round(retiroY3/12));
+    const retSoloAcum = retiroY1 + retiroY2 + retiroY3;
+    c['retiro-solo-acum'] = fmt(retSoloAcum);
+
+    // Retiros Claudio · con socio (% Claudio = 100 - equitySocio)
+    const claudioPct = (100 - s.equitySocio)/100;
+    c['equity-socio'] = s.equitySocio;
+    c['equity-claudio'] = 100 - s.equitySocio;
+    const retDuoY1 = Math.round(retiroY1 * claudioPct);
+    const retDuoY2 = Math.round(retiroY2 * claudioPct);
+    const retDuoY3 = Math.round(retiroY3 * claudioPct);
+    c['retiro-duo-y1'] = fmt(retDuoY1); c['retiro-duo-y1-mes'] = fmt(Math.round(retDuoY1/12));
+    c['retiro-duo-y2'] = fmt(retDuoY2); c['retiro-duo-y2-mes'] = fmt(Math.round(retDuoY2/12));
+    c['retiro-duo-y3'] = fmt(retDuoY3); c['retiro-duo-y3-mes'] = fmt(Math.round(retDuoY3/12));
+    const retDuoAcum = retDuoY1 + retDuoY2 + retDuoY3;
+    c['retiro-duo-acum'] = fmt(retDuoAcum);
+    c['retiro-diferencia'] = fmt(retSoloAcum - retDuoAcum);
+
+    // Capital
+    const capex = s.capSala + s.capLegal + s.capApparel + s.capDigital + s.capTrabajo;
+    c['capex-total'] = fmt(capex);
+    c['capex-total-m'] = fmtM(capex);
+
+    // IVA
+    c['iva'] = s.iva;
+    const ivaDeb = Math.round(ingresoMes * s.iva/100);
+    const ivaCre = Math.round(s.gastosFormales * s.iva/100);
+    c['iva-debito'] = fmt(ivaDeb); c['iva-debito-k'] = fmtK(ivaDeb);
+    c['iva-credito'] = fmt(ivaCre); c['iva-credito-k'] = fmtK(ivaCre);
+    c['iva-neto'] = fmt(Math.max(0,ivaDeb - ivaCre));
+    c['gastos-formales-k'] = fmtK(s.gastosFormales);
+
+    return c;
+  }
+
+  /* ────── Aplicar al DOM ────── */
+  function applyToDOM(c){
+    document.querySelectorAll('[data-out]').forEach(el=>{
+      const key = el.getAttribute('data-out');
+      if(c[key]!==undefined){
+        const newVal = String(c[key]);
+        if(el.textContent !== newVal){
+          el.textContent = newVal;
+          el.classList.add('flash');
+          setTimeout(()=>el.classList.remove('flash'), 600);
+        }
+      }
+    });
+  }
+
+  /* ────── Sincronizar inputs panel ────── */
+  function syncInputs(){
+    document.querySelectorAll('[data-in]').forEach(inp=>{
+      const key = inp.getAttribute('data-in');
+      if(state[key]!==undefined){
+        inp.value = state[key];
+      }
+    });
+    document.querySelectorAll('[data-range]').forEach(disp=>{
+      const key = disp.getAttribute('data-range');
+      if(state[key]!==undefined){
+        const isPct = ['margenY1','margenY2','margenY3','reinvY1','reinvY2','reinvY3','iva','idpc','equitySocio'].includes(key);
+        disp.textContent = state[key] + (isPct?'%':'');
+      }
+    });
+  }
+
+  function recalc(){
+    const c = compute(state);
+    applyToDOM(c);
+  }
+
+  function persist(){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){}
+  }
+
+  /* ────── Eventos ────── */
+  function bind(){
+    document.querySelectorAll('[data-in]').forEach(inp=>{
+      inp.addEventListener('input', e=>{
+        const key = e.target.getAttribute('data-in');
+        const val = Number(e.target.value);
+        if(!isNaN(val)){
+          state[key] = val;
+          syncInputs();
+          recalc();
+        }
+      });
+      inp.addEventListener('change', persist);
+    });
+  }
+
+  /* ────── Toggle panel ────── */
+  const fab = document.getElementById('simFab');
+  const panel = document.getElementById('simPanel');
+  const closeBtn = document.getElementById('simClose');
+  const liveBadge = document.getElementById('simLiveBadge');
+  const resetBtn = document.getElementById('simReset');
+  const saveBtn = document.getElementById('simSave');
+
+  function openPanel(){
+    panel.classList.add('open');
+    panel.setAttribute('aria-hidden','false');
+    fab.classList.add('open');
+    fab.innerHTML = '<span class="lbl">Cerrar</span>×';
+  }
+  function closePanel(){
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden','true');
+    fab.classList.remove('open');
+    fab.innerHTML = '<span class="pulse"></span><span class="lbl">Editar mis números</span><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>';
+  }
+  fab.addEventListener('click', ()=>{
+    if(panel.classList.contains('open')) closePanel(); else openPanel();
+  });
+  closeBtn.addEventListener('click', closePanel);
+
+  resetBtn.addEventListener('click', ()=>{
+    if(confirm('¿Volver a valores originales? Se perderán tus ediciones.')){
+      state = {...DEFAULTS};
+      try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+      syncInputs();
+      recalc();
+    }
+  });
+  saveBtn.addEventListener('click', ()=>{
+    persist();
+    saveBtn.textContent = '✓ Guardado';
+    setTimeout(()=>{ saveBtn.textContent = 'Guardar'; }, 1400);
+  });
+
+  // Si hay state custom, mostrar badge "modo simulador"
+  function checkBadge(){
+    let isCustom = false;
+    for(const k in DEFAULTS){
+      if(state[k] !== DEFAULTS[k]){ isCustom = true; break; }
+    }
+    if(isCustom){ liveBadge.classList.add('show'); }
+    else { liveBadge.classList.remove('show'); }
+  }
+
+  // Init
+  bind();
+  syncInputs();
+  recalc();
+  checkBadge();
+
+  // Re-check badge on every input
+  document.querySelectorAll('[data-in]').forEach(inp=>{
+    inp.addEventListener('input', checkBadge);
+  });
+
+})();
+</script>
+
+<script>
+document.querySelectorAll('.sub-links a').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if(target){
+      const offset = 110;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({top, behavior:'smooth'});
+    }
+  });
+});
+
+const bars = document.querySelectorAll('.cashflow-bar-fill');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const w = entry.target.style.width;
+      entry.target.style.width = '0%';
+      setTimeout(()=>{ entry.target.style.width = w; }, 100);
+    }
+  });
+},{threshold:0.3});
+bars.forEach(b=>observer.observe(b));
+</script>
+
+</body>
+</html>
